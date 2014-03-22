@@ -11,3 +11,20 @@
 *.lai
 *.la
 *.a
+
+# VC++
+Debug
+Release
+*.aps
+*.exe
+*ipch
+*.lastbuildstate
+*.log
+*.obj
+*.pch
+*.pdb
+*.res
+*.sdf
+*.tlog
+*.user
+*.suo
