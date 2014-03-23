@@ -12,6 +12,8 @@ Window::Window(std::string title, int width, int height, int bpp)
 	this->height = height;
 	this->bpp = bpp;
 
+	this->game = nullptr;
+
 	SetFPS(60);
 }
 
@@ -26,26 +28,20 @@ Window::~Window()
 int Window::Run()
 {
 	InitializeSDL();
-	SDL_Event event;
+	//SDL_Event event;
 
 	long delta = waitingTime;
 
 	do
 	{
 		clock_t start = clock();
-		if (SDL_PollEvent(&event))
+		
+		if (game != nullptr)
 		{
-			switch (event.type)
-			{
-				case SDL_KEYDOWN:
-					if (event.key.keysym.sym == SDLK_ESCAPE) return 1;
-					break;
-				case SDL_QUIT:
-					return 2;
-			}
+			game->Update(delta);
+			game->Render(delta);
 		}
 
-		Render();
 		clock_t end = clock();
 
 		delta = ((end - start) * 1000) / CLOCKS_PER_SEC ;
@@ -65,6 +61,16 @@ void Window::SetFPS(int value)
 int Window::GetFPS()
 {
 	return fps;
+}
+
+void Window::SetGame(GameManager* game)
+{
+	this->game = game;
+}
+
+GameManager* Window::GetGame()
+{
+	return this->game;
 }
 
 ////////////////////////////////////////
@@ -101,12 +107,4 @@ int Window::SetupOpenGL(void)
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
 	return flags;
-}
-
-
-void Window::Render()
-{
-	glClear(GL_COLOR_BUFFER_BIT);
-	glutWireCube(0.8);
-	SDL_GL_SwapBuffers();
 }

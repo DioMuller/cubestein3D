@@ -14,6 +14,7 @@
     <ProjectGuid>{C707C53C-3353-40BA-8CD8-F5CC4A9CC738}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DancingAdventures</RootNamespace>
+    <ProjectName>CubeAdventures</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -82,12 +83,18 @@
   <ItemGroup>
     <ClCompile Include="Behavior.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="TestEntity.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="TestEntity.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

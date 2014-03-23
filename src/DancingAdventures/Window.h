@@ -1,14 +1,5 @@
 #pragma once
-
-#ifdef WIN32
-#include <windows.h>
-#endif
-
-#include <GL/gl.h>
-#include <SDL/SDL.h>
-#include <stdlib.h>
-#include <glut.h>
-#include <string>
+#include "GameManager.h"
 
 ////////////////////
 // Constants
@@ -29,6 +20,7 @@ class Window
 		int fps;
 		float waitingTime;
 		std::string title;
+		GameManager* game;
 
 	////////////////////////////////////////
 	// Constructor / Destructor
@@ -44,12 +36,12 @@ class Window
 		int Run();
 		void SetFPS(int value);
 		int GetFPS();
+		void SetGame(GameManager* game);
+		GameManager* GetGame();
 	private:
 		// OpenGL Configuration
 		int SetupOpenGL(void);
 		// SDL Initialization
 		void InitializeSDL();
-		// Rendering
-		void Render();
 };
 

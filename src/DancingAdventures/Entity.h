@@ -1,6 +1,7 @@
 #pragma once
 
 #include <list>
+#include "Renderer.h"
 #include "Behavior.h"
 
 class Entity
@@ -9,7 +10,7 @@ class Entity
 	// Attributes
 	////////////////////////////////////////
 	private:
-		std::list<Behavior> behaviors;
+		std::list<Behavior*> behaviors;
 
 	////////////////////////////////////////
 	// Constructor / Destructor
@@ -22,7 +23,7 @@ class Entity
 	// Methods
 	////////////////////////////////////////
 	public:
-		void Update(long delta);
-		void Render(long delta);
+		virtual void Update(long delta);
+		virtual void Render(long delta, Renderer* renderer);
 };
 

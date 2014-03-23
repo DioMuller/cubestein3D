@@ -6,6 +6,7 @@
 
 Entity::Entity()
 {
+	behaviors = std::list<Behavior*>();
 }
 
 
@@ -18,13 +19,13 @@ Entity::~Entity()
 ////////////////////////////////////////
 void Entity::Update(long delta)
 {
-	for (Behavior b : behaviors)
+	for (Behavior* b : behaviors)
 	{
-		b.Update(delta);
+		b->Update(delta);
 	}
 }
 
-void Entity::Render(long delta)
+void Entity::Render(long delta, Renderer* renderer)
 {
 
 }
