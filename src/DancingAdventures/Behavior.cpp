@@ -1,11 +1,22 @@
 #include "Behavior.h"
 
-
-Behavior::Behavior()
+////////////////////////////////////////
+// Constructor / Destructor
+////////////////////////////////////////
+Behavior::Behavior(Entity* parent)
 {
+	this->parent = parent;
 }
 
 
 Behavior::~Behavior()
 {
+}
+
+////////////////////////////////////////
+// Methods
+////////////////////////////////////////
+void Behavior::Update(long delta)
+{
+
 }

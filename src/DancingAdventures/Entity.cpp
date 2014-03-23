@@ -1,5 +1,8 @@
 #include "Entity.h"
 
+////////////////////////////////////////
+// Constructor / Destructor
+////////////////////////////////////////
 
 Entity::Entity()
 {
@@ -8,4 +11,20 @@ Entity::Entity()
 
 Entity::~Entity()
 {
+}
+
+////////////////////////////////////////
+// Public Methods
+////////////////////////////////////////
+void Entity::Update(long delta)
+{
+	for (Behavior b : behaviors)
+	{
+		b.Update(delta);
+	}
+}
+
+void Entity::Render(long delta)
+{
+
 }

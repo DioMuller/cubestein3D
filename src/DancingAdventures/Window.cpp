@@ -26,8 +26,9 @@ Window::~Window()
 int Window::Run()
 {
 	InitializeSDL();
-
 	SDL_Event event;
+
+	long delta = waitingTime;
 
 	do
 	{
@@ -46,9 +47,9 @@ int Window::Run()
 
 		Render();
 		clock_t end = clock();
-		long elapsedms = ((end - start) * 1000) / CLOCKS_PER_SEC ;
-		long sleeptime = waitingTime - elapsedms;
 
+		delta = ((end - start) * 1000) / CLOCKS_PER_SEC ;
+		long sleeptime = waitingTime - delta;
 		if (sleeptime > 0) Sleep(sleeptime);
 	} while (1);
 
