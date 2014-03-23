@@ -44,6 +44,7 @@
     <ClCompile Include="TestEntity.cpp">
       <Filter>Testing\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h">
@@ -64,5 +65,6 @@
     <ClInclude Include="TestEntity.h">
       <Filter>Testing\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Vector3.h" />
   </ItemGroup>
 </Project>
