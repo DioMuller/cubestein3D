@@ -1,4 +1,5 @@
 #include "Window.h"
+#include <time.h>
 
 
 ////////////////////////////////////////
@@ -10,6 +11,8 @@ Window::Window(std::string title, int width, int height, int bpp)
 	this->width = width;
 	this->height = height;
 	this->bpp = bpp;
+
+	SetFPS(60);
 }
 
 
@@ -28,23 +31,39 @@ int Window::Run()
 
 	do
 	{
+		clock_t start = clock();
 		if (SDL_PollEvent(&event))
 		{
 			switch (event.type)
 			{
-			case SDL_KEYDOWN:
-				if (event.key.keysym.sym == SDLK_ESCAPE) return 1;
-				break;
-			case SDL_QUIT:
-				return 2;
+				case SDL_KEYDOWN:
+					if (event.key.keysym.sym == SDLK_ESCAPE) return 1;
+					break;
+				case SDL_QUIT:
+					return 2;
 			}
 		}
 
 		Render();
+		clock_t end = clock();
+		long elapsedms = ((end - start) * 1000) / CLOCKS_PER_SEC ;
+		long sleeptime = waitingTime - elapsedms;
 
+		if (sleeptime > 0) Sleep(sleeptime);
 	} while (1);
 
 	return 0;
+}
+
+void Window::SetFPS(int value)
+{
+	fps = value;
+	waitingTime = 1000 / (float)fps;
+}
+
+int Window::GetFPS()
+{
+	return fps;
 }
 
 ////////////////////////////////////////

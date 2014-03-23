@@ -26,6 +26,8 @@ class Window
 		int width;
 		int height;
 		int bpp;
+		int fps;
+		float waitingTime;
 		std::string title;
 
 	////////////////////////////////////////
@@ -40,6 +42,8 @@ class Window
 	////////////////////////////////////////
 	public:
 		int Run();
+		void SetFPS(int value);
+		int GetFPS();
 	private:
 		// OpenGL Configuration
 		int SetupOpenGL(void);
