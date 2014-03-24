@@ -90,9 +90,7 @@ void Window::InitializeSDL()
 
 int Window::SetupOpenGL(void)
 {
-	int flags = SDL_OPENGL;
-	flags |= SDL_HWPALETTE;
-	flags |= SDL_RESIZABLE;
+	int flags = SDL_OPENGL | SDL_HWPALETTE | SDL_RESIZABLE;
 
 	const SDL_VideoInfo* info = SDL_GetVideoInfo();
 
