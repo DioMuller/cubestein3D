@@ -1,6 +1,5 @@
 #pragma once
 #include "Entity.h"
-#include "Vector3.h"
 
 class TestEntity : public Entity
 {

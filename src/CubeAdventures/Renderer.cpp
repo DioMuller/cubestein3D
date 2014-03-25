@@ -28,7 +28,7 @@ void Renderer::End()
 ////////////////////////////////////////
 // Drawing Methods
 ////////////////////////////////////////
-void Renderer::DrawCube(Vector3 position, Vector3 scale, Vector3 rotation)
+void Renderer::DrawCube(Vector position, Vector scale, Vector rotation)
 {
 	glPushMatrix();
 

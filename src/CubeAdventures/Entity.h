@@ -10,9 +10,9 @@ class Entity
 	// Attributes
 	////////////////////////////////////////
 	public:
-		Vector3 position;
-		Vector3 rotation;
-		Vector3 scale;
+		Vector position;
+		Vector rotation;
+		Vector scale;
 	private:
 		std::list<Behavior*> behaviors;
 
