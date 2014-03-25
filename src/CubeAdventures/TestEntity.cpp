@@ -18,10 +18,13 @@ TestEntity::~TestEntity()
 void TestEntity::Update(long delta)
 {
 	Entity::Update(delta);
+
+	this->position.x += 0.01;
+	this->rotation.y -= 1;
 }
 
 void TestEntity::Render(long delta, Renderer* renderer)
 {
-	renderer->DrawCube(1.0);
+	renderer->DrawCube(position, scale, rotation);
 	Entity::Render(delta, renderer);
 }

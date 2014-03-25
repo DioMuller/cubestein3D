@@ -28,7 +28,18 @@ void Renderer::End()
 ////////////////////////////////////////
 // Drawing Methods
 ////////////////////////////////////////
-void Renderer::DrawCube(float size)
+void Renderer::DrawCube(Vector3 position, Vector3 scale, Vector3 rotation)
 {
-	glutSolidCube(size);
+	glPushMatrix();
+
+	// TODO: Use Matrix.
+	glTranslatef(position.x, position.y, position.z);
+	glScalef(scale.x, scale.y, scale.z);
+	glRotatef(rotation.x, 1, 0, 0);
+	glRotatef(rotation.y, 0, 1, 0);
+	glRotatef(rotation.z, 0, 0, 1);
+
+	glutWireCube(1);
+
+	glPopMatrix();
 }

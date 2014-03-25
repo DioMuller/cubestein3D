@@ -7,6 +7,10 @@
 Entity::Entity()
 {
 	behaviors = std::list<Behavior*>();
+
+	position = Vector3();
+	rotation = Vector3();
+	scale = Vector3(1, 1, 1);
 }
 
 

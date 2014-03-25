@@ -10,6 +10,8 @@
 #include <glut.h>
 #include <string>
 
+#include "Vector3.h"
+
 class Renderer
 {
 	////////////////////////////////////////
@@ -26,6 +28,6 @@ class Renderer
 		void Begin();
 		void End();
 
-		void DrawCube(float size);
+		void DrawCube(Vector3 position, Vector3 scale, Vector3 rotation);
 };
 

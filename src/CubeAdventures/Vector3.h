@@ -4,7 +4,7 @@ class Vector3
 	////////////////////////////////////////
 	// Attributes
 	////////////////////////////////////////
-	private:
+	public:
 		float x;
 		float y;
 		float z;
@@ -14,15 +14,11 @@ class Vector3
 	////////////////////////////////////////
 	public:
 		Vector3();
+		Vector3(float x, float y, float z);
 		~Vector3();
 
 	////////////////////////////////////////
 	// Methods
 	////////////////////////////////////////
-	public:
-		float GetX();
-		float GetY();
-		float GetZ();
-		void Translate(float x, float y, float z);
 };
 
