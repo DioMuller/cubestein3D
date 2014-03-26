@@ -20,7 +20,7 @@ public:
 	float dot(Vector &v);
 
 	Vector operator +(const Vector& v) const;
-
+	
 	bool operator ==(const Vector& v) const;
 
 	Vector& operator =(const Vector& v);

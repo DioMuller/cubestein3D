@@ -56,7 +56,12 @@
     <ClCompile Include="texture.cpp">
       <Filter>Graflix\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Vector.cpp" />
+    <ClCompile Include="Vector.cpp">
+      <Filter>Graflix\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureInfo.cpp">
+      <Filter>GameBase\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h">
@@ -83,6 +88,11 @@
     <ClInclude Include="glext.h">
       <Filter>Graflix\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Vector.h" />
+    <ClInclude Include="Vector.h">
+      <Filter>Graflix\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureInfo.h">
+      <Filter>GameBase\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <glut.h>
 #include <string>
+#include "TextureInfo.h"
 
 #include "Vector.h"
 
@@ -29,5 +30,6 @@ class Renderer
 		void End();
 
 		void DrawCube(Vector position, Vector scale, Vector rotation);
+		void DrawTexturedCube(Vector position, Vector scale, Vector rotation, TextureInfo* texture);
 };
 

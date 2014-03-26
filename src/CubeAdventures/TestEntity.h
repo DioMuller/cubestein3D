@@ -1,12 +1,14 @@
 #pragma once
 #include "Entity.h"
+#include "TextureInfo.h"
 
 class TestEntity : public Entity
 {
 	////////////////////////////////////////
 	// Attributes
 	////////////////////////////////////////
-
+	private:
+		TextureInfo* texture;
 
 	////////////////////////////////////////
 	// Constructor / Destructor
