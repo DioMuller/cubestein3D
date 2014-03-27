@@ -2,6 +2,7 @@
 
 #include <list>
 #include "Entity.h"
+#include "Camera.h"
 
 class GameManager
 {
@@ -10,6 +11,7 @@ class GameManager
 	////////////////////////////////////////
 	protected:
 		std::list<Entity*> entities;
+		Camera* camera;
 		Renderer* renderer;
 
 	////////////////////////////////////////
@@ -28,5 +30,7 @@ class GameManager
 
 		void AddEntity(Entity* entity);
 		void RemoveEntity(Entity* entity);
+
+		void InitializeCamera(float fov, int width, int height, float zNear, float zFar);
 };
 

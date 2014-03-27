@@ -31,5 +31,8 @@ class Renderer
 
 		void DrawCube(Vector position, Vector scale, Vector rotation);
 		void DrawTexturedCube(Vector position, Vector scale, Vector rotation, TextureInfo* texture);
+
+		void CameraInitialize(float fov, int width, int height, float zNear, float zFar);
+		void CameraLookAt(Vector eye, Vector target, Vector up);
 };
 

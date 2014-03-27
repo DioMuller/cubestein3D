@@ -34,7 +34,7 @@ void TestEntity::Update(long delta)
 {
 	Entity::Update(delta);
 
-	this->position.x += 0.01;
+	//this->position.x += 0.01;
 	this->rotation.y -= 1;
 }
 

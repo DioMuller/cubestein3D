@@ -140,3 +140,25 @@ void Renderer::DrawTexturedCube(Vector position, Vector scale, Vector rotation, 
 
 	glPopMatrix();
 }
+
+void Renderer::CameraInitialize(float fov, int width, int height, float zNear, float zFar)
+{
+	//Matriz de projeção
+	glMatrixMode(GL_PROJECTION);
+
+	//Inicializa com a matriz identidade
+	glLoadIdentity();
+
+	//Perspectiva
+	gluPerspective(fov, (GLfloat)width / (GLfloat)height, zNear, zFar);
+
+	//Matriz model view
+	glMatrixMode(GL_MODELVIEW);
+}
+
+void Renderer::CameraLookAt(Vector eye, Vector target, Vector up)
+{
+	gluLookAt(eye.x, eye.y, eye.z,
+		target.x, target.y, target.z,
+		up.x, up.y, up.z);
+}

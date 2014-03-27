@@ -7,6 +7,8 @@ GameManager::GameManager()
 {
 	entities = std::list<Entity*>();
 	renderer = new Renderer();
+
+	camera = new Camera();
 }
 
 
@@ -24,6 +26,8 @@ void GameManager::Update(long delta)
 	{
 		entity->Update(delta);
 	}
+
+	camera->Update(delta);
 }
 
 void GameManager::Render(long delta)
@@ -34,6 +38,8 @@ void GameManager::Render(long delta)
 	{
 		entity->Render(delta, renderer);
 	}
+
+	camera->Render(delta, renderer);
 
 	renderer->End();
 }
@@ -49,4 +55,12 @@ void GameManager::AddEntity(Entity* entity)
 void GameManager::RemoveEntity(Entity* entity)
 {
 	entities.remove(entity);
+}
+
+////////////////////////////////////////
+// Camera Methods
+////////////////////////////////////////
+void GameManager::InitializeCamera(float fov, int width, int height, float zNear, float zFar)
+{
+	renderer->CameraInitialize(fov, width, height, zNear, zFar);
 }

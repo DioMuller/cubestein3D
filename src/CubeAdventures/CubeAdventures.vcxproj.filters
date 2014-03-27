@@ -62,6 +62,9 @@
     <ClCompile Include="TextureInfo.cpp">
       <Filter>GameBase\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>GameBase\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h">
@@ -92,6 +95,9 @@
       <Filter>Graflix\Headers</Filter>
     </ClInclude>
     <ClInclude Include="TextureInfo.h">
+      <Filter>GameBase\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
       <Filter>GameBase\Headers</Filter>
     </ClInclude>
   </ItemGroup>
