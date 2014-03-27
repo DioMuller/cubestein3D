@@ -34,12 +34,14 @@ void GameManager::Render(long delta)
 {
 	renderer->Begin();
 
+	camera->Render(delta, renderer);
+
 	for (Entity* entity : entities)
 	{
 		entity->Render(delta, renderer);
 	}
 
-	camera->Render(delta, renderer);
+	renderer->DrawSkybox(0, 0, 0, 800, 400, 400);
 
 	renderer->End();
 }
@@ -63,4 +65,13 @@ void GameManager::RemoveEntity(Entity* entity)
 void GameManager::InitializeCamera(float fov, int width, int height, float zNear, float zFar)
 {
 	renderer->CameraInitialize(fov, width, height, zNear, zFar);
+
+	/* TODO: Remove from here */
+	renderer->InitializeSkybox(
+		"Textures/Nebular_rt.jpg",
+		"Textures/Nebular_lf.jpg",
+		"Textures/Nebular_ft.jpg",
+		"Textures/Nebular_bk.jpg",
+		"Textures/Nebular_up.jpg",
+		"Textures/Nebular_dn.jpg");
 }

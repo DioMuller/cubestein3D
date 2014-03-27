@@ -6,7 +6,7 @@
 ////////////////////
 #define SCREENWIDTH 800
 #define SCREENHEIGHT 600
-#define SCREENBPP 0
+#define SCREENBPP 32
 
 class Window
 {

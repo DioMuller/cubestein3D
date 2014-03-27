@@ -28,14 +28,28 @@ Window::~Window()
 int Window::Run()
 {
 	InitializeSDL();
-	//SDL_Event event;
+	SDL_Event event;
+
 
 	long delta = waitingTime;
 
 	do
 	{
 		clock_t start = clock();
+
+		// SDL EVENTS
+		SDL_PollEvent(&event);
+
+		switch (event.type)
+		{
+			case SDL_QUIT:
+				return 0; // Quit button on Window
+			case SDL_KEYDOWN:
+				if (event.key.keysym.sym == SDLK_ESCAPE) return 0; // ESC Key
+				break;
+		}
 		
+		// GAME UPDATE
 		if (game != nullptr)
 		{
 			game->Update(delta);
@@ -79,13 +93,21 @@ GameManager* Window::GetGame()
 ////////////////////////////////////////
 void Window::InitializeSDL()
 {
-	SDL_Init(SDL_INIT_VIDEO);
+	SDL_Init(SDL_INIT_EVERYTHING | SDL_INIT_NOPARACHUTE);
 	atexit(SDL_Quit);
 
-	SDL_Surface* janela = SDL_SetVideoMode(width, height, bpp, SetupOpenGL());
+	SDL_Surface* window = SDL_SetVideoMode(width, height, bpp, SetupOpenGL());
 	SDL_WM_SetCaption(title.c_str(), NULL);
 
-	glClearColor(0.0, 0.0, 0.0, 1);
+	// Removes mouse cursor
+	SDL_ShowCursor(SDL_DISABLE);
+
+	//Enables Textures and Depth Tests
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_DEPTH_TEST);
+
+	glViewport(0, 0, width, height);
+	glClearColor(0.0, 0.5, 0.75, 1);
 }
 
 
@@ -104,6 +126,7 @@ int Window::SetupOpenGL(void)
 		flags |= SDL_HWACCEL;
 
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, SCREENBPP);
 
 	return flags;
 }
