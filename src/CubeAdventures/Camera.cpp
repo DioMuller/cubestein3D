@@ -53,8 +53,7 @@ Camera::~Camera()
 
 void Camera::Update(long delta)
 {
-	eye.x += 0.01;
-	eye.y += 0.01;
+	RotateCamera(0.1, 0, 1, 0);
 }
 
 void Camera::Render(long delta, Renderer* renderer)
