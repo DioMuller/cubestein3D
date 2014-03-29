@@ -1,5 +1,6 @@
 #include "Window.h"
 #include "TestEntity.h"
+#include "TestEntity2.h"
 
 int main(int argc, char **argv)
 {
@@ -8,6 +9,9 @@ int main(int argc, char **argv)
 
 	TestEntity* ent = new TestEntity();
 	game->AddEntity(ent);
+
+	TestEntity2* ent2 = new TestEntity2();
+	game->AddEntity(ent2);
 
 	window->SetGame(game);
 	window->Run();

@@ -94,6 +94,7 @@
     </ClCompile>
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="TestEntity.cpp" />
+    <ClCompile Include="TestEntity2.cpp" />
     <ClCompile Include="TestMain.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -111,6 +112,7 @@
     <ClInclude Include="glext.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="TestEntity.h" />
+    <ClInclude Include="TestEntity2.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="TextureInfo.h" />
     <ClInclude Include="Vector.h" />

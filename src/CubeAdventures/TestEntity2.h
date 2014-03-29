@@ -1,0 +1,29 @@
+#pragma once
+#include "Entity.h"
+#include "TextureInfo.h"
+
+class TestEntity2 : public Entity
+{
+	////////////////////////////////////////
+	// Attributes
+	////////////////////////////////////////
+private:
+	TextureInfo* texture;
+	float change;
+	float current;
+
+	////////////////////////////////////////
+	// Constructor / Destructor
+	////////////////////////////////////////
+public:
+	TestEntity2();
+	~TestEntity2();
+
+	////////////////////////////////////////
+	// Methods
+	////////////////////////////////////////
+public:
+	void Update(long delta);
+	void Render(long delta, Renderer* renderer);
+};
+

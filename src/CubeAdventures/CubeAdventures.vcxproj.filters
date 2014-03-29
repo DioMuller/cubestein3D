@@ -66,6 +66,9 @@
       <Filter>GameBase\Source</Filter>
     </ClCompile>
     <ClCompile Include="TestMain.cpp" />
+    <ClCompile Include="TestEntity2.cpp">
+      <Filter>Testing\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h">
@@ -100,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>GameBase\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TestEntity2.h">
+      <Filter>Testing\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
