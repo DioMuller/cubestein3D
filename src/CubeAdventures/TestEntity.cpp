@@ -16,7 +16,7 @@ TestEntity::TestEntity()
 	map[7] = 0.694;
 
 	Vector offset = Vector(0.202, 0.202, 0);
-	texture = new TextureInfo("Textures/Spiderman.png", map, 8, offset);
+	texture = new TextureInfo("Textures/Domo.png", map, 8, offset);
 
 	this->scale = Vector(0.5, 0.5, 0.5);
 }

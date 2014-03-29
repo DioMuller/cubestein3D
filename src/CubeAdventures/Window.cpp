@@ -15,6 +15,8 @@ Window::Window(std::string title, int width, int height, int bpp)
 	this->game = nullptr;
 
 	SetFPS(60);
+
+	InitializeSDL();
 }
 
 
@@ -27,7 +29,6 @@ Window::~Window()
 ////////////////////////////////////////
 int Window::Run()
 {
-	InitializeSDL();
 	SDL_Event event;
 
 

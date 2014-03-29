@@ -4,9 +4,6 @@
     <Filter Include="GameBase">
       <UniqueIdentifier>{4f5f7e5e-f96b-479b-a6be-5d428c4659c3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameBase\Headers">
-      <UniqueIdentifier>{8cf8eb7d-87d3-491d-86d5-f86d25903c2a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameBase\Source">
       <UniqueIdentifier>{59e78dc2-36d2-4bb9-94c8-1b66939c4148}</UniqueIdentifier>
     </Filter>
@@ -31,6 +28,9 @@
     </Filter>
     <Filter Include="Graflix\Source">
       <UniqueIdentifier>{2ae95b18-856e-4590-a08e-2aba2bf3f770}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBase\Headers">
+      <UniqueIdentifier>{8cf8eb7d-87d3-491d-86d5-f86d25903c2a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
