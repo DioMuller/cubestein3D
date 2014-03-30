@@ -14,7 +14,7 @@
     <ProjectGuid>{C707C53C-3353-40BA-8CD8-F5CC4A9CC738}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>CubeAdventures</RootNamespace>
-    <ProjectName>CubeAdventures</ProjectName>
+    <ProjectName>Cubestein3D</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -89,16 +89,13 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="TestEntity.cpp" />
     <ClCompile Include="TestEntity2.cpp" />
-    <ClCompile Include="TestMain.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="TextureInfo.cpp" />
     <ClCompile Include="Vector.cpp" />
@@ -110,6 +107,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="glext.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="TestEntity.h" />
     <ClInclude Include="TestEntity2.h" />
@@ -117,6 +115,11 @@
     <ClInclude Include="TextureInfo.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Levels\E1M1.xml">
+      <SubType>Designer</SubType>
+    </Xml>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

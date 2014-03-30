@@ -5,7 +5,7 @@
 ////////////////////////////////////////
 GameManager::GameManager()
 {
-	entities = std::list<Entity*>();
+	currentLevel = new Level();
 	renderer = new Renderer();
 
 	camera = new Camera();
@@ -22,10 +22,7 @@ GameManager::~GameManager()
 
 void GameManager::Update(long delta)
 {
-	for (Entity* entity : entities)
-	{
-		entity->Update(delta);
-	}
+	currentLevel->Update(delta);
 
 	camera->Update(delta);
 }
@@ -36,10 +33,7 @@ void GameManager::Render(long delta)
 
 	camera->Render(delta, renderer);
 
-	for (Entity* entity : entities)
-	{
-		entity->Render(delta, renderer);
-	}
+	currentLevel->Render(delta, renderer);
 
 	renderer->DrawSkybox(0, 0, 0, 800, 400, 400);
 
@@ -51,12 +45,17 @@ void GameManager::Render(long delta)
 ////////////////////////////////////////
 void GameManager::AddEntity(Entity* entity)
 {
-	entities.push_back(entity);
+	if (currentLevel != nullptr) currentLevel->AddEntity(entity);
 }
 
 void GameManager::RemoveEntity(Entity* entity)
 {
-	entities.remove(entity);
+	if (currentLevel != nullptr) currentLevel->RemoveEntity(entity);
+}
+
+void GameManager::ClearEntities()
+{
+	if (currentLevel != nullptr) currentLevel->ClearEntities();
 }
 
 ////////////////////////////////////////
@@ -74,4 +73,12 @@ void GameManager::InitializeCamera(float fov, int width, int height, float zNear
 		"Textures/Nebular_bk.jpg",
 		"Textures/Nebular_up.jpg",
 		"Textures/Nebular_dn.jpg");
+}
+
+////////////////////////////////////////
+// Level Methods
+////////////////////////////////////////
+void GameManager::LoadLevel(Level* level)
+{
+	currentLevel = level;
 }

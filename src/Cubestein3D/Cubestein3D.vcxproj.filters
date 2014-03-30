@@ -32,6 +32,9 @@
     <Filter Include="GameBase\Headers">
       <UniqueIdentifier>{8cf8eb7d-87d3-491d-86d5-f86d25903c2a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Levels">
+      <UniqueIdentifier>{325748a8-1d8f-4fc9-9bc7-08ee54309857}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Behavior.cpp">
@@ -65,9 +68,11 @@
     <ClCompile Include="Camera.cpp">
       <Filter>GameBase\Source</Filter>
     </ClCompile>
-    <ClCompile Include="TestMain.cpp" />
     <ClCompile Include="TestEntity2.cpp">
       <Filter>Testing\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>GameBase\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -107,5 +112,13 @@
     <ClInclude Include="TestEntity2.h">
       <Filter>Testing\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>GameBase\Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Levels\E1M1.xml">
+      <Filter>Levels</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

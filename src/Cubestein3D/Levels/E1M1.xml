@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level>
+  <name>The Prision</name>
+  <size>
+    <width>20</width>
+    <height>15</height>
+  </size>
+  <textures>
+    <ground>Textures/ground.png</ground>
+    <wall>Textures/wall.png</wall>
+  </textures>
+  <map>
+    <![CDATA[
+      WWWWWWWWWWWWWWWWWWWWW
+      WWGGEGGWWWWGGGGGGGGWW
+      WWGGGGGWWWWGGGGGGGGWW
+      WWGGGGGWWWWGGGGGWGGWW
+      WWWWGWWWWWWWWWWWWGWWW
+      WWWWGWWWWWWWWWWWWGWWW
+      WWWWGWWGGGGGWWWWWGWWW
+      WWWWGWWGGGGGGGGGGGWWW
+      WWWWGWWGGGGGWWWWWGWWW
+      WWWWGWWGGGGGWWWWWGWWW
+      WWWWGGGGGGGGWWWWWGWWW
+      WWWWWWWWWWWWWWWWWGWWW
+      WWWWWWWWWWWWWWGGGGGSW
+      WWWWWWWWWWWWWWGWWGWWW
+      WWWWWWWWWWWWWWWWWWWWW
+    ]]>
+  </map>
+</level>

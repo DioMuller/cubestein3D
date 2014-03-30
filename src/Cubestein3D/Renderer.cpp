@@ -29,7 +29,7 @@ void Renderer::End()
 
 
 ////////////////////////////////////////
-// Drawing Methods
+// Object Methods
 ////////////////////////////////////////
 void Renderer::DrawCube(Vector position, Vector scale, Vector rotation)
 {
@@ -124,6 +124,82 @@ void Renderer::DrawTexturedCube(Vector position, Vector scale, Vector rotation, 
 	glDisable(GL_LIGHTING);
 }
 
+void Renderer::DrawPlane(Vector startPosition, Vector endPosition, TextureInfo* texture)
+{
+	glBindTexture(GL_TEXTURE_2D, texture->id);
+
+	glColor3f(1.0, 1.0, 1.0);
+	glBegin(GL_QUADS);
+	// This way, it'll probably work for X,Y and X,Z planes.
+	glNormal3d(0, 0, 1);
+	glTexCoord2f(0, 0); glVertex3f(startPosition.x, startPosition.y, startPosition.z);
+	glTexCoord2f(0, 1); glVertex3f(endPosition.x, startPosition.y, startPosition.z);
+	glTexCoord2f(1, 1); glVertex3f(endPosition.x, endPosition.y, endPosition.z);
+	glTexCoord2f(1, 0); glVertex3f(startPosition.x, endPosition.y, endPosition.z);
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void Renderer::DrawWall(Vector position, Vector size, TextureInfo* texture)
+{
+	glPushMatrix();
+	glTranslatef(position.x, position.y, position.z);
+	glScalef(size.x, size.y, size.z);
+
+	glBindTexture(GL_TEXTURE_2D, texture->id);
+
+	glColor3f(1.0, 1.0, 1.0);
+	glBegin(GL_QUADS);
+	// Front Face
+	glNormal3d(0, 0, 1);
+	glTexCoord2f(0, 0); glVertex3f(-1.0f, -1.0f, 1.0f);
+	glTexCoord2f(0, 1); glVertex3f(1.0f, -1.0f, 1.0f);
+	glTexCoord2f(1, 1); glVertex3f(1.0f, 1.0f, 1.0f);
+	glTexCoord2f(1, 0); glVertex3f(-1.0f, 1.0f, 1.0f);
+
+	// Back Face
+	glNormal3d(0, 0, -1);
+	glTexCoord2f(0, 0); glVertex3f(1.0f, -1.0f, -1.0f);
+	glTexCoord2f(0, 1); glVertex3f(-1.0f, -1.0f, -1.0f);
+	glTexCoord2f(1, 1); glVertex3f(-1.0f, 1.0f, -1.0f);
+	glTexCoord2f(1, 0); glVertex3f(1.0f, 1.0f, -1.0f);
+
+	// Top Face
+	glNormal3d(0, 1, 0);
+	glTexCoord2f(0, 0); glVertex3f(-1.0f, 1.0f, 1.0f);
+	glTexCoord2f(0, 1); glVertex3f(1.0f, 1.0f, 1.0f);
+	glTexCoord2f(1, 1); glVertex3f(1.0f, 1.0f, -1.0f);
+	glTexCoord2f(1, 0); glVertex3f(-1.0f, 1.0f, -1.0f);
+
+	// Bottom Face
+	glNormal3d(0, -1, 0);
+	glTexCoord2f(0, 0); glVertex3f(-1.0f, -1.0f, -1.0f);
+	glTexCoord2f(0, 1); glVertex3f(1.0f, -1.0f, -1.0f);
+	glTexCoord2f(1, 1); glVertex3f(1.0f, -1.0f, 1.0f);
+	glTexCoord2f(1, 0); glVertex3f(-1.0f, -1.0f, 1.0f);
+
+	// Right face
+	glNormal3d(1, 0, 0);
+	glTexCoord2f(0, 0); glVertex3f(1.0f, -1.0f, 1.0f);
+	glTexCoord2f(0, 1); glVertex3f(1.0f, -1.0f, -1.0f);
+	glTexCoord2f(1, 1); glVertex3f(1.0f, 1.0f, -1.0f);
+	glTexCoord2f(1, 0); glVertex3f(1.0f, 1.0f, 1.0f);
+
+	// Left Face
+	glNormal3d(-1, 0, 0);
+	glTexCoord2f(0, 0); glVertex3f(-1.0f, -1.0f, -1.0f);
+	glTexCoord2f(0, 1); glVertex3f(-1.0f, -1.0f, 1.0f);
+	glTexCoord2f(1, 1); glVertex3f(-1.0f, 1.0f, 1.0f);
+	glTexCoord2f(1, 0); glVertex3f(-1.0f, 1.0f, -1.0f);
+	glEnd();
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+	glPopMatrix();
+}
+
+////////////////////////////////////////
+// Camera Methods
+////////////////////////////////////////
 void Renderer::CameraInitialize(float fov, int width, int height, float zNear, float zFar)
 {
 	glMatrixMode(GL_PROJECTION);
@@ -139,6 +215,9 @@ void Renderer::CameraLookAt(Vector eye, Vector target, Vector up)
 		up.x, up.y, up.z);
 }
 
+////////////////////////////////////////
+// Skybox methods
+////////////////////////////////////////
 void Renderer::InitializeSkybox(std::string left, std::string front, std::string right, std::string back, std::string top, std::string bottom)
 {
 	skyboxTexture = new GLuint[6];
