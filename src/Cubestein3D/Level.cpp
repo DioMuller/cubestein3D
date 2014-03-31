@@ -75,10 +75,10 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 	this->wallTexture = new TextureInfo(wallTexture);
 	this->map = map;
 
-	this->start = Vector(-(float)(width / 2), -2.0f, -(float)(height / 2));
-	this->end = Vector((float)(width / 2), -2.0f, (float)(height / 2));
+	this->start = Vector(-(float)(width / 2), -1.0f, -(float)(height / 2));
+	this->end = Vector((float)(width / 2), -1.0f, (float)(height / 2));
 
-	this->scale = Vector(1.0f, 1.0f, 1.0f);
+	this->scale = Vector(0.5f, 1.0f, 0.5f);
 }
 
 void Level::ProcessMap()

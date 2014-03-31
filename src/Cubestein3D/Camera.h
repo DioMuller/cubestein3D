@@ -26,9 +26,8 @@ class Camera
 		void Render(long delta, Renderer* renderer);
 
 	protected:
-		void MoveCamera(float x, float y, float z);
-		void TranslateCamera(float x, float y, float z);
 		void RotateCamera(float angle, float x, float y, float z);
-
+		void MoveCamera(float speed);
+		void StrafeCamera(float speed);
 };
 
