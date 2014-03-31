@@ -41,9 +41,9 @@ void normalizeVector(float &x, float &y, float &z)
 
 Camera::Camera()
 {
-	eye = Vector(1.0f, 1.5f, -15.0f);
+	eye = Vector(1.0f, 12.5f, -15.0f);
 	target = Vector(1.0f, 1.5f, 1.0f);
-	up = Vector(0.0f, 2.0f, 0.0f);
+	up = Vector(0.0f, 1.0f, 0.0f);
 }
 
 
@@ -53,31 +53,6 @@ Camera::~Camera()
 
 void Camera::Update(long delta)
 {
-	/*TODO: REMOVE MOVEMENT*/
-	SDL_Event event;
-	SDL_PollEvent(&event);
-
-	if (event.type == SDL_KEYDOWN)
-	{
-		switch (event.key.keysym.sym)
-		{
-			case SDLK_w:
-				MoveCamera(-20.0f * delta);
-				break;
-			case SDLK_s:
-				MoveCamera(20.0f * delta);
-				break;
-
-			case SDLK_a:
-				StrafeCamera(-20.0f * delta);
-				break;
-			case SDLK_d:
-				StrafeCamera(20.0f * delta);
-				break;
-			default: break;
-		}
-	}
-
 	/*
 	TODO: REMOVE MOUSE LOOK
 	*/

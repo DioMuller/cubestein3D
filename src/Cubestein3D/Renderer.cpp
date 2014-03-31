@@ -136,7 +136,7 @@ void Renderer::DrawPlane(Vector startPosition, Vector endPosition, TextureInfo* 
 	glTexCoord2f(0, 1); glVertex3f(endPosition.x, startPosition.y, startPosition.z);
 	glTexCoord2f(1, 1); glVertex3f(endPosition.x, endPosition.y, endPosition.z);
 	glTexCoord2f(1, 0); glVertex3f(startPosition.x, endPosition.y, endPosition.z);
-
+	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 

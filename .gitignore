@@ -59,3 +59,4 @@ Release
 /src/Cubestein3D/SDL_ttf.dll
 /src/Cubestein3D/smpeg.dll
 /src/Cubestein3D/zlib1.dll
+/src/*.opensdf
