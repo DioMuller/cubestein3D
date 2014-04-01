@@ -87,12 +87,14 @@
   <ItemGroup>
     <ClCompile Include="Behavior.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ControllableBehavior.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="TestEntity.cpp" />
     <ClCompile Include="TestEntity2.cpp" />
@@ -104,10 +106,12 @@
   <ItemGroup>
     <ClInclude Include="Behavior.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ControllableBehavior.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="glext.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="TestEntity.h" />
     <ClInclude Include="TestEntity2.h" />

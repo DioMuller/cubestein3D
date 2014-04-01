@@ -1,0 +1,19 @@
+#pragma once
+#include "Behavior.h"
+
+class ControllableBehavior : Behavior
+{
+	////////////////////////////////////////
+	// Constructor / Destructor
+	////////////////////////////////////////
+	public:
+		ControllableBehavior(Entity* parent);
+		~ControllableBehavior();
+
+	////////////////////////////////////////
+	// Methods
+	////////////////////////////////////////
+	public:
+		void Update(long delta);
+};
+

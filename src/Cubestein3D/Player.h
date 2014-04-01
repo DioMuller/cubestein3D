@@ -1,0 +1,19 @@
+#pragma once
+#include "Entity.h"
+class Player : Entity
+{
+	////////////////////////////////////////
+	// Constructor / Destructor
+	////////////////////////////////////////
+	public:
+		Player();
+		~Player();
+
+	////////////////////////////////////////
+	// Methods
+	////////////////////////////////////////
+	public:
+		void Update(long delta);
+		void Render(long delta, Renderer* renderer);
+};
+

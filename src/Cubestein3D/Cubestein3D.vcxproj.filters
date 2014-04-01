@@ -35,6 +35,24 @@
     <Filter Include="Levels">
       <UniqueIdentifier>{325748a8-1d8f-4fc9-9bc7-08ee54309857}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entities">
+      <UniqueIdentifier>{6f001fa9-66fd-41d3-8c0d-fac347901fff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\Headers">
+      <UniqueIdentifier>{226ac7e7-3c9a-4edb-ad6d-97c97c9448a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\Source">
+      <UniqueIdentifier>{62abc5c1-640a-4f3f-9345-7d1aa5017f33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behaviors">
+      <UniqueIdentifier>{53fa6f51-2d00-4be6-854a-805461c3dab4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behaviors\Headers">
+      <UniqueIdentifier>{af7bc473-01a2-4e0b-8afb-4352bbb8c7b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behaviors\Source">
+      <UniqueIdentifier>{51529998-4cfb-441e-a264-68ca7ded94d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Behavior.cpp">
@@ -73,6 +91,12 @@
     </ClCompile>
     <ClCompile Include="Level.cpp">
       <Filter>GameBase\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Entities\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllableBehavior.cpp">
+      <Filter>Behaviors\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +138,12 @@
     </ClInclude>
     <ClInclude Include="Level.h">
       <Filter>GameBase\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Entities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllableBehavior.h">
+      <Filter>Behaviors\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
