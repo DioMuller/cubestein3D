@@ -1,4 +1,5 @@
 #include "Level.h"
+#include "Player.h"
 
 Level::Level()
 {
@@ -35,7 +36,16 @@ void Level::Render(long delta, Renderer* renderer)
 	{
 		for (j = 0; j < width; j++)
 		{
-			if( map[i][j] == 'W' ) renderer->DrawWall(Vector(start.x + j, 0, start.z + i), scale, wallTexture);
+			switch (map[i][j])
+			{
+				case 'W':
+					renderer->DrawWall(Vector(start.x + j, 0, start.z + i), scale, wallTexture);
+					break;
+				case 'S':
+					Player* player = new Player(Vector(start.x + j, 0, start.z + i));
+					AddEntity((Entity*) player);
+					break;
+			}
 		}
 	}
 

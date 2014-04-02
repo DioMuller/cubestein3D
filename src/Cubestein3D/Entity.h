@@ -13,7 +13,7 @@ class Entity
 		Vector position;
 		Vector rotation;
 		Vector scale;
-	private:
+	protected:
 		std::list<Behavior*> behaviors;
 
 	////////////////////////////////////////
@@ -29,5 +29,9 @@ class Entity
 	public:
 		virtual void Update(long delta);
 		virtual void Render(long delta, Renderer* renderer);
+
+		void AddBehavior(Behavior* behavior);
+		void RemoveBehavior(Behavior* behavior);
+		void ClearBehaviors();
 };
 

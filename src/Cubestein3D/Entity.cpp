@@ -33,3 +33,21 @@ void Entity::Render(long delta, Renderer* renderer)
 {
 
 }
+
+////////////////////////////////////////
+// Behavior Methods
+////////////////////////////////////////
+void Entity::AddBehavior(Behavior* behavior)
+{
+	behaviors.push_back(behavior);
+}
+
+void Entity::RemoveBehavior(Behavior* behavior)
+{
+	behaviors.remove(behavior);
+}
+
+void Entity::ClearBehaviors()
+{
+	behaviors.clear();
+}
