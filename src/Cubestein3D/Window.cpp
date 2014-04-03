@@ -1,6 +1,6 @@
 #include "Window.h"
+#include "Input.h"
 #include <time.h>
-
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -11,6 +11,8 @@ Window::Window(std::string title, int width, int height, int bpp)
 	this->width = width;
 	this->height = height;
 	this->bpp = bpp;
+
+	Input::Initialize();
 
 	this->game = nullptr;
 
@@ -41,14 +43,9 @@ int Window::Run()
 		// SDL EVENTS
 		SDL_PollEvent(&event);
 
-		switch (event.type)
-		{
-			case SDL_QUIT:
-				return 0; // Quit button on Window
-			case SDL_KEYDOWN:
-				if (event.key.keysym.sym == SDLK_ESCAPE) return 0; // ESC Key
-				break;
-		}
+		Input::Update(event);
+
+		if (Input::input[QUIT]) return 0;
 		
 		// GAME UPDATE
 		if (game != nullptr)

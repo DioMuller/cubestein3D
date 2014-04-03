@@ -98,6 +98,9 @@
     <ClCompile Include="ControllableBehavior.cpp">
       <Filter>Behaviors\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>GameBase\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h">
@@ -144,6 +147,9 @@
     </ClInclude>
     <ClInclude Include="ControllableBehavior.h">
       <Filter>Behaviors\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>GameBase\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
