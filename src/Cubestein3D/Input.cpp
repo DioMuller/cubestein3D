@@ -1,5 +1,8 @@
 #include "Input.h"
 
+Vector Input::direction = Vector();
+bool Input::input[INPUTCOUNT] = { false, false, false, false, false, false, false };
+
 ////////////////////////////////////////
 // Static Methods
 ////////////////////////////////////////
@@ -10,37 +13,27 @@ void Input::Update(SDL_Event lastEvent)
 	switch (lastEvent.type)
 	{
 		case SDL_QUIT:
-			input[QUIT] = true;
+			Input::input[QUIT] = true;
 			break;
 		case SDL_KEYDOWN:
-			if( pressed != ERROR ) input[pressed] = true;
+			if (pressed != ERROR) Input::input[pressed] = true;
 			break;
 		case SDL_KEYUP:
-			if (pressed != ERROR) input[pressed] = false;
+			if (pressed != ERROR) Input::input[pressed] = false;
 			break;
 		default:
 			break;
 	}
 
-	if (input[UP]) direction.y = 1;
-	else if (input[DOWN]) direction.y = -1;
-	else direction.y = 0;
+	if (Input::input[UP]) Input::direction.y = 1;
+	else if (Input::input[DOWN]) Input::direction.y = -1;
+	else Input::direction.y = 0;
 
-	if (input[LEFT]) direction.x = -1;
-	else if (input[RIGHT]) direction.x = 1;
-	else direction.x = 0;
+	if (Input::input[LEFT]) Input::direction.x = -1;
+	else if (Input::input[RIGHT]) Input::direction.x = 1;
+	else Input::direction.x = 0;
 
-	direction.normalize();
-}
-
-void Input::Initialize()
-{
-	for (int i = 0; i < INPUTCOUNT; i++)
-	{
-		input[i] = false;
-	}
-
-	direction = Vector();
+	Input::direction.normalize();
 }
 
 Button Input::SDLToButton(SDLKey original)
@@ -64,6 +57,8 @@ Button Input::SDLToButton(SDLKey original)
 		case SDLK_LCTRL:
 		case SDLK_RCTRL:
 			return SHOT;
+		case SDLK_ESCAPE:
+			return QUIT;
 		default:
 			return ERROR;
 	}

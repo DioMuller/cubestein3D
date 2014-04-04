@@ -12,8 +12,6 @@ Window::Window(std::string title, int width, int height, int bpp)
 	this->height = height;
 	this->bpp = bpp;
 
-	Input::Initialize();
-
 	this->game = nullptr;
 
 	SetFPS(60);

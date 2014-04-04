@@ -28,7 +28,6 @@ class Input
 	// Static Methods
 	////////////////////////////////////////
 	public:
-		static void Initialize();
 		static void Update(SDL_Event lastEvent);
 	private:
 		static Button SDLToButton(SDLKey original);
