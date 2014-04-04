@@ -33,5 +33,6 @@ class Entity
 		void AddBehavior(Behavior* behavior);
 		void RemoveBehavior(Behavior* behavior);
 		void ClearBehaviors();
+		Vector GetDirection();
 };
 

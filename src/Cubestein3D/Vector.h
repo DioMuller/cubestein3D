@@ -19,6 +19,8 @@ public:
 
 	float dot(Vector &v);
 
+	Vector rotateY(float angle);
+
 	Vector operator +(const Vector& v) const;
 	
 	bool operator ==(const Vector& v) const;
@@ -34,8 +36,6 @@ public:
 	Vector operator -(const Vector& v) const;
 
 	Vector& operator -=(const Vector& v);
-
-
 };
 
 #endif

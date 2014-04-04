@@ -82,3 +82,17 @@ bool Vector::operator ==(const Vector& v) const {
 
 	return false;
 }
+
+Vector Vector::rotateY(float angle)
+{
+	float s = sin(angle);
+	float c = cos(angle);
+
+	float newX = x * c - z * s;
+	float newZ = x * s + z * c;
+
+	x = newX;
+	z = newZ;
+
+	return *this;
+}

@@ -21,7 +21,7 @@ void Camera::Update(long delta)
 	if (followEntity)
 	{
 		this->eye = targetEntity->position;
-		this->target = Vector(eye.x, eye.y, eye.z + 1 );
+		this->target = this->eye + targetEntity->GetDirection().rotateY( targetEntity->rotation.y );
 	}
 	/*
 	TODO: REMOVE MOUSE LOOK
