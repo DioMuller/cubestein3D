@@ -18,9 +18,14 @@ Camera::~Camera()
 
 void Camera::Update(long delta)
 {
+	if (followEntity)
+	{
+		this->eye = targetEntity->position;
+		this->target = Vector(eye.x, eye.y, eye.z + 1 );
+	}
 	/*
 	TODO: REMOVE MOUSE LOOK
-	*/
+
 	//Posição do mouse
 	int xmouse, ymouse;
 
@@ -74,7 +79,7 @@ void Camera::Update(long delta)
 		RotateCamera(anglez, x, y, z);
 		RotateCamera(angley, 0, 1, 0);
 	}
-	/*
+
 	END TODO: REMOVE
 	*/
 }

@@ -1,6 +1,11 @@
 #include "GameManager.h"
 
 ////////////////////////////////////////
+// Static Attributes
+////////////////////////////////////////
+GameManager* GameManager::instance = nullptr;
+
+////////////////////////////////////////
 // Constructor / Destructor
 ////////////////////////////////////////
 GameManager::GameManager()
@@ -9,6 +14,7 @@ GameManager::GameManager()
 	renderer = new Renderer();
 
 	camera = new Camera();
+	GameManager::SetInstance(this);
 }
 
 
@@ -81,4 +87,22 @@ void GameManager::InitializeCamera(float fov, int width, int height, float zNear
 void GameManager::LoadLevel(Level* level)
 {
 	currentLevel = level;
+}
+
+////////////////////////////////////////
+// Static Methods
+////////////////////////////////////////
+void GameManager::SetInstance(GameManager* game)
+{
+	GameManager::instance = game;
+}
+
+GameManager* GameManager::GetInstance()
+{
+	return GameManager::instance;
+}
+
+Camera* GameManager::GetCamera()
+{
+	return camera;
 }

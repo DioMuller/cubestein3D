@@ -16,6 +16,12 @@ class GameManager
 		Level* currentLevel;
 
 	////////////////////////////////////////
+	// Attributes
+	////////////////////////////////////////
+	protected:
+		static GameManager* instance;
+
+	////////////////////////////////////////
 	// Constructor / Destructor
 	////////////////////////////////////////
 	public:
@@ -36,5 +42,13 @@ class GameManager
 		void LoadLevel(Level* level);
 
 		void InitializeCamera(float fov, int width, int height, float zNear, float zFar);
+		Camera* GetCamera();
+
+	////////////////////////////////////////
+	// Static Methods
+	////////////////////////////////////////
+	public:
+		static void SetInstance(GameManager* game);
+		static GameManager* GetInstance();
 };
 

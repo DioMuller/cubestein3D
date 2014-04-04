@@ -2,6 +2,9 @@
 #include "TextureInfo.h"
 #include "Entity.h"
 
+// Level Scale
+#define SCALE 2
+
 class Level
 {
 	////////////////////////////////////////
@@ -15,7 +18,8 @@ class Level
 		TextureInfo* groundTexture;
 		char** map;
 		std::list<Entity*> entities;
-		Vector start, end;
+		Vector start, end, scaledStart, scaledEnd;
+		// Object size scale.
 		Vector scale;
 
 	////////////////////////////////////////

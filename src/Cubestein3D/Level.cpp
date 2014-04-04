@@ -1,5 +1,6 @@
 #include "Level.h"
 #include "Player.h"
+#include "GameManager.h"
 
 Level::Level()
 {
@@ -30,7 +31,7 @@ void Level::Update(long delta)
 void Level::Render(long delta, Renderer* renderer)
 {
 	int i, j;
-	renderer->DrawPlane(start, end, groundTexture);
+	renderer->DrawPlane(scaledStart, scaledEnd, groundTexture);
 
 	for (i = 0; i < height; i++)
 	{
@@ -39,7 +40,7 @@ void Level::Render(long delta, Renderer* renderer)
 			switch (map[i][j])
 			{
 				case 'W':
-					renderer->DrawWall(Vector(start.x + j, 0, start.z + i), scale, wallTexture);
+					renderer->DrawWall(Vector((start.x + j) *  SCALE, 0, (start.z + i) * SCALE), scale, wallTexture);
 					break;
 			}
 		}
@@ -83,8 +84,10 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 
 	this->start = Vector(-(float)(width / 2), -1.0f, -(float)(height / 2));
 	this->end = Vector((float)(width / 2), -1.0f, (float)(height / 2));
+	this->scaledStart = Vector(start.x * SCALE, start.y,  start.z * SCALE);
+	this->scaledEnd = Vector(end.x * SCALE, end.y, end.z * SCALE);
 
-	this->scale = Vector(0.5f, 1.0f, 0.5f);
+	this->scale = Vector(1.0f, 1.0f, 1.0f);
 
 	int i, j;
 
@@ -95,8 +98,10 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 			switch (map[i][j])
 			{
 				case 'S':
-					Player* player = new Player(Vector(start.x + j, 0, start.z + i));
+					Player* player = new Player(Vector((start.x + j) * SCALE, 0, (start.z + i) * SCALE));
 					AddEntity((Entity*)player);
+					Camera* camera = GameManager::GetInstance()->GetCamera();
+					camera->FollowEntity((Entity*)player);
 					break;
 			}
 		}
