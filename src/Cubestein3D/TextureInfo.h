@@ -4,6 +4,8 @@
 #include "Vector.h"
 #include "texture.h"
 
+// Helper class for some textures. Will contain an id, offsets, map...
+// Not every render will use those attributes.
 class TextureInfo
 {
 	////////////////////////////////////////

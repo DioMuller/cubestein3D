@@ -1,6 +1,7 @@
 #ifndef __VECTOR_H__
 #define __VECTOR_H__
 
+// Based on the Vector class from Graflix, with a few changed/added operations when needed.
 class Vector {
 
 public:
@@ -19,6 +20,7 @@ public:
 
 	float dot(Vector &v);
 
+	// Based on 2D vector rotation from http://www.pontov.com.br/site/arquitetura/54-matematica-e-fisica/132-o-uso-de-vetores-nos-jogos
 	Vector rotateY(float angle);
 
 	Vector operator +(const Vector& v) const;

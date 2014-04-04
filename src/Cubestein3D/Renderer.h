@@ -1,13 +1,5 @@
 #pragma once
 
-#ifdef WIN32
-#include <windows.h>
-#endif
-
-#include <GL/gl.h>
-#include <SDL/SDL.h>
-#include <stdlib.h>
-#include <glut.h>
 #include <string>
 #include "TextureInfo.h"
 
@@ -20,13 +12,15 @@
 #define SKY_TOP 4
 #define SKY_BOTTOM 5
 
+// EVERYTHING that has rendering shound be here. Better if only
+// this and windows use the OGL includes, will have to check.
 class Renderer
 {
 	////////////////////////////////////////
 	// Attribute
 	////////////////////////////////////////
 	private:
-		GLuint* skyboxTexture;
+		unsigned int* skyboxTexture;
 
 	////////////////////////////////////////
 	// Constructor / Destructor

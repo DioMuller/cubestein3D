@@ -8,6 +8,7 @@ class Behavior
 	// Attributes
 	////////////////////////////////////////
 	protected:
+		// Parent entity to the behavior. Each behavior has only one parent.
 		Entity* parent;
 
 	////////////////////////////////////////

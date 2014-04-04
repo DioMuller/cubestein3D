@@ -83,6 +83,7 @@ bool Vector::operator ==(const Vector& v) const {
 	return false;
 }
 
+// Based on 2D vector rotation from http://www.pontov.com.br/site/arquitetura/54-matematica-e-fisica/132-o-uso-de-vetores-nos-jogos
 Vector Vector::rotateY(float angle)
 {
 	float s = sin(angle);

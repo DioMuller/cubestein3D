@@ -1,4 +1,16 @@
 #include "Renderer.h"
+
+// Moved OpenGL includes HERE, so not everything that includes Renderer
+// can use OpenGL functions.
+#ifdef WIN32
+#include <windows.h>
+#endif
+
+#include <GL/gl.h>
+#include <SDL/SDL.h>
+#include <stdlib.h>
+#include <glut.h>
+
 #include <SDL/SDL_image.h> 
 
 ////////////////////////////////////////

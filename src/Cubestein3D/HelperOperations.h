@@ -1,6 +1,8 @@
 #ifndef __HELPEROPERATIONS_H__
 #define __HELPEROPERATIONS_H__
 
+// Added from the examples given by the teacher.
+
 //
 //Função crossProduct
 //Objetivo: calcula o produto vetorial

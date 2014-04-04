@@ -7,10 +7,12 @@ class Camera
 	// Attributes
 	////////////////////////////////////////
 	public:
+		// Camera vectors
 		Vector eye;
 		Vector target;
 		Vector up;
 
+		// Will the camera follow an entity?
 		bool followEntity;
 		Entity* targetEntity;
 
