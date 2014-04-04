@@ -11,6 +11,7 @@ Window::Window(std::string title, int width, int height, int bpp)
 	this->width = width;
 	this->height = height;
 	this->bpp = bpp;
+	this->limitFps = true;
 
 	this->game = nullptr;
 
@@ -56,7 +57,12 @@ int Window::Run()
 
 		delta = ((end - start) * 1000) / CLOCKS_PER_SEC ;
 		long sleeptime = waitingTime - delta;
-		if (sleeptime > 0) Sleep(sleeptime);
+		if (limitFps)
+		{
+			if (sleeptime > 0) Sleep(sleeptime);
+			delta = max(delta, waitingTime);
+		}
+		
 	} while (1);
 
 	return 0;

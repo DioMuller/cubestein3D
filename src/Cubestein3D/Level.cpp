@@ -41,10 +41,6 @@ void Level::Render(long delta, Renderer* renderer)
 				case 'W':
 					renderer->DrawWall(Vector(start.x + j, 0, start.z + i), scale, wallTexture);
 					break;
-				case 'S':
-					Player* player = new Player(Vector(start.x + j, 0, start.z + i));
-					AddEntity((Entity*) player);
-					break;
 			}
 		}
 	}
@@ -89,6 +85,23 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 	this->end = Vector((float)(width / 2), -1.0f, (float)(height / 2));
 
 	this->scale = Vector(0.5f, 1.0f, 0.5f);
+
+	int i, j;
+
+	for (i = 0; i < height; i++)
+	{
+		for (j = 0; j < width; j++)
+		{
+			switch (map[i][j])
+			{
+				case 'S':
+					Player* player = new Player(Vector(start.x + j, 0, start.z + i));
+					AddEntity((Entity*)player);
+					break;
+			}
+		}
+	}
+
 }
 
 void Level::ProcessMap()

@@ -25,15 +25,16 @@ void Input::Update(SDL_Event lastEvent)
 			break;
 	}
 
-	if (Input::input[UP]) Input::direction.y = 1;
-	else if (Input::input[DOWN]) Input::direction.y = -1;
-	else Input::direction.y = 0;
+	if (Input::input[UP]) Input::direction.z = 1.0f;
+	else if (Input::input[DOWN]) Input::direction.z = -1.0f;
+	else Input::direction.z = 0.0f;
 
-	if (Input::input[LEFT]) Input::direction.x = -1;
-	else if (Input::input[RIGHT]) Input::direction.x = 1;
-	else Input::direction.x = 0;
+	if (Input::input[LEFT]) Input::direction.x = 1.0f;
+	else if (Input::input[RIGHT]) Input::direction.x = -1.0f;
+	else Input::direction.x = 0.0f;
 
-	Input::direction.normalize();
+	if (direction.x != 0 || direction.y != 0 || direction.z != 0) 
+		Input::direction.normalize();
 }
 
 Button Input::SDLToButton(SDLKey original)

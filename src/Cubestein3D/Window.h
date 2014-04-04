@@ -21,6 +21,7 @@ class Window
 		float waitingTime;
 		std::string title;
 		GameManager* game;
+		bool limitFps;
 
 	////////////////////////////////////////
 	// Constructor / Destructor

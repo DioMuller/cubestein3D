@@ -1,6 +1,8 @@
 #pragma once
 #include "Behavior.h"
 
+#define SPEED 0.01f
+
 class ControllableBehavior : Behavior
 {
 	////////////////////////////////////////
