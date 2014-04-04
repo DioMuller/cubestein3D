@@ -15,6 +15,8 @@ ControllableBehavior::~ControllableBehavior()
 void ControllableBehavior::Update(long delta)
 {
 	Behavior::Update(delta);
+	Vector rotatedDirection = Vector(0, 0, Input::direction.z).rotateY(parent->rotation.y);
 
-	parent->position += (Input::direction * (float) delta * SPEED);
+	parent->position +=  (rotatedDirection * (float) delta * SPEED);
+	parent->rotation.y -= (Input::direction.x * (float)delta * SPEED) / 2.0;
 }
