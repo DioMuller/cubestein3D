@@ -88,6 +88,7 @@
     <ClCompile Include="Behavior.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ControllableBehavior.cpp" />
+    <ClCompile Include="HelperOperations.cpp" />
     <ClCompile Include="Input.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -110,6 +111,7 @@
     <ClInclude Include="Behavior.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ControllableBehavior.h" />
+    <ClInclude Include="HelperOperations.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameManager.h" />

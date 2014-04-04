@@ -11,6 +11,9 @@ class Camera
 		Vector target;
 		Vector up;
 
+		bool followEntity;
+		Entity* targetEntity;
+
 	////////////////////////////////////////
 	// Constructor / Destructor
 	////////////////////////////////////////
@@ -24,6 +27,9 @@ class Camera
 	public:
 		void Update(long delta);
 		void Render(long delta, Renderer* renderer);
+
+		void FollowEntity(Entity* toFollow);
+		void StopFollowingEntity();
 
 	protected:
 		void RotateCamera(float angle, float x, float y, float z);

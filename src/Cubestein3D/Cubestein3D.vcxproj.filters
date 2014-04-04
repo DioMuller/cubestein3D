@@ -20,15 +20,6 @@
     <Filter Include="Testing\Source">
       <UniqueIdentifier>{a2a60b87-d00b-4fb5-9826-24b7a997165b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graflix">
-      <UniqueIdentifier>{139fbd60-2629-41c4-af4c-bfcd3c49b849}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graflix\Headers">
-      <UniqueIdentifier>{a39ec412-c28a-4194-a948-98455564184b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graflix\Source">
-      <UniqueIdentifier>{2ae95b18-856e-4590-a08e-2aba2bf3f770}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameBase\Headers">
       <UniqueIdentifier>{8cf8eb7d-87d3-491d-86d5-f86d25903c2a}</UniqueIdentifier>
     </Filter>
@@ -53,6 +44,15 @@
     <Filter Include="Behaviors\Source">
       <UniqueIdentifier>{51529998-4cfb-441e-a264-68ca7ded94d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Helper Libs">
+      <UniqueIdentifier>{139fbd60-2629-41c4-af4c-bfcd3c49b849}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helper Libs\Headers">
+      <UniqueIdentifier>{a39ec412-c28a-4194-a948-98455564184b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helper Libs\Source">
+      <UniqueIdentifier>{2ae95b18-856e-4590-a08e-2aba2bf3f770}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Behavior.cpp">
@@ -75,10 +75,10 @@
       <Filter>Testing\Source</Filter>
     </ClCompile>
     <ClCompile Include="texture.cpp">
-      <Filter>Graflix\Source</Filter>
+      <Filter>Helper Libs\Source</Filter>
     </ClCompile>
     <ClCompile Include="Vector.cpp">
-      <Filter>Graflix\Source</Filter>
+      <Filter>Helper Libs\Source</Filter>
     </ClCompile>
     <ClCompile Include="TextureInfo.cpp">
       <Filter>GameBase\Source</Filter>
@@ -101,6 +101,9 @@
     <ClCompile Include="Input.cpp">
       <Filter>GameBase\Source</Filter>
     </ClCompile>
+    <ClCompile Include="HelperOperations.cpp">
+      <Filter>Helper Libs\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h">
@@ -122,13 +125,13 @@
       <Filter>Testing\Headers</Filter>
     </ClInclude>
     <ClInclude Include="texture.h">
-      <Filter>Graflix\Headers</Filter>
+      <Filter>Helper Libs\Headers</Filter>
     </ClInclude>
     <ClInclude Include="glext.h">
-      <Filter>Graflix\Headers</Filter>
+      <Filter>Helper Libs\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Vector.h">
-      <Filter>Graflix\Headers</Filter>
+      <Filter>Helper Libs\Headers</Filter>
     </ClInclude>
     <ClInclude Include="TextureInfo.h">
       <Filter>GameBase\Headers</Filter>
@@ -150,6 +153,9 @@
     </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>GameBase\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HelperOperations.h">
+      <Filter>Helper Libs\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

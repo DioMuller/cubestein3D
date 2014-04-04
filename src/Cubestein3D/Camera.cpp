@@ -1,49 +1,14 @@
 #include "Camera.h"
-
-/* REMOVE AFTER */
-//
-//Função crossProduct
-//Objetivo: calcula o produto vetorial
-//
-void crossProduct(float &x1, float &y1, float &z1, float x2, float y2, float z2)
-{
-	float x = x1, y = y1, z = z1;
-
-	x1 = ((y * z2) - (z * y2));
-	y1 = ((z * x2) - (x * z2));
-	z1 = ((x * y2) - (y * x2));
-}
-
-//
-//Função sizeVector
-//Objetivo: calcula o tamanho (magnitude) do vetor
-//
-float sizeVector(float x, float y, float z)
-{
-	return (float)sqrt((x * x) + (y * y) + (z * z));
-}
-
-//
-//Função normalizeVector
-//Objetivo: torna o vetor unitário
-//
-void normalizeVector(float &x, float &y, float &z)
-{
-	//Calcula tamanho do vetor
-	float size = sizeVector(x, y, z);
-
-	//Normaliza vetor
-	x /= size;
-	y /= size;
-	z /= size;
-}
-
+#include "HelperOperations.h"
 
 Camera::Camera()
 {
 	eye = Vector(1.0f, 12.5f, -15.0f);
 	target = Vector(1.0f, 1.5f, 1.0f);
 	up = Vector(0.0f, 1.0f, 0.0f);
+
+	targetEntity = nullptr;
+	followEntity = false;
 }
 
 
@@ -187,4 +152,16 @@ void Camera::StrafeCamera(float speed)
 	this->eye.z += z * speed;
 	this->target.x += x * speed;
 	this->target.z += z * speed;
+}
+
+void Camera::FollowEntity(Entity* toFollow)
+{
+	this->targetEntity = toFollow;
+	this->followEntity = true;
+}
+
+void Camera::StopFollowingEntity()
+{
+	this->targetEntity = nullptr;
+	this->followEntity = false;
 }
