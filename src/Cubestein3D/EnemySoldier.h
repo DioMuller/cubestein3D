@@ -1,12 +1,12 @@
 #pragma once
 #include "Character.h"
-class Player : Character
+class EnemySoldier : public Character
 {
 	////////////////////////////////////////
 	// Constructor / Destructor
 	////////////////////////////////////////
 	public:
-		Player(Vector position);
-		~Player();
+		EnemySoldier(Vector position);
+		~EnemySoldier();
 };
 

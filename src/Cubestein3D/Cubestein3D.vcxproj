@@ -87,7 +87,9 @@
   <ItemGroup>
     <ClCompile Include="Behavior.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="ControllableBehavior.cpp" />
+    <ClCompile Include="EnemySoldier.cpp" />
     <ClCompile Include="HelperOperations.cpp" />
     <ClCompile Include="Input.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -110,7 +112,9 @@
   <ItemGroup>
     <ClInclude Include="Behavior.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Character.h" />
     <ClInclude Include="ControllableBehavior.h" />
+    <ClInclude Include="EnemySoldier.h" />
     <ClInclude Include="HelperOperations.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Entity.h" />

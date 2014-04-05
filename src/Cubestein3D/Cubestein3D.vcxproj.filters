@@ -104,6 +104,10 @@
     <ClCompile Include="HelperOperations.cpp">
       <Filter>Helper Libs\Source</Filter>
     </ClCompile>
+    <ClCompile Include="EnemySoldier.cpp">
+      <Filter>Entities\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h">
@@ -157,6 +161,10 @@
     <ClInclude Include="HelperOperations.h">
       <Filter>Helper Libs\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="EnemySoldier.h">
+      <Filter>Entities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Levels\E1M1.xml">
