@@ -9,6 +9,8 @@ Player::Player(Vector position) : Character("Textures/Spiderman.png", position)
 	ControllableBehavior* control = new ControllableBehavior(this);
 
 	AddBehavior((Behavior*)control);
+
+	health = 100;
 }
 
 

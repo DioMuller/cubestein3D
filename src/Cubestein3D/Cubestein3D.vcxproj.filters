@@ -113,6 +113,9 @@
     <ClCompile Include="WalkingBehavior.cpp">
       <Filter>Behaviors\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Rect.cpp">
+      <Filter>GameBase\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h">
@@ -174,6 +177,9 @@
     </ClInclude>
     <ClInclude Include="WalkingBehavior.h">
       <Filter>Behaviors\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>GameBase\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

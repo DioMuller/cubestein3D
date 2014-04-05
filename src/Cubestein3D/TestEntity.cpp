@@ -18,7 +18,7 @@ TestEntity::TestEntity()
 	Vector offset = Vector(0.202, 0.202, 0);
 	texture = new TextureInfo("Textures/Domo.png", map, 8, offset);
 
-	this->scale = Vector(0.5, 0.5, 0.5);
+	this->size = Vector(0.5, 0.5, 0.5);
 }
 
 
@@ -40,6 +40,6 @@ void TestEntity::Update(long delta)
 
 void TestEntity::Render(long delta, Renderer* renderer)
 {
-	renderer->DrawTexturedCube(position, scale, rotation, texture);
+	renderer->DrawTexturedCube(position, size, rotation, texture);
 	Entity::Render(delta, renderer);
 }

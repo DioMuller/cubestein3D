@@ -33,7 +33,7 @@ void WalkingBehavior::Update(long delta)
 		this->parent->rotation.y = (float) (((int) this->parent->rotation.y + 180) % 360);
 		walked = 0.0f;
 	}
-	else if (GameManager::GetCurrentLevel()->CollidesWithLevel(newPosition, parent->scale))
+	else if (GameManager::GetCurrentLevel()->CollidesWithLevel(newPosition, parent->size))
 	{
 		this->parent->rotation.y = (float)(((int) this->parent->rotation.y + 90) % 360);
 		walked = 0.0f;

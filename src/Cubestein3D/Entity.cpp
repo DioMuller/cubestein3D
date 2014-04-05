@@ -10,7 +10,7 @@ Entity::Entity()
 
 	position = Vector();
 	rotation = Vector();
-	scale = Vector(1, 1, 1);
+	size = Vector(1, 1, 1);
 }
 
 
@@ -58,4 +58,28 @@ void Entity::RemoveBehavior(Behavior* behavior)
 void Entity::ClearBehaviors()
 {
 	behaviors.clear();
+}
+
+////////////////////////////////////////
+// Collision Methods
+////////////////////////////////////////
+bool Entity::CheckCollision(Entity* other)
+{
+	if (GetCollisionRect().Intersects(other->GetCollisionRect()) )
+	{
+		CollideWith(other);
+		return true;
+	}
+
+	return false;
+}
+
+Rect Entity::GetCollisionRect()
+{
+	return Rect(position.x - (size.x / 2), position.z - (size.z / 2), size.x, size.z);
+}
+
+void Entity::CollideWith(Entity* other)
+{
+
 }

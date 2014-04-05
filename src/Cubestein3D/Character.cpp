@@ -16,7 +16,7 @@ Character::Character(std::string texture, Vector position)
 	Vector offset = Vector(0.202, 0.202, 0);
 	this->texture = new TextureInfo(texture, map, 8, offset);
 
-	this->scale = Vector(0.5, 1, 0.5);
+	this->size = Vector(0.5, 1, 0.5);
 
 	this->position = position;
 }
@@ -33,6 +33,6 @@ void Character::Update(long delta)
 
 void Character::Render(long delta, Renderer* renderer)
 {
-	renderer->DrawTexturedCube(position, scale, rotation, texture);
+	renderer->DrawTexturedCube(position, size, rotation, texture);
 	Entity::Render(delta, renderer);
 }

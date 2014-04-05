@@ -18,7 +18,7 @@ TestEntity2::TestEntity2()
 	Vector offset = Vector(0.202, 0.202, 0);
 	texture = new TextureInfo("Textures/Spiderman.png", map, 8, offset);
 
-	this->scale = Vector(0.5, 0.5, 0.5);
+	this->size = Vector(0.5, 0.5, 0.5);
 
 	this->current = 0.0f;
 	this->change = 0.03;
@@ -49,6 +49,6 @@ void TestEntity2::Update(long delta)
 
 void TestEntity2::Render(long delta, Renderer* renderer)
 {
-	renderer->DrawTexturedCube(position, scale, rotation, texture);
+	renderer->DrawTexturedCube(position, size, rotation, texture);
 	Entity::Render(delta, renderer);
 }

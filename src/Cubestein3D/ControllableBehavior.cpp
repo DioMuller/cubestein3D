@@ -20,7 +20,7 @@ void ControllableBehavior::Update(long delta)
 
 	Vector newPosition = parent->position + (rotatedDirection * (float) delta * SPEED);
 	
-	if (!GameManager::GetCurrentLevel()->CollidesWithLevel(newPosition, parent->scale))
+	if (!GameManager::GetCurrentLevel()->CollidesWithLevel(newPosition, parent->size))
 	{
 		parent->position = newPosition;
 	}

@@ -3,6 +3,7 @@
 #include <list>
 #include "Renderer.h"
 #include "Behavior.h"
+#include "Rect.h"
 
 class Entity
 {
@@ -12,7 +13,10 @@ class Entity
 	public:
 		Vector position;
 		Vector rotation;
-		Vector scale;
+		Vector size;
+
+		std::string tag;
+
 	protected:
 		std::list<Behavior*> behaviors;
 
@@ -29,6 +33,10 @@ class Entity
 	public:
 		virtual void Update(long delta);
 		virtual void Render(long delta, Renderer* renderer);
+
+		bool CheckCollision(Entity* other);
+		Rect GetCollisionRect();
+		virtual void CollideWith(Entity* other);
 
 		void AddBehavior(Behavior* behavior);
 		void RemoveBehavior(Behavior* behavior);
