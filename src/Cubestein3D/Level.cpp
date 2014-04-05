@@ -82,8 +82,8 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 	this->name = name;
 	this->width = width;
 	this->height = height;
-	this->groundTexture = new TextureInfo(groundTexture);
-	this->wallTexture = new TextureInfo(wallTexture);
+	this->groundTexture = new TextureInfo(groundTexture, true);
+	this->wallTexture = new TextureInfo(wallTexture, true);
 	this->map = map;
 
 	this->start = Vector(-(float)(width / 2), -1.0f, -(float)(height / 2));

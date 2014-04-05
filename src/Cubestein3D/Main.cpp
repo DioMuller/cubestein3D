@@ -3,7 +3,7 @@
 #include "TestEntity2.h"
 #include <time.h>
 
-Level* LoadLevel();s
+Level* LoadLevel();
 
 int main(int argc, char **argv)
 {

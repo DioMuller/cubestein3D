@@ -1,6 +1,7 @@
 #include "Window.h"
 #include "Input.h"
 #include <time.h>
+#include "texture.h"
 
 ////////////////////////////////////////
 // Constructor / Destructor

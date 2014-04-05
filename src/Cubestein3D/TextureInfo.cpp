@@ -1,4 +1,5 @@
 #include "TextureInfo.h"
+#include "texture.h"
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -11,10 +12,13 @@ TextureInfo::TextureInfo()
 	this->doubleOffset = 0;
 }
 
-TextureInfo::TextureInfo(std::string filename) : TextureInfo()
+TextureInfo::TextureInfo(std::string filename, bool repeat) : TextureInfo()
 {
-	LoadTexture(filename);
+	if (repeat) LoadRepeatingTexture(filename);
+	else  LoadTexture(filename);
 }
+
+TextureInfo::TextureInfo(std::string filename) : TextureInfo(filename, false) { }
 
 TextureInfo::TextureInfo(std::string filename, float* map, int mapSize) : TextureInfo(filename)
 {
@@ -40,6 +44,11 @@ TextureInfo::~TextureInfo()
 void TextureInfo::LoadTexture(std::string filename)
 {
 	setupTexture(filename.c_str(), &id, GL_CLAMP_TO_EDGE, true);
+}
+
+void TextureInfo::LoadRepeatingTexture(std::string filename)
+{
+	setupTexture(filename.c_str(), &id, GL_REPEAT, true);
 }
 
 void TextureInfo::LoadTexture(std::string filename, float* map, int mapSize, Vector offset)

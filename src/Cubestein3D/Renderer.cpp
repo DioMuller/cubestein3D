@@ -1,4 +1,5 @@
 #include "Renderer.h"
+#include "texture.h"
 
 // Moved OpenGL includes HERE, so not everything that includes Renderer
 // can use OpenGL functions.
@@ -140,20 +141,26 @@ void Renderer::DrawPlane(Vector startPosition, Vector endPosition, TextureInfo* 
 {
 	glBindTexture(GL_TEXTURE_2D, texture->id);
 
+	float texX = endPosition.x - startPosition.x;
+	float texY = endPosition.z - startPosition.z;
+
 	glColor3f(1.0, 1.0, 1.0);
 	glBegin(GL_QUADS);
-	// This way, it'll probably work for X,Y and X,Z planes.
 	glNormal3d(0, 0, 1);
 	glTexCoord2f(0, 0); glVertex3f(startPosition.x, startPosition.y, startPosition.z);
-	glTexCoord2f(0, 1); glVertex3f(endPosition.x, startPosition.y, startPosition.z);
-	glTexCoord2f(1, 1); glVertex3f(endPosition.x, endPosition.y, endPosition.z);
-	glTexCoord2f(1, 0); glVertex3f(startPosition.x, endPosition.y, endPosition.z);
+	glTexCoord2f(0, texY); glVertex3f(endPosition.x, startPosition.y, startPosition.z);
+	glTexCoord2f(texX, texY); glVertex3f(endPosition.x, endPosition.y, endPosition.z);
+	glTexCoord2f(texX, 0); glVertex3f(startPosition.x, endPosition.y, endPosition.z);
 	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void Renderer::DrawWall(Vector position, Vector size, TextureInfo* texture)
 {
+	// TODO: Calculate with base in something.
+	float repeatX = 10.0f;
+	float repeatY = 5.0f;
+
 	glPushMatrix();
 	glTranslatef(position.x, position.y, position.z);
 	glScalef(size.x, size.y, size.z);
@@ -165,44 +172,44 @@ void Renderer::DrawWall(Vector position, Vector size, TextureInfo* texture)
 	// Front Face
 	glNormal3d(0, 0, 1);
 	glTexCoord2f(0, 0); glVertex3f(-1.0f, -1.0f, 1.0f);
-	glTexCoord2f(0, 1); glVertex3f(1.0f, -1.0f, 1.0f);
-	glTexCoord2f(1, 1); glVertex3f(1.0f, 1.0f, 1.0f);
-	glTexCoord2f(1, 0); glVertex3f(-1.0f, 1.0f, 1.0f);
+	glTexCoord2f(0, repeatY); glVertex3f(1.0f, -1.0f, 1.0f);
+	glTexCoord2f(repeatX, repeatY); glVertex3f(1.0f, 1.0f, 1.0f);
+	glTexCoord2f(repeatX, 0); glVertex3f(-1.0f, 1.0f, 1.0f);
 
 	// Back Face
 	glNormal3d(0, 0, -1);
 	glTexCoord2f(0, 0); glVertex3f(1.0f, -1.0f, -1.0f);
-	glTexCoord2f(0, 1); glVertex3f(-1.0f, -1.0f, -1.0f);
-	glTexCoord2f(1, 1); glVertex3f(-1.0f, 1.0f, -1.0f);
-	glTexCoord2f(1, 0); glVertex3f(1.0f, 1.0f, -1.0f);
+	glTexCoord2f(0, repeatY); glVertex3f(-1.0f, -1.0f, -1.0f);
+	glTexCoord2f(repeatX, repeatY); glVertex3f(-1.0f, 1.0f, -1.0f);
+	glTexCoord2f(repeatX, 0); glVertex3f(1.0f, 1.0f, -1.0f);
 
 	// Top Face
 	glNormal3d(0, 1, 0);
 	glTexCoord2f(0, 0); glVertex3f(-1.0f, 1.0f, 1.0f);
-	glTexCoord2f(0, 1); glVertex3f(1.0f, 1.0f, 1.0f);
-	glTexCoord2f(1, 1); glVertex3f(1.0f, 1.0f, -1.0f);
-	glTexCoord2f(1, 0); glVertex3f(-1.0f, 1.0f, -1.0f);
+	glTexCoord2f(0, repeatY); glVertex3f(1.0f, 1.0f, 1.0f);
+	glTexCoord2f(repeatX, repeatY); glVertex3f(1.0f, 1.0f, -1.0f);
+	glTexCoord2f(repeatX, 0); glVertex3f(-1.0f, 1.0f, -1.0f);
 
 	// Bottom Face
 	glNormal3d(0, -1, 0);
 	glTexCoord2f(0, 0); glVertex3f(-1.0f, -1.0f, -1.0f);
-	glTexCoord2f(0, 1); glVertex3f(1.0f, -1.0f, -1.0f);
-	glTexCoord2f(1, 1); glVertex3f(1.0f, -1.0f, 1.0f);
-	glTexCoord2f(1, 0); glVertex3f(-1.0f, -1.0f, 1.0f);
+	glTexCoord2f(0, repeatY); glVertex3f(1.0f, -1.0f, -1.0f);
+	glTexCoord2f(repeatX, repeatY); glVertex3f(1.0f, -1.0f, 1.0f);
+	glTexCoord2f(repeatX, 0); glVertex3f(-1.0f, -1.0f, 1.0f);
 
 	// Right face
 	glNormal3d(1, 0, 0);
 	glTexCoord2f(0, 0); glVertex3f(1.0f, -1.0f, 1.0f);
-	glTexCoord2f(0, 1); glVertex3f(1.0f, -1.0f, -1.0f);
-	glTexCoord2f(1, 1); glVertex3f(1.0f, 1.0f, -1.0f);
-	glTexCoord2f(1, 0); glVertex3f(1.0f, 1.0f, 1.0f);
+	glTexCoord2f(0, repeatY); glVertex3f(1.0f, -1.0f, -1.0f);
+	glTexCoord2f(repeatX, repeatY); glVertex3f(1.0f, 1.0f, -1.0f);
+	glTexCoord2f(repeatX, 0); glVertex3f(1.0f, 1.0f, 1.0f);
 
 	// Left Face
 	glNormal3d(-1, 0, 0);
 	glTexCoord2f(0, 0); glVertex3f(-1.0f, -1.0f, -1.0f);
-	glTexCoord2f(0, 1); glVertex3f(-1.0f, -1.0f, 1.0f);
-	glTexCoord2f(1, 1); glVertex3f(-1.0f, 1.0f, 1.0f);
-	glTexCoord2f(1, 0); glVertex3f(-1.0f, 1.0f, -1.0f);
+	glTexCoord2f(0, repeatY); glVertex3f(-1.0f, -1.0f, 1.0f);
+	glTexCoord2f(repeatX, repeatY); glVertex3f(-1.0f, 1.0f, 1.0f);
+	glTexCoord2f(repeatX, 0); glVertex3f(-1.0f, 1.0f, -1.0f);
 	glEnd();
 
 	glBindTexture(GL_TEXTURE_2D, 0);
