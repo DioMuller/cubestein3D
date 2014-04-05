@@ -17,10 +17,12 @@ class Level
 		int height;
 		TextureInfo* wallTexture;
 		TextureInfo* groundTexture;
+		TextureInfo* ceilingTexture;
 		char** map;
 		int** collision;
 		std::list<Entity*> entities;
 		Vector start, end, scaledStart, scaledEnd;
+		Vector ceilingStart, ceilingEnd;
 		// Object size scale.
 		Vector scale;
 
@@ -29,7 +31,7 @@ class Level
 	////////////////////////////////////////
 	public:
 		Level();
-		Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, char** map);
+		Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, char** map);
 		~Level();
 
 	////////////////////////////////////////
@@ -44,7 +46,7 @@ class Level
 		void ClearEntities();
 		bool CollidesWithLevel(Vector position, Vector size);
 	private:
-		void LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, char** map);
+		void LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, char** map);
 		void ProcessMap();
 };
 

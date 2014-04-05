@@ -157,9 +157,9 @@ void Renderer::DrawPlane(Vector startPosition, Vector endPosition, TextureInfo* 
 
 void Renderer::DrawWall(Vector position, Vector size, TextureInfo* texture)
 {
-	// TODO: Calculate with base in something.
-	float repeatX = 10.0f;
-	float repeatY = 5.0f;
+	// X = 2Y so the bricks are wider.
+	float repeatX = 2.0f;
+	float repeatY = 1.0f;
 
 	glPushMatrix();
 	glTranslatef(position.x, position.y, position.z);

@@ -42,7 +42,7 @@ Level* LoadLevel()
 	map[13] = "WWWWWWWWWWWWWWGWWGWWW";
 	map[14] = "WWWWWWWWWWWWWWWWWWWWW";
 
-	Level* level1 = new Level("The Prision", 21, 15, "Textures/ground.png", "Textures/wall.png", map);
+	Level* level1 = new Level("The Prision", 21, 15, "Textures/ground.tga", "Textures/wall.tga", "Textures/ceiling.tga", map);
 
 	return level1;
 }

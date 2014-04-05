@@ -11,9 +11,9 @@ Level::Level()
 	entities = std::list<Entity*>();
 }
 
-Level::Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, char** map) : Level()
+Level::Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, char** map) : Level()
 {
-	LoadLevel(name, width, height, groundTexture, wallTexture, map);
+	LoadLevel(name, width, height, groundTexture, wallTexture, ceilingTexture, map);
 }
 
 Level::~Level()
@@ -26,6 +26,8 @@ Level::~Level()
 
 void Level::Update(long delta)
 {
+	int i, j;
+
 	for (Entity* entity : entities)
 	{
 		entity->Update(delta);
@@ -36,6 +38,8 @@ void Level::Render(long delta, Renderer* renderer)
 {
 	int i, j;
 	renderer->DrawPlane(scaledStart, scaledEnd, groundTexture);
+
+	renderer->DrawPlane(ceilingStart, ceilingEnd, ceilingTexture);
 
 	for (i = 0; i < height; i++)
 	{
@@ -77,19 +81,23 @@ void Level::ClearEntities()
 ////////////////////////////////////////
 // Loading Methods
 ////////////////////////////////////////
-void Level::LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, char** map)
+void Level::LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, char** map)
 {
 	this->name = name;
 	this->width = width;
 	this->height = height;
 	this->groundTexture = new TextureInfo(groundTexture, true);
 	this->wallTexture = new TextureInfo(wallTexture, true);
+	this->ceilingTexture = new TextureInfo(ceilingTexture, true);
 	this->map = map;
 
 	this->start = Vector(-(float)(width / 2), -1.0f, -(float)(height / 2));
 	this->end = Vector((float)(width / 2), -1.0f, (float)(height / 2));
 	this->scaledStart = Vector(start.x * SCALE, start.y,  start.z * SCALE);
 	this->scaledEnd = Vector(end.x * SCALE, end.y, end.z * SCALE);
+
+	this->ceilingStart = Vector(scaledStart.x, scale.y + 1.5f, scaledStart.z);
+	this->ceilingEnd = Vector(scaledEnd.x, scale.y + 1.5f, scaledEnd.z);
 
 	this->scale = Vector(0.5f * SCALE, 1.5f, 0.5f * SCALE);
 
