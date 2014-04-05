@@ -8,7 +8,8 @@
 ////////////////////////////////////////
 Level::Level()
 {
-	entities = std::list<Entity*>();
+	entities = std::vector<Entity*>();
+	toRemove = std::stack<Entity*>();
 }
 
 Level::Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, char** map) : Level()
@@ -27,10 +28,28 @@ Level::~Level()
 void Level::Update(long delta)
 {
 	int i, j;
-
-	for (Entity* entity : entities)
+	int count = entities.size();
+	
+	for (i = 0; i < count; i++)
 	{
-		entity->Update(delta);
+		entities[i]->Update(delta);
+		
+		for (j = i + 1; j < count; j++)
+		{
+			entities[i]->CheckCollision(entities[j]);
+		}
+	}
+
+	// Remove the ones marked for removing after this update
+	while (toRemove.size() != 0)
+	{
+		Entity* removed = toRemove.top();
+		toRemove.pop();
+
+		std::vector<Entity*>::iterator position = std::find(entities.begin(), entities.end(), removed);
+		if (position != entities.end()) entities.erase(position);
+
+		delete removed;
 	}
 }
 
@@ -70,7 +89,7 @@ void Level::AddEntity(Entity* entity)
 
 void Level::RemoveEntity(Entity* entity)
 {
-	entities.remove(entity);
+	toRemove.push(entity);
 }
 
 void Level::ClearEntities()

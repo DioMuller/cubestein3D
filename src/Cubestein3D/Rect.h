@@ -9,6 +9,9 @@ class Rect
 		float y;
 		float width;
 		float height;
+		// Dangerous, I know. But this shouldn't be reused,
+		// so I'll let those be public.
+		float x2, y2;
 
 	////////////////////////////////////////
 	// Constructor / Destructor

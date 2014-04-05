@@ -14,5 +14,11 @@ class Player : Character
 	public:
 		Player(Vector position);
 		~Player();
+
+	////////////////////////////////////////
+	// Methods
+	////////////////////////////////////////
+	public:
+		void CollideWith(Entity* other);
 };
 

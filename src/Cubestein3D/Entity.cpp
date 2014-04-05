@@ -68,6 +68,8 @@ bool Entity::CheckCollision(Entity* other)
 	if (GetCollisionRect().Intersects(other->GetCollisionRect()) )
 	{
 		CollideWith(other);
+		other->CollideWith(this);
+
 		return true;
 	}
 

@@ -1,6 +1,8 @@
 #pragma once
 #include "TextureInfo.h"
 #include "Entity.h"
+#include <vector>
+#include <stack>
 
 // Level Scale
 #define SCALE 4
@@ -20,7 +22,8 @@ class Level
 		TextureInfo* ceilingTexture;
 		char** map;
 		int** collision;
-		std::list<Entity*> entities;
+		std::vector<Entity*> entities;
+		std::stack<Entity*> toRemove;
 		Vector start, end, scaledStart, scaledEnd;
 		Vector ceilingStart, ceilingEnd;
 		// Object size scale.

@@ -8,6 +8,8 @@ EnemySoldier::EnemySoldier(Vector position) : Character("Textures/Domo.png", pos
 {
 	WalkingBehavior* walking = new WalkingBehavior(this);
 	AddBehavior((Behavior*)walking);
+
+	tag = "Enemy";
 }
 
 
