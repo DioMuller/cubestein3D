@@ -40,6 +40,7 @@ class GameManager
 		void ClearEntities();
 
 		void LoadLevel(Level* level);
+		
 
 		void InitializeCamera(float fov, int width, int height, float zNear, float zFar);
 		Camera* GetCamera();
@@ -50,5 +51,6 @@ class GameManager
 	public:
 		static void SetInstance(GameManager* game);
 		static GameManager* GetInstance();
+		static Level* GetCurrentLevel();
 };
 

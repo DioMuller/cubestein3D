@@ -1,6 +1,7 @@
 #include "ControllableBehavior.h"
 #include "Entity.h"
 #include "Input.h"
+#include "GameManager.h"
 
 
 ControllableBehavior::ControllableBehavior(Entity* parent) : Behavior(parent)
@@ -17,6 +18,12 @@ void ControllableBehavior::Update(long delta)
 	Behavior::Update(delta);
 	Vector rotatedDirection = Vector(0, 0, Input::direction.z).rotateY(parent->rotation.y);
 
-	parent->position +=  (rotatedDirection * (float) delta * SPEED);
-	parent->rotation.y -= (Input::direction.x * (float)delta * SPEED) / 2.0;
+	Vector newPosition = parent->position + (rotatedDirection * (float) delta * SPEED);
+	
+	if (!GameManager::GetCurrentLevel()->CollidesWithLevel(newPosition, parent->scale))
+	{
+		parent->position = newPosition;
+	}
+
+	parent->rotation.y -= (Input::direction.x * (float)delta * SPEED) / 2.0f;
 }

@@ -87,9 +87,19 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 	this->scaledStart = Vector(start.x * SCALE, start.y,  start.z * SCALE);
 	this->scaledEnd = Vector(end.x * SCALE, end.y, end.z * SCALE);
 
-	this->scale = Vector(1.0f, 1.0f, 1.0f);
+	this->scale = Vector(0.5f * SCALE, 1.5f, 0.5f * SCALE);
 
+	ProcessMap();
+}
+
+void Level::ProcessMap()
+{
 	int i, j;
+	Camera* camera = GameManager::GetInstance()->GetCamera();
+	Player* player = nullptr;
+
+	collision = new int*[height];
+	for (i = 0; i < height; i++) collision[i] = new int[width];
 
 	for (i = 0; i < height; i++)
 	{
@@ -97,19 +107,45 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 		{
 			switch (map[i][j])
 			{
+				case 'W':
+					collision[i][j] = 1;
+					break;
 				case 'S':
-					Player* player = new Player(Vector((start.x + j) * SCALE, 0, (start.z + i) * SCALE));
+					player = new Player(Vector((start.x + j) * SCALE, 0, (start.z + i) * SCALE));
 					AddEntity((Entity*)player);
-					Camera* camera = GameManager::GetInstance()->GetCamera();
 					camera->FollowEntity((Entity*)player);
+					collision[i][j] = 0;
+					break;
+				default:
+					collision[i][j] = 0;
 					break;
 			}
 		}
 	}
-
 }
 
-void Level::ProcessMap()
+////////////////////////////////////////
+// Collision Methods
+////////////////////////////////////////
+bool Level::CollidesWithLevel(Vector position, Vector size)
 {
-	// TODO: Load player and enemies.
+	// Better results and easier to undersand than changing
+	// between trunc and ceil, depending on condition.
+	Vector min = position - (size / 2.0f) - COLLISION_ERROR;
+	Vector max = position + (size / 2.0f) + COLLISION_ERROR;
+
+	int minX = (int) round((min.x - (start.x * SCALE)) / SCALE);
+	int minZ = (int) round((min.z - (start.z * SCALE)) / SCALE);
+	int maxX = (int) round((max.x - (start.x * SCALE)) / SCALE);
+	int maxZ = (int) round((max.z - (start.z * SCALE)) / SCALE);
+
+	if (collision[minZ][minX] == 1 ||
+		collision[minZ][maxX] == 1 ||
+		collision[maxZ][minX] == 1 ||
+		collision[maxZ][maxX] == 1 )
+	{
+		return true;
+	}
+
+	return false;
 }

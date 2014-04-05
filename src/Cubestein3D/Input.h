@@ -4,7 +4,7 @@
 
 #define Button int
 
-#define ERROR -1
+#define NONE -1
 #define LEFT 0
 #define UP 1
 #define RIGHT 2

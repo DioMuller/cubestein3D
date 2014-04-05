@@ -106,3 +106,8 @@ Camera* GameManager::GetCamera()
 {
 	return camera;
 }
+
+Level* GameManager::GetCurrentLevel()
+{
+	return instance->currentLevel;
+}

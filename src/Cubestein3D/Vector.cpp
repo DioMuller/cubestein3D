@@ -55,6 +55,11 @@ Vector Vector::operator *(float e) const {
 	return Vector(x*e, y*e, z*e);
 }
 
+// Made by myself
+Vector Vector::operator /(float e) const {
+	return Vector(x/e, y/e, z/e);
+}
+
 Vector& Vector::operator *=(float e) {
 
 	x *= e;

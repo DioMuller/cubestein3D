@@ -33,7 +33,7 @@ int Window::Run()
 	SDL_Event event;
 
 
-	long delta = waitingTime;
+	long delta = (long) waitingTime;
 
 	do
 	{
@@ -56,11 +56,11 @@ int Window::Run()
 		clock_t end = clock();
 
 		delta = ((end - start) * 1000) / CLOCKS_PER_SEC ;
-		long sleeptime = waitingTime - delta;
+		long sleeptime = (long) waitingTime - delta;
 		if (limitFps)
 		{
 			if (sleeptime > 0) Sleep(sleeptime);
-			delta = max(delta, waitingTime);
+			delta = max(delta, (long) waitingTime);
 		}
 		
 	} while (1);

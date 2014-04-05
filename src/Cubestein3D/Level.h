@@ -3,7 +3,8 @@
 #include "Entity.h"
 
 // Level Scale
-#define SCALE 2
+#define SCALE 4
+#define COLLISION_ERROR Vector(0.9f, 0, 0.9f)
 
 class Level
 {
@@ -17,6 +18,7 @@ class Level
 		TextureInfo* wallTexture;
 		TextureInfo* groundTexture;
 		char** map;
+		int** collision;
 		std::list<Entity*> entities;
 		Vector start, end, scaledStart, scaledEnd;
 		// Object size scale.
@@ -40,6 +42,7 @@ class Level
 		void AddEntity(Entity* entity);
 		void RemoveEntity(Entity* entity);
 		void ClearEntities();
+		bool CollidesWithLevel(Vector min, Vector max);
 	private:
 		void LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, char** map);
 		void ProcessMap();

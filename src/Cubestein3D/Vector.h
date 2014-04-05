@@ -33,6 +33,9 @@ public:
 
 	Vector operator *(float e) const;
 
+	// Made by myself
+	Vector operator /(float e) const;
+
 	Vector& operator *=(float e);
 
 	Vector operator -(const Vector& v) const;

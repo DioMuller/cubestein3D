@@ -16,10 +16,10 @@ void Input::Update(SDL_Event lastEvent)
 			Input::input[QUIT] = true;
 			break;
 		case SDL_KEYDOWN:
-			if (pressed != ERROR) Input::input[pressed] = true;
+			if (pressed != NONE) Input::input[pressed] = true;
 			break;
 		case SDL_KEYUP:
-			if (pressed != ERROR) Input::input[pressed] = false;
+			if (pressed != NONE) Input::input[pressed] = false;
 			break;
 		default:
 			break;
@@ -61,6 +61,6 @@ Button Input::SDLToButton(SDLKey original)
 		case SDLK_ESCAPE:
 			return QUIT;
 		default:
-			return ERROR;
+			return NONE;
 	}
 }
