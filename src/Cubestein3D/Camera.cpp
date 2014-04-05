@@ -21,67 +21,8 @@ void Camera::Update(long delta)
 	if (followEntity)
 	{
 		this->eye = targetEntity->position;
-		this->target = this->eye + targetEntity->GetDirection().rotateY( targetEntity->rotation.y );
+		this->target = this->eye + targetEntity->GetDirection();
 	}
-	/*
-	TODO: REMOVE MOUSE LOOK
-
-	//Posição do mouse
-	int xmouse, ymouse;
-
-	//Meio da tela para o cáculo da rotação
-	int middlex = 800 / 2,
-		middley = 600 / 2;
-
-	//Ângulos de Y e Z
-	float angley = 0.0f,
-		anglez = 0.0f;
-
-	//Rotação atual
-	static float currentRotX = 0.0f;
-
-	//Pega o estado atual do mouse
-	SDL_GetMouseState(&xmouse, &ymouse);
-
-	//Se o mouse está no meio da tela, não há rotação
-	if ((xmouse == middlex) && (ymouse == middley)) return;
-
-	//Move o mouse para o meio
-	SDL_WarpMouse(middlex, middley);
-
-	//Calcula ângulos de rotação
-	angley = (float)((middlex - xmouse)) / 1000.0f;
-	anglez = (float)((middley - ymouse)) / 1000.0f;
-
-	//Rotação atual é igual ao inverso do ângulo Z
-	currentRotX -= anglez;
-
-	//Executa a rotação da câmera
-	if (currentRotX > 1.0f)
-		currentRotX = 1.0f;
-	else if (currentRotX < -1.0f)
-		currentRotX = -1.0f;
-	else
-	{
-		//Vetor de rotação
-		float x = target.x - eye.x,
-			y = target.y - eye.y,
-			z = target.z - eye.z;
-
-		//Calcula produto vetorial
-		crossProduct(x, y, z,
-			up.x, up.y, up.z);
-
-		//Normaliza vetor direção
-		normalizeVector(x, y, z);
-
-		//Rotaciona em X e em Y.
-		RotateCamera(anglez, x, y, z);
-		RotateCamera(angley, 0, 1, 0);
-	}
-
-	END TODO: REMOVE
-	*/
 }
 
 void Camera::Render(long delta, Renderer* renderer)

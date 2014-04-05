@@ -107,7 +107,12 @@
     <ClCompile Include="EnemySoldier.cpp">
       <Filter>Entities\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Character.cpp">
+      <Filter>Entities\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="WalkingBehavior.cpp">
+      <Filter>Behaviors\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h">
@@ -164,7 +169,12 @@
     <ClInclude Include="EnemySoldier.h">
       <Filter>Entities\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Character.h" />
+    <ClInclude Include="Character.h">
+      <Filter>Entities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WalkingBehavior.h">
+      <Filter>Behaviors\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Levels\E1M1.xml">

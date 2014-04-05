@@ -1,7 +1,11 @@
 #include "Level.h"
 #include "Player.h"
 #include "GameManager.h"
+#include "EnemySoldier.h"
 
+////////////////////////////////////////
+// Constructor / Destructor
+////////////////////////////////////////
 Level::Level()
 {
 	entities = std::list<Entity*>();
@@ -97,6 +101,7 @@ void Level::ProcessMap()
 	int i, j;
 	Camera* camera = GameManager::GetInstance()->GetCamera();
 	Player* player = nullptr;
+	EnemySoldier* enemy = nullptr;
 
 	collision = new int*[height];
 	for (i = 0; i < height; i++) collision[i] = new int[width];
@@ -116,6 +121,10 @@ void Level::ProcessMap()
 					camera->FollowEntity((Entity*)player);
 					collision[i][j] = 0;
 					break;
+				case 'E':
+					enemy = new EnemySoldier(Vector((start.x + j) * SCALE, 0, (start.z + i) * SCALE));
+					AddEntity((Entity*)enemy);
+					collision[i][j] = 0;
 				default:
 					collision[i][j] = 0;
 					break;
@@ -138,6 +147,8 @@ bool Level::CollidesWithLevel(Vector position, Vector size)
 	int minZ = (int) round((min.z - (start.z * SCALE)) / SCALE);
 	int maxX = (int) round((max.x - (start.x * SCALE)) / SCALE);
 	int maxZ = (int) round((max.z - (start.z * SCALE)) / SCALE);
+
+	if (minX < 0 || minZ < 0 || maxX >= width || maxZ >= height) return true;
 
 	if (collision[minZ][minX] == 1 ||
 		collision[minZ][maxX] == 1 ||

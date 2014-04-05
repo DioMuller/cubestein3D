@@ -37,7 +37,8 @@ void Entity::Render(long delta, Renderer* renderer)
 Vector Entity::GetDirection()
 {
 	Vector origin = Vector(0, 0, 1);
-	// TODO: rotate on y
+	origin.rotateY(rotation.y);
+
 	return origin;
 }
 

@@ -42,7 +42,7 @@ class Level
 		void AddEntity(Entity* entity);
 		void RemoveEntity(Entity* entity);
 		void ClearEntities();
-		bool CollidesWithLevel(Vector min, Vector max);
+		bool CollidesWithLevel(Vector position, Vector size);
 	private:
 		void LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, char** map);
 		void ProcessMap();
