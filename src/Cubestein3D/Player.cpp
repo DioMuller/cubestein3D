@@ -17,6 +17,7 @@ Player::Player(Vector position) : Character("Content/Textures/Spiderman.png", po
 
 	// Initialize GUI
 	guiBorder = new TextureInfo("Content/Textures/border.png");
+	guiIconHealth = new TextureInfo("Content/Textures/icon_health.png");
 }
 
 
@@ -37,7 +38,8 @@ void Player::Render(long delta, Renderer* renderer)
 
 	// Draw GUI
 	renderer->DrawTexture(Vector(0, BORDER_HEIGHT, 0.9f), Vector(SCREEN_WIDTH, 0, 0.9f), guiBorder);
-	renderer->DrawString(Vector(HEALTH_OFFSET_X, HEALTH_OFFSET_Y, 1.0f), 1.0f, 1.0f, 1.0f, healthText);
+	renderer->DrawTexture(ICON_HEALTH_START, ICON_HEALTH_END, guiIconHealth);
+	renderer->DrawString(HEALTH_OFFSET, 1.0f, 1.0f, 1.0f, healthText);
 }
 
 void Player::CollideWith(Entity* other)

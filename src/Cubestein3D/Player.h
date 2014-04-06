@@ -13,6 +13,7 @@ class Player : Character
 	////////////////////////////////////////
 	private:
 		TextureInfo* guiBorder;
+		TextureInfo* guiIconHealth;
 
 	////////////////////////////////////////
 	// Constructor / Destructor

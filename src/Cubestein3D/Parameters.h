@@ -74,8 +74,12 @@
 
 // Border Position
 #define BORDER_HEIGHT 50
-// Health Position
-#define HEALTH_OFFSET_X 50
-#define HEALTH_OFFSET_Y 15
+
+//Health Icon Position
+#define ICON_HEALTH_START Vector(10, 42, 1)
+#define ICON_HEALTH_END Vector(42, 10, 1)
+
+// Health Text Position
+#define HEALTH_OFFSET Vector(50, 15, 1)
 
 #endif
