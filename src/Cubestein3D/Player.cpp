@@ -5,7 +5,7 @@
 ////////////////////////////////////////
 // Constructor / Destructor
 ////////////////////////////////////////
-Player::Player(Vector position) : Character("Textures/Spiderman.png", position)
+Player::Player(Vector position) : Character("Content/Textures/Spiderman.png", position)
 {
 	ControllableBehavior* control = new ControllableBehavior(this);
 
