@@ -1,12 +1,13 @@
 #include "EnemySoldier.h"
-#include "WalkingBehavior.h"
+#include "EnemyBehavior.h"
+#include "Log.h"
 
 ////////////////////////////////////////
 // Constructor / Destructor
 ////////////////////////////////////////
 EnemySoldier::EnemySoldier(Vector position) : Character("Content/Textures/Domo.png", position)
 {
-	WalkingBehavior* walking = new WalkingBehavior(this);
+	EnemyBehavior* walking = new EnemyBehavior(this);
 	AddBehavior((Behavior*)walking);
 
 	tag = "Enemy";
@@ -16,4 +17,19 @@ EnemySoldier::EnemySoldier(Vector position) : Character("Content/Textures/Domo.p
 EnemySoldier::~EnemySoldier()
 {
 
+}
+
+void EnemySoldier::CollideWith(Entity* other)
+{
+	Character::CollideWith(other);
+
+	if (other->tag == "Shot")
+	{
+		other->Destroy();
+		Destroy();
+	}
+	else if (other->tag == "Player")
+	{
+		Log::Debug("Enemy hit a player");
+	}
 }

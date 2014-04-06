@@ -7,6 +7,10 @@ class Character : public Entity
 	////////////////////////////////////////
 	protected:
 		TextureInfo* texture;
+
+	////////////////////////////////////////
+	// Constructor / Destructor
+	////////////////////////////////////////
 	public:
 		Character(std::string texture, Vector position);
 		~Character();

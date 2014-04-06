@@ -8,5 +8,11 @@ class EnemySoldier : public Character
 	public:
 		EnemySoldier(Vector position);
 		~EnemySoldier();
+
+	////////////////////////////////////////
+	// Methods
+	////////////////////////////////////////
+	public:
+		void CollideWith(Entity* other);
 };
 

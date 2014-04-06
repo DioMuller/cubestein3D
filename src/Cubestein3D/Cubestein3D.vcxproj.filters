@@ -95,9 +95,6 @@
     <ClCompile Include="Character.cpp">
       <Filter>GameObjects\Entities\Source</Filter>
     </ClCompile>
-    <ClCompile Include="WalkingBehavior.cpp">
-      <Filter>GameObjects\Behaviors\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Rect.cpp">
       <Filter>GameBase\Source</Filter>
     </ClCompile>
@@ -118,6 +115,15 @@
     </ClCompile>
     <ClCompile Include="glprint.cpp">
       <Filter>Helper Libs\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Shot.cpp">
+      <Filter>GameObjects\Entities\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBehavior.cpp">
+      <Filter>GameObjects\Behaviors\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ShotBehavior.cpp">
+      <Filter>GameObjects\Behaviors\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,9 +166,6 @@
     <ClInclude Include="Character.h">
       <Filter>GameObjects\Entities\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="WalkingBehavior.h">
-      <Filter>GameObjects\Behaviors\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Rect.h">
       <Filter>GameBase\Headers</Filter>
     </ClInclude>
@@ -189,6 +192,15 @@
     </ClInclude>
     <ClInclude Include="glprint.h">
       <Filter>Helper Libs\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Shot.h">
+      <Filter>GameObjects\Entities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBehavior.h">
+      <Filter>GameObjects\Behaviors\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShotBehavior.h">
+      <Filter>GameObjects\Behaviors\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

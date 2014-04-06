@@ -2,7 +2,7 @@
 #include "Behavior.h"
 #include "Vector.h"
 
-class WalkingBehavior : public Behavior
+class EnemyBehavior : public Behavior
 {
 	////////////////////////////////////////
 	// Attributes
@@ -15,8 +15,8 @@ class WalkingBehavior : public Behavior
 	// Constructor / Destructor
 	////////////////////////////////////////
 	public:
-		WalkingBehavior(Entity* parent);
-		~WalkingBehavior();
+		EnemyBehavior(Entity* parent);
+		~EnemyBehavior();
 
 	////////////////////////////////////////
 	// Methods

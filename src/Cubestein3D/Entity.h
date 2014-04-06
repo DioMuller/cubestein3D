@@ -33,6 +33,7 @@ class Entity
 	public:
 		virtual void Update(long delta);
 		virtual void Render(long delta, Renderer* renderer);
+		virtual void Destroy();
 
 		bool CheckCollision(Entity* other);
 		Rect GetCollisionRect();

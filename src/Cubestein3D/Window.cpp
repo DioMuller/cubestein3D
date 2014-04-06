@@ -45,7 +45,7 @@ int Window::Run()
 
 		Input::Update(event);
 
-		if (Input::input[QUIT]) return 0;
+		if (Input::input[BUTTON_QUIT]) return 0;
 		
 		// GAME UPDATE
 		if (game != nullptr)

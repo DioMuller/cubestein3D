@@ -13,24 +13,24 @@ void Input::Update(SDL_Event lastEvent)
 	switch (lastEvent.type)
 	{
 		case SDL_QUIT:
-			Input::input[QUIT] = true;
+			Input::input[BUTTON_QUIT] = true;
 			break;
 		case SDL_KEYDOWN:
-			if (pressed != NONE) Input::input[pressed] = true;
+			if (pressed != BUTTON_NONE) Input::input[pressed] = true;
 			break;
 		case SDL_KEYUP:
-			if (pressed != NONE) Input::input[pressed] = false;
+			if (pressed != BUTTON_NONE) Input::input[pressed] = false;
 			break;
 		default:
 			break;
 	}
 
-	if (Input::input[UP]) Input::direction.z = 1.0f;
-	else if (Input::input[DOWN]) Input::direction.z = -1.0f;
+	if (Input::input[BUTTON_UP]) Input::direction.z = 1.0f;
+	else if (Input::input[BUTTON_DOWN]) Input::direction.z = -1.0f;
 	else Input::direction.z = 0.0f;
 
-	if (Input::input[LEFT]) Input::direction.x = 1.0f;
-	else if (Input::input[RIGHT]) Input::direction.x = -1.0f;
+	if (Input::input[BUTTON_LEFT]) Input::direction.x = 1.0f;
+	else if (Input::input[BUTTON_RIGHT]) Input::direction.x = -1.0f;
 	else Input::direction.x = 0.0f;
 
 	if (direction.x != 0 || direction.y != 0 || direction.z != 0) 
@@ -43,24 +43,24 @@ Button Input::SDLToButton(SDLKey original)
 	{
 		case SDLK_w:
 		case SDLK_UP:
-			return UP;
+			return BUTTON_UP;
 		case SDLK_a:
 		case SDLK_LEFT:
-			return LEFT;
+			return BUTTON_LEFT;
 		case SDLK_s:
 		case SDLK_DOWN:
-			return DOWN;
+			return BUTTON_DOWN;
 		case SDLK_d:
 		case SDLK_RIGHT:
-			return RIGHT;
+			return BUTTON_RIGHT;
 		case SDLK_SPACE:
-			return ACTION;
+			return BUTTON_ACTION;
 		case SDLK_LCTRL:
 		case SDLK_RCTRL:
-			return SHOT;
+			return BUTTON_SHOT;
 		case SDLK_ESCAPE:
-			return QUIT;
+			return BUTTON_QUIT;
 		default:
-			return NONE;
+			return BUTTON_NONE;
 	}
 }

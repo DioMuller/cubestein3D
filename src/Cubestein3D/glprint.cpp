@@ -4,7 +4,7 @@
 #include <stdlib.h>   //  for malloc
 #include <glut.h>  //  Include GLUT, OpenGL, and GLU libraries
 
-void printw(float x, float y, float z, const char* format, ...)
+void printw(float x, float y, float z, void* font, const char* format, ...)
 {
 	va_list args;   //  Variable argument list
 	int len;        // String length
@@ -32,7 +32,7 @@ void printw(float x, float y, float z, const char* format, ...)
 
 	//  Draw the characters one by one
 	for (i = 0; text[i] != '\0'; i++)
-		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+		glutBitmapCharacter(font, text[i]);
 
 	//  Free the allocated memory for the string
 	free(text);

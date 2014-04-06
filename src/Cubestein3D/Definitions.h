@@ -15,14 +15,14 @@
 ////////////////////////////////////////
 #define Button int
 
-#define NONE -1
-#define LEFT 0
-#define UP 1
-#define RIGHT 2
-#define DOWN 3
-#define QUIT 4
-#define SHOT 5
-#define ACTION 6
+#define BUTTON_NONE -1
+#define BUTTON_LEFT 0
+#define BUTTON_UP 1
+#define BUTTON_RIGHT 2
+#define BUTTON_DOWN 3
+#define BUTTON_QUIT 4
+#define BUTTON_SHOT 5
+#define BUTTON_ACTION 6
 
 #define INPUTCOUNT 7
 

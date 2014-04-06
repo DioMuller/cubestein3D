@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "GameManager.h"
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -40,6 +41,11 @@ Vector Entity::GetDirection()
 	origin.rotateY(rotation.y);
 
 	return origin;
+}
+
+void Entity::Destroy()
+{
+	GameManager::GetCurrentLevel()->RemoveEntity(this);
 }
 
 ////////////////////////////////////////

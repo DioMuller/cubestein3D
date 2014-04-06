@@ -1,19 +1,22 @@
 #pragma once
 #include "Behavior.h"
+#include "Vector.h"
 
-class ControllableBehavior : Behavior
+class ShotBehavior : public Behavior
 {
 	////////////////////////////////////////
 	// Attributes
 	////////////////////////////////////////
 	private:
-		bool hasShot;
+		float elapsedLifetime;
+		Vector direction;
+
 	////////////////////////////////////////
 	// Constructor / Destructor
 	////////////////////////////////////////
 	public:
-		ControllableBehavior(Entity* parent);
-		~ControllableBehavior();
+		ShotBehavior(Entity* parent, Vector direction);
+		~ShotBehavior();
 
 	////////////////////////////////////////
 	// Methods

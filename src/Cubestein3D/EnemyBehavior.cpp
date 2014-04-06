@@ -1,4 +1,4 @@
-#include "WalkingBehavior.h"
+#include "EnemyBehavior.h"
 #include "Entity.h"
 #include "GameManager.h"
 #include "Parameters.h"
@@ -6,7 +6,7 @@
 ////////////////////////////////////////
 // Constructor / Destructor
 ////////////////////////////////////////
-WalkingBehavior::WalkingBehavior(Entity* parent) : Behavior(parent)
+EnemyBehavior::EnemyBehavior(Entity* parent) : Behavior(parent)
 {
 	this->parent->rotation.y = (rand() % 4) * 90.0f;
 	this->maxDistance = (float) 1.0f + (rand() % 5);
@@ -15,14 +15,14 @@ WalkingBehavior::WalkingBehavior(Entity* parent) : Behavior(parent)
 }
 
 
-WalkingBehavior::~WalkingBehavior()
+EnemyBehavior::~EnemyBehavior()
 {
 }
 
 ////////////////////////////////////////
 // Methods
 ////////////////////////////////////////
-void WalkingBehavior::Update(long delta)
+void EnemyBehavior::Update(long delta)
 {
 	float speed = delta * ENEMY_SPEED;
 	Vector newPosition = parent->position + (parent->GetDirection() * speed);

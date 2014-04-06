@@ -3,6 +3,8 @@
 #include "GameManager.h"
 #include "EnemySoldier.h"
 #include "Parameters.h"
+#include "Log.h"
+#include <sstream>
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -10,7 +12,7 @@
 Level::Level()
 {
 	entities = std::vector<Entity*>();
-	toRemove = std::stack<Entity*>();
+	toRemove = std::vector<Entity*>();
 }
 
 Level::Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, char** map) : Level()
@@ -44,13 +46,24 @@ void Level::Update(long delta)
 	// Remove the ones marked for removing after this update
 	while (toRemove.size() != 0)
 	{
-		Entity* removed = toRemove.top();
-		toRemove.pop();
+		Entity* removed = toRemove[toRemove.size() - 1];
+		toRemove.pop_back();
 
 		std::vector<Entity*>::iterator position = std::find(entities.begin(), entities.end(), removed);
 		if (position != entities.end()) entities.erase(position);
 
-		delete removed;
+		try
+		{
+			if (removed != nullptr)
+			{
+				delete removed;
+				removed = nullptr;
+			}
+		}
+		catch (...)
+		{
+			Log::Error("Could not delete Entity: It probably was removed before.");
+		}
 	}
 }
 
@@ -78,6 +91,15 @@ void Level::Render(long delta, Renderer* renderer)
 	{
 		entity->Render(delta, renderer);
 	}
+
+	// Debug Info
+	if (SHOWDEBUG)
+	{
+		std::ostringstream str;
+		str << "Entities: " << entities.size() << "; To Remove: " << toRemove.size() << "; FPS: " << 1000 / delta;
+		std::string entitiesText(str.str());
+		renderer->DrawDebug(Vector(DEBUGPOSITION_X, DEBUGPOSITION_Y, 1.0f), 1, 1, 0, entitiesText);
+	}
 }
 
 ////////////////////////////////////////
@@ -90,7 +112,8 @@ void Level::AddEntity(Entity* entity)
 
 void Level::RemoveEntity(Entity* entity)
 {
-	toRemove.push(entity);
+	if (std::find(toRemove.begin(), toRemove.end(), entity) == toRemove.end()) // Member not on vector
+		toRemove.push_back(entity);
 }
 
 void Level::ClearEntities()

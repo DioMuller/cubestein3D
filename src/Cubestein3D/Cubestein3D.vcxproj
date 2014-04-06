@@ -105,10 +105,12 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Shot.cpp" />
+    <ClCompile Include="ShotBehavior.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="TextureInfo.cpp" />
     <ClCompile Include="Vector.cpp" />
-    <ClCompile Include="WalkingBehavior.cpp" />
+    <ClCompile Include="EnemyBehavior.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -130,10 +132,12 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Shot.h" />
+    <ClInclude Include="ShotBehavior.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="TextureInfo.h" />
     <ClInclude Include="Vector.h" />
-    <ClInclude Include="WalkingBehavior.h" />
+    <ClInclude Include="EnemyBehavior.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

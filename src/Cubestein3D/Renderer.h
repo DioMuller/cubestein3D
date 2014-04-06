@@ -31,12 +31,15 @@ class Renderer
 		void End();
 
 		void DrawCube(Vector position, Vector scale, Vector rotation);
+		void DrawSphere(Vector position, Vector scale);
+		
 		void DrawTexturedCube(Vector position, Vector scale, Vector rotation, TextureInfo* texture);
 
 		void DrawPlane(Vector startPosition, Vector endPosition, TextureInfo* texture);
 		void DrawWall(Vector position, Vector size, TextureInfo* texture);
 
 		void DrawString(Vector position, float r, float g, float b, std::string text);
+		void DrawDebug(Vector position, float r, float g, float b, std::string text);
 
 		void CameraInitialize(float fov, int width, int height, float zNear, float zFar);
 		void CameraLookAt(Vector eye, Vector target, Vector up);

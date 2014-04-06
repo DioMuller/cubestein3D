@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "ControllableBehavior.h"
+#include "Parameters.h"
 #include <sstream>
 
 ////////////////////////////////////////
@@ -31,7 +32,7 @@ void Player::Render(long delta, Renderer* renderer)
 	str << health;
 	std::string healthText(str.str());
 
-	renderer->DrawString(Vector(10, 10, 0), 1.0f, 1.0f, 1.0f, healthText);
+	renderer->DrawString(Vector(HEALTH_OFFSET_X, HEALTH_OFFSET_Y, 1.0f), 1.0f, 1.0f, 1.0f, healthText);
 }
 
 void Player::CollideWith(Entity* other)

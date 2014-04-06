@@ -2,7 +2,6 @@
 #include "TextureInfo.h"
 #include "Entity.h"
 #include <vector>
-#include <stack>
 
 class Level
 {
@@ -19,7 +18,7 @@ class Level
 		char** map;
 		int** collision;
 		std::vector<Entity*> entities;
-		std::stack<Entity*> toRemove;
+		std::vector<Entity*> toRemove;
 		Vector start, end, scaledStart, scaledEnd;
 		Vector ceilingStart, ceilingEnd;
 		// Object size scale.

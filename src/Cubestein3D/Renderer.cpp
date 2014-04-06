@@ -51,14 +51,28 @@ void Renderer::DrawCube(Vector position, Vector scale, Vector rotation)
 {
 	glPushMatrix();
 
-	// TODO: Use Matrix.
 	glTranslatef(position.x, position.y, position.z);
 	glScalef(scale.x, scale.y, scale.z);
+
+	glPushMatrix();
 	glRotatef(rotation.x, 1, 0, 0);
 	glRotatef(rotation.y, 0, 1, 0);
 	glRotatef(rotation.z, 0, 0, 1);
 
 	glutWireCube(1);
+
+	glPopMatrix();
+	glPopMatrix();
+}
+
+void Renderer::DrawSphere(Vector position, Vector scale)
+{
+	glPushMatrix();
+
+	glTranslatef(position.x, position.y, position.z);
+	glScalef(scale.x, scale.y, scale.z);
+
+	glutSolidSphere(0.5, 10, 10);
 
 	glPopMatrix();
 }
@@ -358,16 +372,23 @@ void Renderer::DrawString(Vector position, float r, float g, float b, std::strin
 {
 	ChangeToOrtho();
 
-	printw(position.x, position.y, position.z, text.c_str());
-	/*	glFontBegin(&font);
-	glScalef(size, size, 0);
-	glTranslatef(30, 30, 0);
 	glColor3f(r, g, b);
-	glFontTextOut(text.c_str(), position.x, position.y, position.z);
-	glFontEnd();
-	glFlush();*/
+	printw(position.x, position.y, position.z, GLUT_BITMAP_TIMES_ROMAN_24,text.c_str());
 
 	ChangeToPerspective();
+}
+
+void Renderer::DrawDebug(Vector position, float r, float g, float b, std::string text)
+{
+	if (SHOWDEBUG)
+	{
+		ChangeToOrtho();
+
+		glColor3f(r, g, b);
+		printw(position.x, position.y, position.z, GLUT_BITMAP_9_BY_15, text.c_str());
+
+		ChangeToPerspective();
+	}
 }
 
 ////////////////////////////////////////
