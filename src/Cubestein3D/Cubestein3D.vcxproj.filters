@@ -11,38 +11,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Testing">
-      <UniqueIdentifier>{f1b279b6-6a8f-4997-8fac-18200a7a91e6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Testing\Headers">
-      <UniqueIdentifier>{ed86de6e-f5b5-41d8-b326-7247810b815b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Testing\Source">
-      <UniqueIdentifier>{a2a60b87-d00b-4fb5-9826-24b7a997165b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameBase\Headers">
       <UniqueIdentifier>{8cf8eb7d-87d3-491d-86d5-f86d25903c2a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Levels">
-      <UniqueIdentifier>{325748a8-1d8f-4fc9-9bc7-08ee54309857}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Entities">
-      <UniqueIdentifier>{6f001fa9-66fd-41d3-8c0d-fac347901fff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Entities\Headers">
-      <UniqueIdentifier>{226ac7e7-3c9a-4edb-ad6d-97c97c9448a3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Entities\Source">
-      <UniqueIdentifier>{62abc5c1-640a-4f3f-9345-7d1aa5017f33}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Behaviors">
-      <UniqueIdentifier>{53fa6f51-2d00-4be6-854a-805461c3dab4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Behaviors\Headers">
-      <UniqueIdentifier>{af7bc473-01a2-4e0b-8afb-4352bbb8c7b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Behaviors\Source">
-      <UniqueIdentifier>{51529998-4cfb-441e-a264-68ca7ded94d8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Helper Libs">
       <UniqueIdentifier>{139fbd60-2629-41c4-af4c-bfcd3c49b849}</UniqueIdentifier>
@@ -52,6 +22,39 @@
     </Filter>
     <Filter Include="Helper Libs\Source">
       <UniqueIdentifier>{2ae95b18-856e-4590-a08e-2aba2bf3f770}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameRendering">
+      <UniqueIdentifier>{3b122125-dcd7-436c-bffb-4911a2fb5cdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameRendering\Headers">
+      <UniqueIdentifier>{3b5ad629-80d2-4c48-9af6-f5029a667948}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameRendering\Source">
+      <UniqueIdentifier>{39f531e4-a4a8-4279-aa47-b756fd9598b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameDefinitions">
+      <UniqueIdentifier>{7a37316f-7d93-43cb-99e3-190ad244bcec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{04c71db6-6d55-4a71-a089-e9f9e709e8c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Entities">
+      <UniqueIdentifier>{6f001fa9-66fd-41d3-8c0d-fac347901fff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Entities\Headers">
+      <UniqueIdentifier>{226ac7e7-3c9a-4edb-ad6d-97c97c9448a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Entities\Source">
+      <UniqueIdentifier>{62abc5c1-640a-4f3f-9345-7d1aa5017f33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Behaviors">
+      <UniqueIdentifier>{53fa6f51-2d00-4be6-854a-805461c3dab4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Behaviors\Headers">
+      <UniqueIdentifier>{af7bc473-01a2-4e0b-8afb-4352bbb8c7b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Behaviors\Source">
+      <UniqueIdentifier>{51529998-4cfb-441e-a264-68ca7ded94d8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -64,39 +67,21 @@
     <ClCompile Include="GameManager.cpp">
       <Filter>GameBase\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>GameBase\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Renderer.cpp">
-      <Filter>GameBase\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="TestEntity.cpp">
-      <Filter>Testing\Source</Filter>
-    </ClCompile>
     <ClCompile Include="texture.cpp">
       <Filter>Helper Libs\Source</Filter>
     </ClCompile>
     <ClCompile Include="Vector.cpp">
       <Filter>Helper Libs\Source</Filter>
     </ClCompile>
-    <ClCompile Include="TextureInfo.cpp">
-      <Filter>GameBase\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>GameBase\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="TestEntity2.cpp">
-      <Filter>Testing\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Level.cpp">
       <Filter>GameBase\Source</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Entities\Source</Filter>
+      <Filter>GameObjects\Entities\Source</Filter>
     </ClCompile>
     <ClCompile Include="ControllableBehavior.cpp">
-      <Filter>Behaviors\Source</Filter>
+      <Filter>GameObjects\Behaviors\Source</Filter>
     </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>GameBase\Source</Filter>
@@ -105,19 +90,34 @@
       <Filter>Helper Libs\Source</Filter>
     </ClCompile>
     <ClCompile Include="EnemySoldier.cpp">
-      <Filter>Entities\Source</Filter>
+      <Filter>GameObjects\Entities\Source</Filter>
     </ClCompile>
     <ClCompile Include="Character.cpp">
-      <Filter>Entities\Source</Filter>
+      <Filter>GameObjects\Entities\Source</Filter>
     </ClCompile>
     <ClCompile Include="WalkingBehavior.cpp">
-      <Filter>Behaviors\Source</Filter>
+      <Filter>GameObjects\Behaviors\Source</Filter>
     </ClCompile>
     <ClCompile Include="Rect.cpp">
       <Filter>GameBase\Source</Filter>
     </ClCompile>
     <ClCompile Include="Log.cpp">
       <Filter>GameBase\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureInfo.cpp">
+      <Filter>GameRendering\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>GameRendering\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>GameRendering\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>GameRendering\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="glprint.cpp">
+      <Filter>Helper Libs\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,15 +130,6 @@
     <ClInclude Include="GameManager.h">
       <Filter>GameBase\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>GameBase\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>GameBase\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="TestEntity.h">
-      <Filter>Testing\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="texture.h">
       <Filter>Helper Libs\Headers</Filter>
     </ClInclude>
@@ -148,23 +139,14 @@
     <ClInclude Include="Vector.h">
       <Filter>Helper Libs\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="TextureInfo.h">
-      <Filter>GameBase\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>GameBase\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="TestEntity2.h">
-      <Filter>Testing\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Level.h">
       <Filter>GameBase\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Entities\Headers</Filter>
+      <Filter>GameObjects\Entities\Headers</Filter>
     </ClInclude>
     <ClInclude Include="ControllableBehavior.h">
-      <Filter>Behaviors\Headers</Filter>
+      <Filter>GameObjects\Behaviors\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>GameBase\Headers</Filter>
@@ -173,13 +155,13 @@
       <Filter>Helper Libs\Headers</Filter>
     </ClInclude>
     <ClInclude Include="EnemySoldier.h">
-      <Filter>Entities\Headers</Filter>
+      <Filter>GameObjects\Entities\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
-      <Filter>Entities\Headers</Filter>
+      <Filter>GameObjects\Entities\Headers</Filter>
     </ClInclude>
     <ClInclude Include="WalkingBehavior.h">
-      <Filter>Behaviors\Headers</Filter>
+      <Filter>GameObjects\Behaviors\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Rect.h">
       <Filter>GameBase\Headers</Filter>
@@ -187,12 +169,26 @@
     <ClInclude Include="Log.h">
       <Filter>GameBase\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Definitions.h" />
-    <ClInclude Include="Parameters.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="Levels\E1M1.xml">
-      <Filter>Levels</Filter>
-    </Xml>
+    <ClInclude Include="Renderer.h">
+      <Filter>GameRendering\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureInfo.h">
+      <Filter>GameRendering\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>GameRendering\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>GameRendering\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Parameters.h">
+      <Filter>GameDefinitions</Filter>
+    </ClInclude>
+    <ClInclude Include="Definitions.h">
+      <Filter>GameDefinitions</Filter>
+    </ClInclude>
+    <ClInclude Include="glprint.h">
+      <Filter>Helper Libs\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

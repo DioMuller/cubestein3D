@@ -1,6 +1,6 @@
 #include "Player.h"
 #include "ControllableBehavior.h"
-#include <iostream>
+#include <sstream>
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -23,6 +23,17 @@ Player::~Player()
 ////////////////////////////////////////
 // Methods
 ////////////////////////////////////////
+void Player::Render(long delta, Renderer* renderer)
+{
+	Character::Render(delta, renderer);
+	
+	std::ostringstream str;
+	str << health;
+	std::string healthText(str.str());
+
+	renderer->DrawString(Vector(10, 10, 0), 1.0f, 1.0f, 1.0f, healthText);
+}
+
 void Player::CollideWith(Entity* other)
 {
 	Character::CollideWith(other);

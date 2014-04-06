@@ -36,10 +36,16 @@ class Renderer
 		void DrawPlane(Vector startPosition, Vector endPosition, TextureInfo* texture);
 		void DrawWall(Vector position, Vector size, TextureInfo* texture);
 
+		void DrawString(Vector position, float r, float g, float b, std::string text);
+
 		void CameraInitialize(float fov, int width, int height, float zNear, float zFar);
 		void CameraLookAt(Vector eye, Vector target, Vector up);
 
 		void InitializeSkybox(std::string left, std::string front, std::string right, std::string back, std::string top, std::string bottom);
 		void DrawSkybox(float x, float y, float z, float width, float height, float length);
+
+	private:
+		void ChangeToOrtho();
+		void ChangeToPerspective();
 };
 

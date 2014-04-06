@@ -35,8 +35,8 @@ void Log::Add(int level, std::string message)
 
 		time(&rawtime);
 		timeinfo = localtime(&rawtime);
-		char* chartime = new char[256];
-		asctime_s(chartime, 256, timeinfo);
+		char* chartime = new char[32];
+		asctime_s(chartime, 32, timeinfo);
 		int size = strlen(chartime);
 		chartime[size - 1] = '\0'; // Remove \n
 

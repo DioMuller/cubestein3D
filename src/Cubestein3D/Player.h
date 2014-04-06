@@ -19,6 +19,7 @@ class Player : Character
 	// Methods
 	////////////////////////////////////////
 	public:
+		void Render(long delta, Renderer* renderer);
 		void CollideWith(Entity* other);
 };
 

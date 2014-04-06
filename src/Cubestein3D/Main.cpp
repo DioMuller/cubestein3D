@@ -1,6 +1,4 @@
 #include "Window.h"
-#include "TestEntity.h"
-#include "TestEntity2.h"
 #include <time.h>
 #include "Definitions.h"
 

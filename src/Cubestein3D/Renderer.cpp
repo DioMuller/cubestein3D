@@ -1,5 +1,6 @@
 #include "Renderer.h"
 #include "texture.h"
+#include "Parameters.h"
 
 // Moved OpenGL includes HERE, so not everything that includes Renderer
 // can use OpenGL functions.
@@ -11,8 +12,10 @@
 #include <SDL/SDL.h>
 #include <stdlib.h>
 #include <glut.h>
+#include "glprint.h"
 
 #include <SDL/SDL_image.h> 
+#include <SDL/SDL_ttf.h>
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -346,4 +349,43 @@ void Renderer::DrawSkybox(float x, float y, float z, float width, float height, 
 
 	// Resets Texture Binding
 	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+////////////////////////////////////////
+// Text methods
+////////////////////////////////////////
+void Renderer::DrawString(Vector position, float r, float g, float b, std::string text)
+{
+	ChangeToOrtho();
+
+	printw(position.x, position.y, position.z, text.c_str());
+	/*	glFontBegin(&font);
+	glScalef(size, size, 0);
+	glTranslatef(30, 30, 0);
+	glColor3f(r, g, b);
+	glFontTextOut(text.c_str(), position.x, position.y, position.z);
+	glFontEnd();
+	glFlush();*/
+
+	ChangeToPerspective();
+}
+
+////////////////////////////////////////
+// Ortho/Perspective Methods
+////////////////////////////////////////
+void Renderer::ChangeToOrtho()
+{
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+	gluOrtho2D(0, SCREEN_WIDTH, 0, SCREEN_HEIGHT);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+}
+
+void Renderer::ChangeToPerspective()
+{
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+	glMatrixMode(GL_MODELVIEW);
 }
