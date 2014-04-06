@@ -14,6 +14,9 @@ Player::Player(Vector position) : Character("Content/Textures/Spiderman.png", po
 
 	tag = "Player";
 	health = 100;
+
+	// Initialize GUI
+	guiBorder = new TextureInfo("Content/Textures/border.png");
 }
 
 
@@ -32,6 +35,8 @@ void Player::Render(long delta, Renderer* renderer)
 	str << health;
 	std::string healthText(str.str());
 
+	// Draw GUI
+	renderer->DrawTexture(Vector(0, BORDER_HEIGHT, 0.9f), Vector(SCREEN_WIDTH, 0, 0.9f), guiBorder);
 	renderer->DrawString(Vector(HEALTH_OFFSET_X, HEALTH_OFFSET_Y, 1.0f), 1.0f, 1.0f, 1.0f, healthText);
 }
 

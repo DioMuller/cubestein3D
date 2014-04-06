@@ -71,7 +71,7 @@ void GameManager::InitializeCamera(float fov, int width, int height, float zNear
 {
 	renderer->CameraInitialize(fov, width, height, zNear, zFar);
 
-	/* TODO: Remove from here */
+	/* TODO: Remove from here 
 	renderer->InitializeSkybox(
 		"Content/Textures/Nebular_rt.jpg",
 		"Content/Textures/Nebular_lf.jpg",
@@ -79,6 +79,7 @@ void GameManager::InitializeCamera(float fov, int width, int height, float zNear
 		"Content/Textures/Nebular_bk.jpg",
 		"Content/Textures/Nebular_up.jpg",
 		"Content/Textures/Nebular_dn.jpg");
+		*/
 }
 
 ////////////////////////////////////////

@@ -41,6 +41,8 @@ class Renderer
 		void DrawString(Vector position, float r, float g, float b, std::string text);
 		void DrawDebug(Vector position, float r, float g, float b, std::string text);
 
+		void DrawTexture(Vector startPosition, Vector endPosition, TextureInfo* texture);
+
 		void CameraInitialize(float fov, int width, int height, float zNear, float zFar);
 		void CameraLookAt(Vector eye, Vector target, Vector up);
 

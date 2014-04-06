@@ -22,6 +22,7 @@
 ////////////////////////////////////////
 Renderer::Renderer()
 {
+	skyboxTexture = nullptr;
 }
 
 
@@ -269,6 +270,8 @@ void Renderer::InitializeSkybox(std::string left, std::string front, std::string
 
 void Renderer::DrawSkybox(float x, float y, float z, float width, float height, float length)
 {
+	if (skyboxTexture == nullptr) return;
+
 	glColor3f(1.0f, 1.0f, 1.0f);
 
 	// Center Skybox
@@ -370,25 +373,54 @@ void Renderer::DrawSkybox(float x, float y, float z, float width, float height, 
 ////////////////////////////////////////
 void Renderer::DrawString(Vector position, float r, float g, float b, std::string text)
 {
+	glPushMatrix();
 	ChangeToOrtho();
 
 	glColor3f(r, g, b);
 	printw(position.x, position.y, position.z, GLUT_BITMAP_TIMES_ROMAN_24,text.c_str());
 
 	ChangeToPerspective();
+	glPopMatrix();
 }
 
 void Renderer::DrawDebug(Vector position, float r, float g, float b, std::string text)
 {
 	if (SHOWDEBUG)
 	{
+		glPushMatrix();
 		ChangeToOrtho();
 
 		glColor3f(r, g, b);
 		printw(position.x, position.y, position.z, GLUT_BITMAP_9_BY_15, text.c_str());
 
 		ChangeToPerspective();
+		glPopMatrix();
 	}
+}
+
+////////////////////////////////////////
+// 2D methods
+////////////////////////////////////////
+void Renderer::DrawTexture(Vector startPosition, Vector endPosition, TextureInfo* texture)
+{
+	glPushMatrix();
+	ChangeToOrtho();
+
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glBindTexture(GL_TEXTURE_2D, texture->id);
+
+	glColor3f(1.0, 1.0, 1.0);
+	glBegin(GL_QUADS);
+	glNormal3d(0, 0, 1);
+	glTexCoord2f(0, 0); glVertex3f(startPosition.x, startPosition.y, startPosition.z);
+	glTexCoord2f(0, 1); glVertex3f(endPosition.x, startPosition.y, startPosition.z);
+	glTexCoord2f(1, 1); glVertex3f(endPosition.x, endPosition.y, endPosition.z);
+	glTexCoord2f(1, 0); glVertex3f(startPosition.x, endPosition.y, endPosition.z);
+	glEnd();
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	ChangeToPerspective();
+	glPopMatrix();
 }
 
 ////////////////////////////////////////

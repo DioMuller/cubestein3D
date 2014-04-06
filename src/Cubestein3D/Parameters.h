@@ -72,7 +72,10 @@
 // GUI
 //////////////////////////////////////////
 
+// Border Position
+#define BORDER_HEIGHT 50
+// Health Position
 #define HEALTH_OFFSET_X 50
-#define HEALTH_OFFSET_Y 10
+#define HEALTH_OFFSET_Y 15
 
 #endif
