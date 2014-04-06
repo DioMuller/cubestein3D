@@ -40,6 +40,8 @@ void Player::Render(long delta, Renderer* renderer)
 	renderer->DrawTexture(Vector(0, BORDER_HEIGHT, 0.9f), Vector(SCREEN_WIDTH, 0, 0.9f), guiBorder);
 	renderer->DrawTexture(ICON_HEALTH_START, ICON_HEALTH_END, guiIconHealth);
 	renderer->DrawString(HEALTH_OFFSET, 1.0f, 1.0f, 1.0f, healthText);
+
+	renderer->DrawCrosshair();
 }
 
 void Player::CollideWith(Entity* other)

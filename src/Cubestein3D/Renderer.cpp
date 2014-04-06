@@ -423,6 +423,29 @@ void Renderer::DrawTexture(Vector startPosition, Vector endPosition, TextureInfo
 	glPopMatrix();
 }
 
+void Renderer::DrawCrosshair()
+{
+	glPushMatrix();
+	ChangeToOrtho();
+
+	glBegin(GL_LINES);
+	glVertex3f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - (CROSSHAIR_SIZE + CROSSHAIR_SPACE), 1.0f);
+	glVertex3f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - CROSSHAIR_SPACE, 1.0f);
+
+	glVertex3f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + CROSSHAIR_SPACE, 1.0f);
+	glVertex3f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + (CROSSHAIR_SIZE + CROSSHAIR_SPACE), 1.0f);
+
+	glVertex3f(SCREEN_WIDTH / 2 - (CROSSHAIR_SIZE + CROSSHAIR_SPACE), SCREEN_HEIGHT / 2, 1.0f);
+	glVertex3f(SCREEN_WIDTH / 2 - CROSSHAIR_SPACE, SCREEN_HEIGHT / 2, 1.0f);
+
+	glVertex3f(SCREEN_WIDTH / 2 + CROSSHAIR_SPACE, SCREEN_HEIGHT / 2, 1.0f);
+	glVertex3f(SCREEN_WIDTH / 2 + (CROSSHAIR_SIZE + CROSSHAIR_SPACE), SCREEN_HEIGHT / 2, 1.0f);
+	glEnd();
+	
+	ChangeToPerspective();
+	glPopMatrix();
+}
+
 ////////////////////////////////////////
 // Ortho/Perspective Methods
 ////////////////////////////////////////

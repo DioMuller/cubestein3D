@@ -42,6 +42,7 @@ class Renderer
 		void DrawDebug(Vector position, float r, float g, float b, std::string text);
 
 		void DrawTexture(Vector startPosition, Vector endPosition, TextureInfo* texture);
+		void DrawCrosshair();
 
 		void CameraInitialize(float fov, int width, int height, float zNear, float zFar);
 		void CameraLookAt(Vector eye, Vector target, Vector up);

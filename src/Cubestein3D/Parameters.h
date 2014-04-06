@@ -75,11 +75,21 @@
 // Border Position
 #define BORDER_HEIGHT 50
 
+// Icons default Y value.
+#define ICON_Y 8
+
+// Default Icon size
+#define ICON_SIZE 32
+
 //Health Icon Position
-#define ICON_HEALTH_START Vector(10, 42, 1)
-#define ICON_HEALTH_END Vector(42, 10, 1)
+#define ICON_HEALTH_START Vector(10, ICON_Y + ICON_SIZE, 1)
+#define ICON_HEALTH_END Vector(10 + ICON_SIZE, ICON_Y, 1)
 
 // Health Text Position
 #define HEALTH_OFFSET Vector(50, 15, 1)
+
+// Weapon
+#define CROSSHAIR_SIZE 5
+#define CROSSHAIR_SPACE 3
 
 #endif
