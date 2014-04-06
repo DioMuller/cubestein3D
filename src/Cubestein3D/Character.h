@@ -17,5 +17,7 @@ class Character : public Entity
 	public:
 		void Update(long delta);
 		void Render(long delta, Renderer* renderer);
+
+		void CollideWith(Entity* other);
 };
 

@@ -25,8 +25,8 @@ Player::~Player()
 ////////////////////////////////////////
 void Player::CollideWith(Entity* other)
 {
-	std::cout << "Collided with: " << other->tag << std::endl;
-	
+	Character::CollideWith(other);
+
 	if (other->tag == "Enemy")
 	{
 		health--;

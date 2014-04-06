@@ -129,7 +129,7 @@ int Window::SetupOpenGL(void)
 		flags |= SDL_HWACCEL;
 
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, SCREENBPP);
+	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, this->bpp);
 
 	return flags;
 }

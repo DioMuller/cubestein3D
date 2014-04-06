@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "GameManager.h"
 #include "EnemySoldier.h"
+#include "Parameters.h"
 
 ////////////////////////////////////////
 // Constructor / Destructor

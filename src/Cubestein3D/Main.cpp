@@ -2,20 +2,25 @@
 #include "TestEntity.h"
 #include "TestEntity2.h"
 #include <time.h>
+#include "Definitions.h"
 
 Level* LoadLevel();
 
 int main(int argc, char **argv)
 {
-	Window* window = new Window("Cubenstein 3D", 800, 600, 0);
+	// Initializes window and game logic
+	Window* window = new Window("Cubenstein 3D", SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP);
 	GameManager* game = new GameManager();
 
+	// Initializes RNG
 	srand(time(0));
 
+	// Initializes level
 	/*TODO: READ FROM XML*/
 	Level* level1 = LoadLevel();
 	game->LoadLevel(level1);
 
+	// Links game with window and runs.
 	window->SetGame(game);
 	window->Run();
 

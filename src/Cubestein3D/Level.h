@@ -4,10 +4,6 @@
 #include <vector>
 #include <stack>
 
-// Level Scale
-#define SCALE 4
-#define COLLISION_ERROR Vector(0.9f, 0, 0.9f)
-
 class Level
 {
 	////////////////////////////////////////

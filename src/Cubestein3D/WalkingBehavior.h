@@ -2,8 +2,6 @@
 #include "Behavior.h"
 #include "Vector.h"
 
-#define ENEMYSPEED 0.005f
-
 class WalkingBehavior : public Behavior
 {
 	////////////////////////////////////////

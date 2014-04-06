@@ -97,6 +97,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="Log.cpp" />
     <ClCompile Include="Main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -116,6 +117,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="ControllableBehavior.h" />
+    <ClInclude Include="Definitions.h" />
     <ClInclude Include="EnemySoldier.h" />
     <ClInclude Include="HelperOperations.h" />
     <ClInclude Include="Input.h" />
@@ -123,6 +125,8 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="glext.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="Parameters.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Renderer.h" />

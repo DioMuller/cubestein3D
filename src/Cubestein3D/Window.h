@@ -1,12 +1,6 @@
 #pragma once
 #include "GameManager.h"
-
-////////////////////
-// Constants
-////////////////////
-#define SCREENWIDTH 800
-#define SCREENHEIGHT 600
-#define SCREENBPP 32
+#include "Parameters.h"
 
 class Window
 {

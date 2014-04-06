@@ -1,6 +1,7 @@
 #include "WalkingBehavior.h"
 #include "Entity.h"
 #include "GameManager.h"
+#include "Parameters.h"
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -23,7 +24,7 @@ WalkingBehavior::~WalkingBehavior()
 ////////////////////////////////////////
 void WalkingBehavior::Update(long delta)
 {
-	float speed = delta * ENEMYSPEED;
+	float speed = delta * ENEMY_SPEED;
 	Vector newPosition = parent->position + (parent->GetDirection() * speed);
 
 	walked += speed;

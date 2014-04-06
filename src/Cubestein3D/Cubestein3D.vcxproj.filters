@@ -116,6 +116,9 @@
     <ClCompile Include="Rect.cpp">
       <Filter>GameBase\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>GameBase\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h">
@@ -181,6 +184,11 @@
     <ClInclude Include="Rect.h">
       <Filter>GameBase\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>GameBase\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Definitions.h" />
+    <ClInclude Include="Parameters.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Levels\E1M1.xml">

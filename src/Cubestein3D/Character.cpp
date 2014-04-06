@@ -1,5 +1,6 @@
 #include "Character.h"
-
+#include "Definitions.h"
+#include "Log.h"
 
 Character::Character(std::string texture, Vector position)
 {
@@ -35,4 +36,9 @@ void Character::Render(long delta, Renderer* renderer)
 {
 	renderer->DrawTexturedCube(position, size, rotation, texture);
 	Entity::Render(delta, renderer);
+}
+
+void Character::CollideWith(Entity* other)
+{
+	Log::Message(tag + " collided with " + other->tag);
 }

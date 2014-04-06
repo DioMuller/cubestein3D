@@ -4,13 +4,7 @@
 #include "TextureInfo.h"
 
 #include "Vector.h"
-
-#define SKY_BACK 0
-#define SKY_FRONT 1
-#define SKY_LEFT 2
-#define SKY_RIGHT 3
-#define SKY_TOP 4
-#define SKY_BOTTOM 5
+#include "Definitions.h"
 
 // EVERYTHING that has rendering shound be here. Better if only
 // this and windows use the OGL includes, will have to check.
