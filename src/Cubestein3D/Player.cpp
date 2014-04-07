@@ -79,3 +79,11 @@ void Player::AddKill()
 	kills++;
 	points += 100;
 }
+
+bool Player::Shoot()
+{
+	if (ammo <= 0) return false;
+
+	ammo--;
+	return true;
+}

@@ -1,5 +1,6 @@
 #pragma once
 #include "Behavior.h"
+#include "Player.h"
 
 class ControllableBehavior : Behavior
 {
@@ -7,6 +8,7 @@ class ControllableBehavior : Behavior
 	// Attributes
 	////////////////////////////////////////
 	private:
+		Player* player;
 		bool hasShot;
 	////////////////////////////////////////
 	// Constructor / Destructor

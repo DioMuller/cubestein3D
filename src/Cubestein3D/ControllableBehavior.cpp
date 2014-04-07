@@ -8,6 +8,7 @@
 ControllableBehavior::ControllableBehavior(Entity* parent) : Behavior(parent)
 {
 	hasShot = false;
+	player = (Player*) parent;
 }
 
 
@@ -34,10 +35,15 @@ void ControllableBehavior::Update(long delta)
 	// Shooting
 	if (Input::input[BUTTON_SHOT])
 	{
+		// Have to press the button each time the player wants to shot.
 		if (!hasShot)
 		{
-			Shot* shot = new Shot((Player*) parent, parent->position + parent->GetDirection(), parent->GetDirection() );
-			GameManager::GetInstance()->AddEntity((Entity*)shot);
+			// Has ammo. If it has, decreases and shoots.
+			if (player->Shoot())
+			{
+				Shot* shot = new Shot(player, parent->position + parent->GetDirection(), parent->GetDirection() );
+				GameManager::GetInstance()->AddEntity((Entity*)shot);
+			}
 
 			// Small hack: Will make the player shot once if the button is pressed.
 			hasShot = true;

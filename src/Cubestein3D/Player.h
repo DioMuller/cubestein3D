@@ -36,5 +36,6 @@ class Player : Character
 		void CollideWith(Entity* other);
 
 		void AddKill();
+		bool Shoot();
 };
 
