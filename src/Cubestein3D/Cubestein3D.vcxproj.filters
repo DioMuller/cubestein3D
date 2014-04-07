@@ -56,6 +56,9 @@
     <Filter Include="GameObjects\Behaviors\Source">
       <UniqueIdentifier>{51529998-4cfb-441e-a264-68ca7ded94d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameAudio">
+      <UniqueIdentifier>{6ebcade3-0f47-4539-a569-2bbcf603c956}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Behavior.cpp">
@@ -125,6 +128,7 @@
     <ClCompile Include="ShotBehavior.cpp">
       <Filter>GameObjects\Behaviors\Source</Filter>
     </ClCompile>
+    <ClCompile Include="MusicPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h">
@@ -205,5 +209,6 @@
     <ClInclude Include="StringHelper.h">
       <Filter>Helper Libs\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="MusicPlayer.h" />
   </ItemGroup>
 </Project>

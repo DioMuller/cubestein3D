@@ -1,0 +1,19 @@
+#pragma once
+#include <string>
+
+class MusicPlayer
+{
+	////////////////////////////////////////
+	// Static Methods
+	////////////////////////////////////////
+	private:
+		static void* currentSong;
+	////////////////////////////////////////
+	// Static Methods
+	////////////////////////////////////////
+	public:
+		static void Initialize();
+		static void PlaySong(std::string song);
+		static void StopSong();
+};
+

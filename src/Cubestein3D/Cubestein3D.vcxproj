@@ -102,6 +102,7 @@
     <ClCompile Include="Main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="MusicPlayer.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="Renderer.cpp" />
@@ -128,6 +129,7 @@
     <ClInclude Include="glext.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Log.h" />
+    <ClInclude Include="MusicPlayer.h" />
     <ClInclude Include="Parameters.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rect.h" />

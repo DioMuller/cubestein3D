@@ -4,8 +4,8 @@
 #include "EnemySoldier.h"
 #include "Parameters.h"
 #include "Log.h"
+#include "MusicPlayer.h"
 #include <sstream>
-#include <SDL/SDL_mixer.h>
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -153,21 +153,7 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 
 	ProcessMap();
 
-	// Play BGM
-	Mix_Music *levelBgm; 
-	levelBgm = Mix_LoadMUS(music.c_str()); 
-	
-	if (levelBgm == nullptr)
-	{
-		Log::Error("Unable to load Ogg file.");
-		Log::Error(Mix_GetError());
-	}
-
-	if (Mix_PlayMusic(levelBgm, -1) == -1) 
-	{ 
-		Log::Error("Unable to play Ogg file.");
-		Log::Error(Mix_GetError());
-	}
+	MusicPlayer::PlaySong(music);
 }
 
 void Level::ProcessMap()
