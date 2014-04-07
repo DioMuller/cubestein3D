@@ -67,6 +67,11 @@
 // Collision error vector
 #define COLLISION_ERROR Vector(0.9f, 0, 0.9f)
 
+// Wall Repetitions
+#define TEXTURE_WALL_REPETITIONS Vector(2, 1, 0)
+
+// Paiting Repetitions
+#define TEXTURE_PAINTING_REPETITIONS Vector(1, 1, 0)
 
 //////////////////////////////////////////
 // GUI

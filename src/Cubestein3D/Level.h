@@ -15,6 +15,7 @@ class Level
 		TextureInfo* wallTexture;
 		TextureInfo* groundTexture;
 		TextureInfo* ceilingTexture;
+		TextureInfo* decorationTexture;
 		char** map;
 		int** collision;
 		std::vector<Entity*> entities;
@@ -29,7 +30,7 @@ class Level
 	////////////////////////////////////////
 	public:
 		Level();
-		Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, char** map);
+		Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, char** map);
 		~Level();
 
 	////////////////////////////////////////
@@ -44,7 +45,7 @@ class Level
 		void ClearEntities();
 		bool CollidesWithLevel(Vector position, Vector size);
 	private:
-		void LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, char** map);
+		void LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, char** map);
 		void ProcessMap();
 };
 

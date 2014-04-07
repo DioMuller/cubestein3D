@@ -203,7 +203,7 @@
       <Filter>GameObjects\Behaviors\Headers</Filter>
     </ClInclude>
     <ClInclude Include="StringHelper.h">
-      <Filter>Helper Libs</Filter>
+      <Filter>Helper Libs\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

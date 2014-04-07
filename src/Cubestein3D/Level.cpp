@@ -15,9 +15,9 @@ Level::Level()
 	toRemove = std::vector<Entity*>();
 }
 
-Level::Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, char** map) : Level()
+Level::Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, char** map) : Level()
 {
-	LoadLevel(name, width, height, groundTexture, wallTexture, ceilingTexture, map);
+	LoadLevel(name, width, height, groundTexture, wallTexture, ceilingTexture, decorationTexture, map);
 }
 
 Level::~Level()
@@ -81,7 +81,10 @@ void Level::Render(long delta, Renderer* renderer)
 			switch (map[i][j])
 			{
 				case 'W':
-					renderer->DrawWall(Vector((start.x + j) *  SCALE, 0, (start.z + i) * SCALE), scale, wallTexture);
+					renderer->DrawWall(Vector((start.x + j) *  SCALE, 0, (start.z + i) * SCALE), scale, TEXTURE_WALL_REPETITIONS, wallTexture);
+					break;
+				case 'P':
+					renderer->DrawWall(Vector((start.x + j) *  SCALE, 0, (start.z + i) * SCALE), scale, TEXTURE_PAINTING_REPETITIONS, decorationTexture);
 					break;
 			}
 		}
@@ -124,7 +127,7 @@ void Level::ClearEntities()
 ////////////////////////////////////////
 // Loading Methods
 ////////////////////////////////////////
-void Level::LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, char** map)
+void Level::LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, char** map)
 {
 	this->name = name;
 	this->width = width;
@@ -132,10 +135,11 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 	this->groundTexture = new TextureInfo(groundTexture, true);
 	this->wallTexture = new TextureInfo(wallTexture, true);
 	this->ceilingTexture = new TextureInfo(ceilingTexture, true);
+	this->decorationTexture = new TextureInfo(decorationTexture, false);
 	this->map = map;
 
-	this->start = Vector(-(float)(width / 2), -1.0f, -(float)(height / 2));
-	this->end = Vector((float)(width / 2), -1.0f, (float)(height / 2));
+	this->start = Vector(-(float)(width / 2), -1.5f, -(float)(height / 2));
+	this->end = Vector((float)(width / 2), -1.5f, (float)(height / 2));
 	this->scaledStart = Vector(start.x * SCALE, start.y,  start.z * SCALE);
 	this->scaledEnd = Vector(end.x * SCALE, end.y, end.z * SCALE);
 
@@ -164,6 +168,7 @@ void Level::ProcessMap()
 			switch (map[i][j])
 			{
 				case 'W':
+				case 'P':
 					collision[i][j] = 1;
 					break;
 				case 'S':

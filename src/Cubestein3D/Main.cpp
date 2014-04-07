@@ -31,21 +31,21 @@ Level* LoadLevel()
 	char** map = new char*[15];
 	map[0] =  "WWWWWWWWWWWWWWWWWWWWW";
 	map[1] =  "WWGGEGGWWWWGGGGGGGGWW";
-	map[2] =  "WWGGEGGWWWWGGGEGGGGWW";
+	map[2] =  "WWGGEGGWWWWGGGEGGGGPW";
 	map[3] =  "WWGGGGGWWWWGGGGGWGGWW";
 	map[4] =  "WWWWGWWWWWWWWWWWWGWWW";
-	map[5] =  "WWWWGWWWWWWWWWWWWGWWW";
-	map[6] =  "WWWWGWWGGGGGWWWWWGWWW";
+	map[5] =  "WWWWGWWWWWPWWWWWWGWWW";
+	map[6] =  "WWWPGWWGGGGGWWWWWGPWW";
 	map[7] =  "WWWWGWWGGEGGGGGGGGWWW";
-	map[8] =  "WWWWGWWGGGGGWWWWWGWWW";
-	map[9] =  "WWWWGWWGGEGGWWWWWGWWW";
-	map[10] = "WWWWGGGGGGGGWWWWWGWWW";
-	map[11] = "WWWWWWWWWWWWWWWWWGWWW";
-	map[12] = "WWWWWWWWWWWWWWGGGGGSW";
-	map[13] = "WWWWWWWWWWWWWWGWWGWWW";
-	map[14] = "WWWWWWWWWWWWWWWWWWWWW";
+	map[8] =  "WWWWGWPGGGGGWPWWWGWWW";
+	map[9] =  "WWWWGWWGGEGGGGGGGGWWW";
+	map[10] = "WWWPGGGGGGGGWWWWWGWWW";
+	map[11] = "WWWWWWWGWPWWWWWWWGWWW";
+	map[12] = "WWWPGGGGGGGWWPGGGGGSW";
+	map[13] = "WWWWGGGGGGGWWWGWWGWWW";
+	map[14] = "WWWWWWWPWWWWWWWWWWWWW";
 
-	Level* level1 = new Level("The Prision", 21, 15, "Content/Textures/ground.png", "Content/Textures/wall.png", "Content/Textures/ceiling.png", map);
+	Level* level1 = new Level("The Prision", 21, 15, "Content/Textures/ground.png", "Content/Textures/wall.png", "Content/Textures/ceiling.png", "Content/Textures/painting.png", map);
 
 	return level1;
 }

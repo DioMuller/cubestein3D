@@ -36,7 +36,7 @@ class Renderer
 		void DrawTexturedCube(Vector position, Vector scale, Vector rotation, TextureInfo* texture);
 
 		void DrawPlane(Vector startPosition, Vector endPosition, TextureInfo* texture);
-		void DrawWall(Vector position, Vector size, TextureInfo* texture);
+		void DrawWall(Vector position, Vector size, Vector repetitions, TextureInfo* texture);
 
 		void DrawString(Vector position, float r, float g, float b, std::string text);
 		void DrawDebug(Vector position, float r, float g, float b, std::string text);

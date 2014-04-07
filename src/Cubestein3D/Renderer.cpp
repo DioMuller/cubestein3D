@@ -173,11 +173,11 @@ void Renderer::DrawPlane(Vector startPosition, Vector endPosition, TextureInfo* 
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Renderer::DrawWall(Vector position, Vector size, TextureInfo* texture)
+void Renderer::DrawWall(Vector position, Vector size, Vector repetitions, TextureInfo* texture)
 {
 	// X = 2Y so the bricks are wider.
-	float repeatX = 2.0f;
-	float repeatY = 1.0f;
+	float repeatX = repetitions.x;
+	float repeatY = repetitions.y;
 
 	glPushMatrix();
 	glTranslatef(position.x, position.y, position.z);
