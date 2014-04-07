@@ -7,6 +7,9 @@ class Player : Character
 	////////////////////////////////////////
 	private:
 		int health;
+		int ammo;
+		int kills;
+		int points;
 
 	////////////////////////////////////////
 	// GUI Textures
@@ -14,6 +17,9 @@ class Player : Character
 	private:
 		TextureInfo* guiBorder;
 		TextureInfo* guiIconHealth;
+		TextureInfo* guiIconAmmo;
+		TextureInfo* guiIconKills;
+		TextureInfo* guiIconPoints;
 
 	////////////////////////////////////////
 	// Constructor / Destructor
@@ -28,5 +34,7 @@ class Player : Character
 	public:
 		void Render(long delta, Renderer* renderer);
 		void CollideWith(Entity* other);
+
+		void AddKill();
 };
 

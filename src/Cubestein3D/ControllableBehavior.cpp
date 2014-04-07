@@ -36,7 +36,7 @@ void ControllableBehavior::Update(long delta)
 	{
 		if (!hasShot)
 		{
-			Shot* shot = new Shot(parent->position + parent->GetDirection(), parent->GetDirection() );
+			Shot* shot = new Shot((Player*) parent, parent->position + parent->GetDirection(), parent->GetDirection() );
 			GameManager::GetInstance()->AddEntity((Entity*)shot);
 
 			// Small hack: Will make the player shot once if the button is pressed.

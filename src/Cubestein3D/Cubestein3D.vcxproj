@@ -134,6 +134,7 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Shot.h" />
     <ClInclude Include="ShotBehavior.h" />
+    <ClInclude Include="StringHelper.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="TextureInfo.h" />
     <ClInclude Include="Vector.h" />

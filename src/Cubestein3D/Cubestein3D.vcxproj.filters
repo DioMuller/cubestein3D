@@ -202,5 +202,8 @@
     <ClInclude Include="ShotBehavior.h">
       <Filter>GameObjects\Behaviors\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="StringHelper.h">
+      <Filter>Helper Libs</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
