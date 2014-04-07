@@ -25,9 +25,12 @@ void ControllableBehavior::Update(long delta)
 
 	Vector newPosition = parent->position + (rotatedDirection * (float) delta * CHARACTER_SPEED);
 	
-	if (!GameManager::GetCurrentLevel()->CollidesWithLevel(newPosition, parent->size))
+	if (!CheckPositionAndSet(newPosition)) // Tries new Position.
 	{
-		parent->position = newPosition;
+		if (!CheckPositionAndSet(Vector(newPosition.x, parent->position.y, parent->position.z))) // Tries with X only.
+		{
+			CheckPositionAndSet(Vector(parent->position.x, parent->position.y, newPosition.z)); // Tries with Z only.
+		}
 	}
 
 	parent->rotation.y -= (Input::direction.x * (float)delta * CHARACTER_SPEED) / 2.0f;
@@ -54,4 +57,15 @@ void ControllableBehavior::Update(long delta)
 	{
 		hasShot = false;
 	}
+}
+
+bool ControllableBehavior::CheckPositionAndSet(Vector newPos)
+{
+	if (!GameManager::GetCurrentLevel()->CollidesWithLevel(newPos, parent->size))
+	{
+		parent->position = newPos;
+		return true;
+	}
+
+	return false;
 }

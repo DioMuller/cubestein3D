@@ -22,5 +22,7 @@ class ControllableBehavior : Behavior
 	////////////////////////////////////////
 	public:
 		void Update(long delta);
+	private:
+		bool CheckPositionAndSet(Vector newPos);
 };
 
