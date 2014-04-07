@@ -2,6 +2,7 @@
 #include "ControllableBehavior.h"
 #include "Parameters.h"
 #include "StringHelper.h"
+#include "GameManager.h"
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -24,6 +25,9 @@ Player::Player(Vector position) : Character("Content/Textures/Spiderman.png", po
 	guiIconAmmo = new TextureInfo("Content/Textures/icon_ammo.png");
 	guiIconKills = new TextureInfo("Content/Textures/icon_kills.png");
 	guiIconPoints = new TextureInfo("Content/Textures/icon_points.png");
+
+	// Initialize sound
+	sfxShoot = GameManager::GetAudioPlayer()->LoadSFX("Content/Sound/shoot.wav");
 }
 
 
@@ -85,5 +89,7 @@ bool Player::Shoot()
 	if (ammo <= 0) return false;
 
 	ammo--;
+	GameManager::GetAudioPlayer()->PlaySFX(sfxShoot);
+
 	return true;
 }

@@ -1,5 +1,7 @@
 #pragma once
 #include "Character.h"
+#include "AudioPlayer.h"
+
 class Player : Character
 {
 	////////////////////////////////////////
@@ -20,6 +22,12 @@ class Player : Character
 		TextureInfo* guiIconAmmo;
 		TextureInfo* guiIconKills;
 		TextureInfo* guiIconPoints;
+
+	////////////////////////////////////////
+	// Sound Effects
+	////////////////////////////////////////
+	private:
+		SFXId sfxShoot;
 
 	////////////////////////////////////////
 	// Constructor / Destructor

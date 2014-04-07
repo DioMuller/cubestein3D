@@ -87,6 +87,8 @@ SFXId AudioPlayer::LoadSFX(std::string file)
 
 void AudioPlayer::PlaySFX(SFXId audio)
 {
+	if (audio == -1) return;
+
 	int channel;
 
 	channel = Mix_PlayChannel(-1, (Mix_Chunk*) soundBank[audio], 0);
