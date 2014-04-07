@@ -73,6 +73,12 @@
 // Paiting Repetitions
 #define TEXTURE_PAINTING_REPETITIONS Vector(1, 1, 0)
 
+// Character size.
+#define CHARACTER_SIZE Vector(0.5f, 1.0f, 0.5f)
+
+// Character Y
+#define CHARACTER_Y -0.4f
+
 //////////////////////////////////////////
 // GUI
 //////////////////////////////////////////

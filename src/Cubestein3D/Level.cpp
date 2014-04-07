@@ -172,13 +172,13 @@ void Level::ProcessMap()
 					collision[i][j] = 1;
 					break;
 				case 'S':
-					player = new Player(Vector((start.x + j) * SCALE, 0, (start.z + i) * SCALE));
+					player = new Player(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
 					AddEntity((Entity*)player);
 					camera->FollowEntity((Entity*)player);
 					collision[i][j] = 0;
 					break;
 				case 'E':
-					enemy = new EnemySoldier(Vector((start.x + j) * SCALE, 0, (start.z + i) * SCALE));
+					enemy = new EnemySoldier(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
 					AddEntity((Entity*)enemy);
 					collision[i][j] = 0;
 				default:

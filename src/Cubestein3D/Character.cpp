@@ -1,5 +1,6 @@
 #include "Character.h"
 #include "Definitions.h"
+#include "Parameters.h"
 #include "Log.h"
 
 Character::Character(std::string texture, Vector position)
@@ -17,7 +18,7 @@ Character::Character(std::string texture, Vector position)
 	Vector offset = Vector(0.202, 0.202, 0);
 	this->texture = new TextureInfo(texture, map, 8, offset);
 
-	this->size = Vector(0.5, 1, 0.5);
+	this->size = CHARACTER_SIZE;
 
 	this->position = position;
 }
