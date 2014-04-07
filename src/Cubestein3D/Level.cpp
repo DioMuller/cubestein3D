@@ -102,7 +102,7 @@ void Level::Render(long delta, Renderer* renderer)
 	if (SHOWDEBUG)
 	{
 		std::ostringstream str;
-		str << "Entities: " << entities.size() << "; To Remove: " << toRemove.size() << "; FPS: " << 1000 / delta;
+		str << "Entities: " << entities.size() << "; To Remove: " << toRemove.size() << "; FPS: ~" << 1000 / delta;
 		std::string entitiesText(str.str());
 		renderer->DrawDebug(Vector(DEBUGPOSITION_X, DEBUGPOSITION_Y, 1.0f), 1, 1, 0, entitiesText);
 	}

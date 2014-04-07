@@ -74,7 +74,7 @@ int Window::Run()
 void Window::SetFPS(int value)
 {
 	fps = value;
-	waitingTime = 1000 / (float)fps;
+	waitingTime = round(1000.0f / (float)fps);
 }
 
 int Window::GetFPS()
