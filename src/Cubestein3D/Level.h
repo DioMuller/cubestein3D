@@ -30,7 +30,7 @@ class Level
 	////////////////////////////////////////
 	public:
 		Level();
-		Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, char** map);
+		Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, std::string music, char** map);
 		~Level();
 
 	////////////////////////////////////////
@@ -45,7 +45,7 @@ class Level
 		void ClearEntities();
 		bool CollidesWithLevel(Vector position, Vector size);
 	private:
-		void LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, char** map);
+		void LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, std::string music, char** map);
 		void ProcessMap();
 };
 

@@ -2,6 +2,8 @@
 #include "Input.h"
 #include <time.h>
 #include "texture.h"
+#include "Log.h"
+#include <SDL/SDL_mixer.h>
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -111,6 +113,13 @@ void Window::InitializeSDL()
 
 	glViewport(0, 0, width, height);
 	glClearColor(0.0, 0.5, 0.75, 1);
+
+	// Initialize Audio
+	if (Mix_OpenAudio(AUDIO_RATE, AUDIO_S16SYS, AUDIO_CHANNELS, AUDIO_BUFFERS) != 0) 
+	{
+		Log::Error("Unable to initialize audio");
+		Log::Error(Mix_GetError());
+	}
 }
 
 

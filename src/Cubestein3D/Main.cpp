@@ -41,11 +41,11 @@ Level* LoadLevel()
 	map[9] =  "WWWWGWWGGEGGGGGGGGWWW";
 	map[10] = "WWWPGGGGGGGGWWWWWGWWW";
 	map[11] = "WWWWWWWGWPWWWWWWWGWWW";
-	map[12] = "WWWPGGGGGGGWWPGGGGGSW";
+	map[12] = "WWWPGGGGGGGWWPGGHGGSW";
 	map[13] = "WWWWGGGGGGGWWWGWWGWWW";
 	map[14] = "WWWWWWWPWWWWWWWWWWWWW";
 
-	Level* level1 = new Level("The Prision", 21, 15, "Content/Textures/ground.png", "Content/Textures/wall.png", "Content/Textures/ceiling.png", "Content/Textures/painting.png", map);
+	Level* level1 = new Level("The Prision", 21, 15, "Content/Textures/ground.png", "Content/Textures/wall.png", "Content/Textures/ceiling.png", "Content/Textures/painting.png", "Content/Music/level.ogg", map);
 
 	return level1;
 }

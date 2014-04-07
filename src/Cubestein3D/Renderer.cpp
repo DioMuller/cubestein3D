@@ -175,6 +175,7 @@ void Renderer::DrawPlane(Vector startPosition, Vector endPosition, TextureInfo* 
 
 void Renderer::DrawWall(Vector position, Vector size, Vector repetitions, TextureInfo* texture)
 {
+	glEnable(GL_CULL_FACE);
 	// X = 2Y so the bricks are wider.
 	float repeatX = repetitions.x;
 	float repeatY = repetitions.y;
@@ -232,6 +233,7 @@ void Renderer::DrawWall(Vector position, Vector size, Vector repetitions, Textur
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glPopMatrix();
+	glDisable(GL_CULL_FACE);
 }
 
 ////////////////////////////////////////

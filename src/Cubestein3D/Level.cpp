@@ -5,6 +5,7 @@
 #include "Parameters.h"
 #include "Log.h"
 #include <sstream>
+#include <SDL/SDL_mixer.h>
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -15,13 +16,14 @@ Level::Level()
 	toRemove = std::vector<Entity*>();
 }
 
-Level::Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, char** map) : Level()
+Level::Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, std::string music, char** map) : Level()
 {
-	LoadLevel(name, width, height, groundTexture, wallTexture, ceilingTexture, decorationTexture, map);
+	LoadLevel(name, width, height, groundTexture, wallTexture, ceilingTexture, decorationTexture, music, map);
 }
 
 Level::~Level()
 {
+	//Mix_HaltMusic(); Mix_FreeMusic(music); Mix_CloseAudio();
 }
 
 ////////////////////////////////////////
@@ -84,6 +86,7 @@ void Level::Render(long delta, Renderer* renderer)
 					renderer->DrawWall(Vector((start.x + j) *  SCALE, 0, (start.z + i) * SCALE), scale, TEXTURE_WALL_REPETITIONS, wallTexture);
 					break;
 				case 'P':
+				case 'H':
 					renderer->DrawWall(Vector((start.x + j) *  SCALE, 0, (start.z + i) * SCALE), scale, TEXTURE_PAINTING_REPETITIONS, decorationTexture);
 					break;
 			}
@@ -127,7 +130,7 @@ void Level::ClearEntities()
 ////////////////////////////////////////
 // Loading Methods
 ////////////////////////////////////////
-void Level::LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, char** map)
+void Level::LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, std::string music, char** map)
 {
 	this->name = name;
 	this->width = width;
@@ -149,6 +152,22 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 	this->scale = Vector(0.5f * SCALE, 1.5f, 0.5f * SCALE);
 
 	ProcessMap();
+
+	// Play BGM
+	Mix_Music *levelBgm; 
+	levelBgm = Mix_LoadMUS(music.c_str()); 
+	
+	if (levelBgm == nullptr)
+	{
+		Log::Error("Unable to load Ogg file.");
+		Log::Error(Mix_GetError());
+	}
+
+	if (Mix_PlayMusic(levelBgm, -1) == -1) 
+	{ 
+		Log::Error("Unable to play Ogg file.");
+		Log::Error(Mix_GetError());
+	}
 }
 
 void Level::ProcessMap()
@@ -181,6 +200,7 @@ void Level::ProcessMap()
 					enemy = new EnemySoldier(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
 					AddEntity((Entity*)enemy);
 					collision[i][j] = 0;
+				case 'H':
 				default:
 					collision[i][j] = 0;
 					break;
