@@ -3,7 +3,7 @@
 #include <time.h>
 #include "texture.h"
 #include "Log.h"
-#include "MusicPlayer.h"
+#include "AudioPlayer.h"
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -113,8 +113,6 @@ void Window::InitializeSDL()
 
 	glViewport(0, 0, width, height);
 	glClearColor(0.0, 0.5, 0.75, 1);
-
-	MusicPlayer::Initialize();
 }
 
 

@@ -4,7 +4,7 @@
 #include "EnemySoldier.h"
 #include "Parameters.h"
 #include "Log.h"
-#include "MusicPlayer.h"
+#include "AudioPlayer.h"
 #include <sstream>
 
 ////////////////////////////////////////
@@ -153,7 +153,7 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 
 	ProcessMap();
 
-	MusicPlayer::PlaySong(music);
+	GameManager::GetAudioPlayer()->PlaySong(music);
 }
 
 void Level::ProcessMap()

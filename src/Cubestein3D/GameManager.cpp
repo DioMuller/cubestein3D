@@ -12,6 +12,7 @@ GameManager::GameManager()
 {
 	currentLevel = new Level();
 	renderer = new Renderer();
+	audio = new AudioPlayer();
 
 	camera = new Camera();
 	GameManager::SetInstance(this);
@@ -20,6 +21,10 @@ GameManager::GameManager()
 
 GameManager::~GameManager()
 {
+	delete currentLevel;
+	delete renderer;
+	delete audio;
+	delete camera;
 }
 
 ////////////////////////////////////////
@@ -111,4 +116,9 @@ Camera* GameManager::GetCamera()
 Level* GameManager::GetCurrentLevel()
 {
 	return instance->currentLevel;
+}
+
+AudioPlayer* GameManager::GetAudioPlayer()
+{
+	return instance->audio;
 }

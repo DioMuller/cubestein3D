@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "Level.h"
 #include "Camera.h"
+#include "AudioPlayer.h"
 
 class GameManager
 {
@@ -14,6 +15,7 @@ class GameManager
 		Camera* camera;
 		Renderer* renderer;
 		Level* currentLevel;
+		AudioPlayer* audio;
 
 	////////////////////////////////////////
 	// Attributes
@@ -52,5 +54,6 @@ class GameManager
 		static void SetInstance(GameManager* game);
 		static GameManager* GetInstance();
 		static Level* GetCurrentLevel();
+		static AudioPlayer* GetAudioPlayer();
 };
 
