@@ -1,8 +1,9 @@
 #include "Pickup.h"
 #include "Parameters.h"
+#include "GameManager.h"
 
 
-Pickup::Pickup(std::string texture, Vector position)
+Pickup::Pickup(std::string texture, std::string soundEffect, Vector position)
 {
 	float* map = new float[8];
 	map[0] = 0.547f;
@@ -16,6 +17,8 @@ Pickup::Pickup(std::string texture, Vector position)
 
 	Vector offset = Vector(0.202, 0.202, 0);
 	this->texture = new TextureInfo(texture, map, 8, offset);
+
+	this->pickupSound = GameManager::GetAudioPlayer()->LoadSFX(soundEffect);
 
 	this->size = PICKUP_SIZE;
 
@@ -41,4 +44,10 @@ void Pickup::Render(long delta, Renderer* renderer)
 {
 	renderer->DrawTexturedCube(position, size, rotation, texture);
 	Entity::Render(delta, renderer);
+}
+
+void Pickup::Destroy()
+{
+	GameManager::GetAudioPlayer()->PlaySFX(pickupSound);
+	Entity::Destroy();
 }

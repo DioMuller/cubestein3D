@@ -1,5 +1,7 @@
 #pragma once
 #include "Entity.h"
+#include "AudioPlayer.h"
+
 class Pickup : public Entity
 {
 	////////////////////////////////////////
@@ -7,12 +9,13 @@ class Pickup : public Entity
 	////////////////////////////////////////
 	protected:
 		TextureInfo* texture;
+		SFXId pickupSound;
 
 	////////////////////////////////////////
 	// Constructor / Destructor
 	////////////////////////////////////////
 	public:
-		Pickup(std::string texture, Vector position);
+		Pickup(std::string texture, std::string sound, Vector position);
 		~Pickup();
 
 	////////////////////////////////////////
@@ -21,5 +24,7 @@ class Pickup : public Entity
 	public:
 		void Update(long delta);
 		void Render(long delta, Renderer* renderer);
+
+		void Destroy();
 };
 

@@ -12,6 +12,7 @@ class AudioPlayer
 	private:
 		void* currentSong;
 		std::vector<void*> soundBank;
+		std::vector<std::string> loadedSounds;
 
 	////////////////////////////////////////
 	// Constructor / Destructor

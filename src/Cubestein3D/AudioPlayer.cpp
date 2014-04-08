@@ -10,6 +10,7 @@ AudioPlayer::AudioPlayer()
 {
 	currentSong = nullptr;
 	soundBank = std::vector<void*>();
+	loadedSounds = std::vector<std::string>();
 	Initialize();
 }
 
@@ -67,6 +68,11 @@ void AudioPlayer::StopSong()
 ////////////////////////////////////////
 SFXId AudioPlayer::LoadSFX(std::string file)
 {
+	for (int i = 0; i < loadedSounds.size(); i++)
+	{
+		if (loadedSounds[i] == file) return i;
+	}
+
 	Mix_Chunk* sound = nullptr;
 
 	sound = Mix_LoadWAV(file.c_str());
@@ -81,6 +87,8 @@ SFXId AudioPlayer::LoadSFX(std::string file)
 	else
 	{
 		soundBank.push_back(sound);
+		loadedSounds.push_back(file);
+
 		return (soundBank.size() - 1);
 	}
 }
@@ -88,7 +96,7 @@ SFXId AudioPlayer::LoadSFX(std::string file)
 void AudioPlayer::PlaySFX(SFXId audio)
 {
 	if (audio == -1) return;
-
+	
 	int channel;
 
 	channel = Mix_PlayChannel(-1, (Mix_Chunk*) soundBank[audio], 0);
