@@ -85,7 +85,7 @@ int Window::GetFPS()
 void Window::SetGame(GameManager* game)
 {
 	this->game = game;
-	game->InitializeCamera(45.0f, width, height, 1.0f, 800.0f);
+	game->InitializeCamera(60.0f , width, height, 1.0f, 800.0f);
 }
 
 GameManager* Window::GetGame()
