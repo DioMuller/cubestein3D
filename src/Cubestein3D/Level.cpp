@@ -5,6 +5,9 @@
 #include "Parameters.h"
 #include "Log.h"
 #include "AudioPlayer.h"
+#include "HealthPickup.h"
+#include "AmmoPickup.h"
+#include "ScorePickup.h"
 #include <sstream>
 
 ////////////////////////////////////////
@@ -102,7 +105,7 @@ void Level::Render(long delta, Renderer* renderer)
 	if (SHOWDEBUG)
 	{
 		std::ostringstream str;
-		str << "Entities: " << entities.size() << "; To Remove: " << toRemove.size() << "; FPS: ~" << 1000 / delta;
+		str << "Entities: " << entities.size() << "; To Remove: " << toRemove.size() << "; Last Delta Time:" << delta << " ms.";
 		std::string entitiesText(str.str());
 		renderer->DrawDebug(Vector(DEBUGPOSITION_X, DEBUGPOSITION_Y, 1.0f), 1, 1, 0, entitiesText);
 	}
@@ -162,6 +165,7 @@ void Level::ProcessMap()
 	Camera* camera = GameManager::GetInstance()->GetCamera();
 	Player* player = nullptr;
 	EnemySoldier* enemy = nullptr;
+	Pickup* pickup = nullptr;
 
 	collision = new int*[height];
 	for (i = 0; i < height; i++) collision[i] = new int[width];
@@ -172,21 +176,37 @@ void Level::ProcessMap()
 		{
 			switch (map[i][j])
 			{
-				case 'W':
-				case 'P':
+				case 'W': // Wall
+				case 'P': // Decoration
 					collision[i][j] = 1;
 					break;
-				case 'S':
+				case 'S': // Player Start Point
 					player = new Player(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
 					AddEntity((Entity*)player);
 					camera->FollowEntity((Entity*)player);
 					collision[i][j] = 0;
 					break;
-				case 'E':
+				case 'E': // Enemy
 					enemy = new EnemySoldier(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
 					AddEntity((Entity*)enemy);
 					collision[i][j] = 0;
-				case 'H':
+					break;
+				case 'M': // Medikit
+					pickup = new HealthPickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)pickup);
+					collision[i][j] = 0;
+					break;
+				case 'A': // Medikit
+					pickup = new AmmoPickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)pickup);
+					collision[i][j] = 0;
+					break;
+				case 'T': // Medikit
+					pickup = new ScorePickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)pickup);
+					collision[i][j] = 0;
+					break;
+				case 'H': // Hidden Passage
 				default:
 					collision[i][j] = 0;
 					break;

@@ -65,6 +65,15 @@
     <Filter Include="GameAudio\Source">
       <UniqueIdentifier>{cd459cef-e452-4d09-ba79-0c9089d76076}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\Pickups">
+      <UniqueIdentifier>{0b4ddb46-c3dd-4af9-a6ba-de8d94ddbdb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Pickups\Headers">
+      <UniqueIdentifier>{bb9017b6-6b0d-4ba4-a325-5266ca7c3994}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Pickups\Source">
+      <UniqueIdentifier>{bfe78ae0-3ac6-4a75-a405-60ad1ba60a1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Behavior.cpp">
@@ -136,6 +145,18 @@
     </ClCompile>
     <ClCompile Include="AudioPlayer.cpp">
       <Filter>GameAudio\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Pickup.cpp">
+      <Filter>GameObjects\Pickups\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthPickup.cpp">
+      <Filter>GameObjects\Pickups\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="AmmoPickup.cpp">
+      <Filter>GameObjects\Pickups\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ScorePickup.cpp">
+      <Filter>GameObjects\Pickups\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +240,18 @@
     </ClInclude>
     <ClInclude Include="AudioPlayer.h">
       <Filter>GameAudio\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Pickup.h">
+      <Filter>GameObjects\Pickups\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthPickup.h">
+      <Filter>GameObjects\Pickups\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AmmoPickup.h">
+      <Filter>GameObjects\Pickups\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ScorePickup.h">
+      <Filter>GameObjects\Pickups\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -79,6 +79,15 @@
 // Character Y
 #define CHARACTER_Y -0.4f
 
+// Pickup size
+#define PICKUP_SIZE Vector(0.5f, 0.5f, 0.5f)
+
+// Pickup size
+#define PICKUP_Y -0.8f
+
+// Pickup rotation
+#define PICKUP_ROTATION 0.05f
+
 //////////////////////////////////////////
 // Audio
 //////////////////////////////////////////

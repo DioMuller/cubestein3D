@@ -28,9 +28,22 @@ int main(int argc, char **argv)
 
 Level* LoadLevel()
 {
+	/*****************************************
+	* Descriptions:							 *
+	* W = Wall								 *
+	* G = Ground							 *
+	* S = Player Start						 *
+	* F = Level Ending						 *
+	* E = Enemy								 *
+	* P = Decoration						 *
+	* H = Hidden Passage					 *
+	* M = Medkit							 *
+	* T = Treasure							 *
+	* A = Ammo								 *
+	******************************************/
 	char** map = new char*[15];
 	map[0] =  "WWWWWWWWWWWWWWWWWWWWW";
-	map[1] =  "WWGGEGGWWWWGGGGGGGGWW";
+	map[1] =  "WWGGFGGWWWWGGGGGGGGWW";
 	map[2] =  "WWGGEGGWWWWGGGEGGGGPW";
 	map[3] =  "WWGGGGGWWWWGGGGGWGGWW";
 	map[4] =  "WWWWGWWWWWWWWWWWWGWWW";
@@ -41,8 +54,8 @@ Level* LoadLevel()
 	map[9] =  "WWWWGWWGGEGGGGGGGGWWW";
 	map[10] = "WWWPGGGGGGGGWWWWWGWWW";
 	map[11] = "WWWWWWWGWPWWWWWWWGWWW";
-	map[12] = "WWWPGGGGGGGWWPGGHGGSW";
-	map[13] = "WWWWGGGGGGGWWWGWWGWWW";
+	map[12] = "WWWPGGGGGGGWWTGGHGGSW";
+	map[13] = "WWWWGGGGGGGWWMAWWGWWW";
 	map[14] = "WWWWWWWPWWWWWWWWWWWWW";
 
 	Level* level1 = new Level("The Prision", 21, 15, "Content/Textures/ground.png", "Content/Textures/wall.png", "Content/Textures/ceiling.png", "Content/Textures/painting.png", "Content/Music/level.ogg", map);

@@ -85,12 +85,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AmmoPickup.cpp" />
     <ClCompile Include="Behavior.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="ControllableBehavior.cpp" />
     <ClCompile Include="EnemySoldier.cpp" />
     <ClCompile Include="glprint.cpp" />
+    <ClCompile Include="HealthPickup.cpp" />
     <ClCompile Include="HelperOperations.cpp" />
     <ClCompile Include="Input.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -103,9 +105,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="AudioPlayer.cpp" />
+    <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="ScorePickup.cpp" />
     <ClCompile Include="Shot.cpp" />
     <ClCompile Include="ShotBehavior.cpp" />
     <ClCompile Include="texture.cpp" />
@@ -115,6 +119,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AmmoPickup.h" />
     <ClInclude Include="Behavior.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
@@ -122,6 +127,7 @@
     <ClInclude Include="Definitions.h" />
     <ClInclude Include="EnemySoldier.h" />
     <ClInclude Include="glprint.h" />
+    <ClInclude Include="HealthPickup.h" />
     <ClInclude Include="HelperOperations.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Entity.h" />
@@ -131,9 +137,11 @@
     <ClInclude Include="Log.h" />
     <ClInclude Include="AudioPlayer.h" />
     <ClInclude Include="Parameters.h" />
+    <ClInclude Include="Pickup.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="ScorePickup.h" />
     <ClInclude Include="Shot.h" />
     <ClInclude Include="ShotBehavior.h" />
     <ClInclude Include="StringHelper.h" />

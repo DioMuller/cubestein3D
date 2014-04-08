@@ -5,7 +5,7 @@
 ////////////////////////////////////////
 // Constructor / Destructor
 ////////////////////////////////////////
-EnemySoldier::EnemySoldier(Vector position) : Character("Content/Textures/Domo.png", position)
+EnemySoldier::EnemySoldier(Vector position) : Character("Content/Textures/enemy.png", position)
 {
 	EnemyBehavior* walking = new EnemyBehavior(this);
 	AddBehavior((Behavior*)walking);

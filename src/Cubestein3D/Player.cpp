@@ -3,11 +3,12 @@
 #include "Parameters.h"
 #include "StringHelper.h"
 #include "GameManager.h"
+#include <math.h>
 
 ////////////////////////////////////////
 // Constructor / Destructor
 ////////////////////////////////////////
-Player::Player(Vector position) : Character("Content/Textures/Spiderman.png", position)
+Player::Player(Vector position) : Character("Content/Textures/hero.png", position)
 {
 	ControllableBehavior* control = new ControllableBehavior(this);
 
@@ -74,7 +75,22 @@ void Player::CollideWith(Entity* other)
 
 	if (other->tag == "Enemy")
 	{
-		health--;
+		health-= 10;
+	}
+	else if (other->tag == "HealthPickup" && health < 100)
+	{
+		health = MIN(health + 30, 100);
+		other->Destroy();
+	}
+	else if (other->tag == "AmmoPickup")
+	{
+		ammo += 10;
+		other->Destroy();
+	}
+	else if (other->tag == "ScorePickup")
+	{
+		points += 1000;
+		other->Destroy();
 	}
 }
 
