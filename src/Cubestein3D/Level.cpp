@@ -1,3 +1,5 @@
+#include <sstream>
+#include <algorithm>
 #include "Level.h"
 #include "Player.h"
 #include "GameManager.h"
@@ -9,7 +11,8 @@
 #include "AmmoPickup.h"
 #include "ScorePickup.h"
 #include "EndLevel.h"
-#include <sstream>
+#include "tinyxml2.h"
+#include "StringHelper.h"
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -20,14 +23,13 @@ Level::Level()
 	toRemove = std::vector<Entity*>();
 }
 
-Level::Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, std::string music, char** map) : Level()
+Level::Level(std::string file) : Level()
 {
-	LoadLevel(name, width, height, groundTexture, wallTexture, ceilingTexture, decorationTexture, music, map);
+	LoadFromXML(file);
 }
 
 Level::~Level()
 {
-	//Mix_HaltMusic(); Mix_FreeMusic(music); Mix_CloseAudio();
 }
 
 ////////////////////////////////////////
@@ -160,6 +162,53 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 	GameManager::GetAudioPlayer()->PlaySong(music);
 }
 
+void Level::LoadFromXML(std::string file)
+{
+	tinyxml2::XMLDocument doc;
+	doc.LoadFile(file.c_str());
+
+	tinyxml2::XMLElement* root = doc.FirstChildElement("level");
+
+	// Name
+	std::string name = std::string(root->FirstChildElement("name")->GetText());
+
+	// Map Size
+	tinyxml2::XMLElement* size = root->FirstChildElement("size");
+	int width = std::stoi(std::string(size->FirstChildElement("width")->GetText()));
+	int height = std::stoi(std::string(size->FirstChildElement("height")->GetText()));
+
+	// Textures
+	tinyxml2::XMLElement* textures = root->FirstChildElement("textures");
+	std::string ground = std::string(textures->FirstChildElement("ground")->GetText());
+	std::string wall = std::string(textures->FirstChildElement("wall")->GetText());
+	std::string ceiling = std::string(textures->FirstChildElement("ceiling")->GetText());
+	std::string decoration = std::string(textures->FirstChildElement("decoration")->GetText());
+
+	// BGM
+	std::string bgm = std::string(root->FirstChildElement("bgm")->GetText());
+
+	// Map
+	std::string map_string = std::string(root->FirstChildElement("map")->GetText());
+	map_string.erase(std::remove(map_string.begin(), map_string.end(), '\t'), map_string.end());
+
+	std::vector<std::string> map_split = split(map_string,'\n');
+
+	char** map = new char*[height];
+	int counter = 0;
+
+	for (std::string str : map_split)
+	{
+		if (str.size() == width)
+		{
+			map[counter] = new char[width + 1];
+			strcpy(map[counter], str.c_str());
+			counter++;
+		}
+	}
+
+	LoadLevel(name, width, height, ground, wall, ceiling, decoration, bgm, map);
+}
+
 void Level::ProcessMap()
 {
 	int i, j;
@@ -173,6 +222,19 @@ void Level::ProcessMap()
 	{
 		for (j = 0; j < width; j++)
 		{
+			/*****************************************
+			* Descriptions:							 *
+			* W = Wall								 *
+			* G = Ground							 *
+			* S = Player Start						 *
+			* F = Level Ending						 *
+			* E = Enemy								 *
+			* P = Decoration						 *
+			* H = Hidden Passage					 *
+			* M = Medkit							 *
+			* T = Treasure							 *
+			* A = Ammo								 *
+			******************************************/
 			switch (map[i][j])
 			{
 				case 'W': // Wall

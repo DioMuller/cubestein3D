@@ -161,6 +161,12 @@
     <ClCompile Include="EndLevel.cpp">
       <Filter>GameObjects\Entities\Source</Filter>
     </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>Helper Libs\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="StringHelper.cpp">
+      <Filter>Helper Libs\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h">
@@ -258,6 +264,9 @@
     </ClInclude>
     <ClInclude Include="EndLevel.h">
       <Filter>GameObjects\Entities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>Helper Libs\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
