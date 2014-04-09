@@ -201,7 +201,7 @@ void Level::LoadFromXML(std::string file)
 		if (str.size() == width)
 		{
 			map[counter] = new char[width + 1];
-			strcpy(map[counter], str.c_str());
+			strcpy_s(map[counter], (width + 1) * sizeof(char), str.c_str());
 			counter++;
 		}
 	}

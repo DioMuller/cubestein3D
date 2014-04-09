@@ -9,11 +9,11 @@ int main(int argc, char **argv)
 	GameManager* game = new GameManager();
 
 	// Initializes RNG
-	srand(time(0));
+	srand((unsigned int) time(0));
 
 	// Initializes level
-	Level* level1 = new Level("Content/Levels/E1M1.xml");
-	game->LoadLevel(level1);
+	Level* level = new Level("Content/Levels/E1M1.xml");
+	game->LoadLevel(level);
 
 	// Links game with window and runs.
 	window->SetGame(game);

@@ -31,7 +31,6 @@ class Level
 	public:
 		Level();
 		Level(std::string path);
-		Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, std::string music, char** map);
 		~Level();
 
 	////////////////////////////////////////
