@@ -1,7 +1,17 @@
 #pragma once
 #include "Character.h"
+#include "AudioPlayer.h"
+
 class EnemySoldier : public Character
 {
+	////////////////////////////////////////
+	// Attributes
+	////////////////////////////////////////
+	private:
+		SFXId attackSound;
+		SFXId dieSound;
+		bool isDead;
+
 	////////////////////////////////////////
 	// Constructor / Destructor
 	////////////////////////////////////////
@@ -14,5 +24,6 @@ class EnemySoldier : public Character
 	////////////////////////////////////////
 	public:
 		void CollideWith(Entity* other);
+		void Die();
 };
 

@@ -63,7 +63,15 @@ void Entity::RemoveBehavior(Behavior* behavior)
 
 void Entity::ClearBehaviors()
 {
-	behaviors.clear();
+	Behavior* behavior;
+
+	while (behaviors.size() != 0)
+	{
+		behavior = *(behaviors.begin());
+		behaviors.pop_front();
+		delete behavior;
+	}
+
 }
 
 ////////////////////////////////////////
