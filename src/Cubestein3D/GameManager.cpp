@@ -14,6 +14,10 @@ GameManager::GameManager()
 	renderer = new Renderer();
 	audio = new AudioPlayer();
 
+	nextLevels = std::vector<std::string>();
+
+	endGame = false;
+
 	camera = new Camera();
 	GameManager::SetInstance(this);
 }
@@ -31,11 +35,21 @@ GameManager::~GameManager()
 // Life Cycle Methods
 ////////////////////////////////////////
 
-void GameManager::Update(long delta)
+bool GameManager::Update(long delta)
 {
-	currentLevel->Update(delta);
+	if (endGame)
+	{
+		delete currentLevel;
+		currentLevel = nullptr;
+		return false;
+	}
 
+	if (currentLevel == nullptr) return false;
+
+	currentLevel->Update(delta);
 	camera->Update(delta);
+
+	return true;
 }
 
 void GameManager::Render(long delta)
@@ -93,6 +107,13 @@ void GameManager::InitializeCamera(float fov, int width, int height, float zNear
 void GameManager::LoadLevel(Level* level)
 {
 	currentLevel = level;
+}
+
+bool GameManager::NextLevel()
+{
+	endGame = true;
+
+	return !endGame;
 }
 
 ////////////////////////////////////////

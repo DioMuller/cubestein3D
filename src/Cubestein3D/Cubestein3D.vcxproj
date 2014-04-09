@@ -90,6 +90,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="ControllableBehavior.cpp" />
+    <ClCompile Include="EndLevel.cpp" />
     <ClCompile Include="EnemySoldier.cpp" />
     <ClCompile Include="glprint.cpp" />
     <ClCompile Include="HealthPickup.cpp" />
@@ -125,6 +126,7 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="ControllableBehavior.h" />
     <ClInclude Include="Definitions.h" />
+    <ClInclude Include="EndLevel.h" />
     <ClInclude Include="EnemySoldier.h" />
     <ClInclude Include="glprint.h" />
     <ClInclude Include="HealthPickup.h" />

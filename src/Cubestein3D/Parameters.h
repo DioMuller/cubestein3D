@@ -65,7 +65,7 @@
 #define SCALE 4
 
 // Collision error vector
-#define COLLISION_ERROR Vector(0.9f, 0, 0.9f)
+#define COLLISION_ERROR Vector(1.0f, 0, 1.0f)
 
 // Wall Repetitions
 #define TEXTURE_WALL_REPETITIONS Vector(2, 1, 0)

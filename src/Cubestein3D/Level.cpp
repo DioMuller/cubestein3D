@@ -8,6 +8,7 @@
 #include "HealthPickup.h"
 #include "AmmoPickup.h"
 #include "ScorePickup.h"
+#include "EndLevel.h"
 #include <sstream>
 
 ////////////////////////////////////////
@@ -163,9 +164,7 @@ void Level::ProcessMap()
 {
 	int i, j;
 	Camera* camera = GameManager::GetInstance()->GetCamera();
-	Player* player = nullptr;
-	EnemySoldier* enemy = nullptr;
-	Pickup* pickup = nullptr;
+	Entity* auxiliary = nullptr;
 
 	collision = new int*[height];
 	for (i = 0; i < height; i++) collision[i] = new int[width];
@@ -181,29 +180,34 @@ void Level::ProcessMap()
 					collision[i][j] = 1;
 					break;
 				case 'S': // Player Start Point
-					player = new Player(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
-					AddEntity((Entity*)player);
-					camera->FollowEntity((Entity*)player);
+					auxiliary = new Player(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)auxiliary);
+					camera->FollowEntity((Entity*)auxiliary);
 					collision[i][j] = 0;
 					break;
 				case 'E': // Enemy
-					enemy = new EnemySoldier(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
-					AddEntity((Entity*)enemy);
+					auxiliary = new EnemySoldier(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)auxiliary);
 					collision[i][j] = 0;
 					break;
 				case 'M': // Medikit
-					pickup = new HealthPickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
-					AddEntity((Entity*)pickup);
+					auxiliary = new HealthPickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)auxiliary);
 					collision[i][j] = 0;
 					break;
 				case 'A': // Medikit
-					pickup = new AmmoPickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
-					AddEntity((Entity*)pickup);
+					auxiliary = new AmmoPickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)auxiliary);
 					collision[i][j] = 0;
 					break;
 				case 'T': // Medikit
-					pickup = new ScorePickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
-					AddEntity((Entity*)pickup);
+					auxiliary = new ScorePickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)auxiliary);
+					collision[i][j] = 0;
+					break;
+				case 'F': // Level Ending
+					auxiliary = new EndLevel(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)auxiliary);
 					collision[i][j] = 0;
 					break;
 				case 'H': // Hidden Passage

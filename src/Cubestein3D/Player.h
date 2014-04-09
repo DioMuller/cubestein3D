@@ -2,7 +2,7 @@
 #include "Character.h"
 #include "AudioPlayer.h"
 
-class Player : Character
+class Player : public Character
 {
 	////////////////////////////////////////
 	// Attributes

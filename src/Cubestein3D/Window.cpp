@@ -52,7 +52,7 @@ int Window::Run()
 		// GAME UPDATE
 		if (game != nullptr)
 		{
-			game->Update(delta);
+			if( !game->Update(delta) ) break;
 			game->Render(delta);
 		}
 
