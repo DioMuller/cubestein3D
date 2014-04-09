@@ -54,8 +54,10 @@
 #define SHOT_SIZE 0.5f
 
 // Shot is destroyed if it hits wall?
-#define SHOT_DESTROYONWALL false
+#define SHOT_DESTROYONWALL true
 
+// Enemy attack distance
+#define ATTACK_DISTANCE 100.0f
 
 //////////////////////////////////////////
 // Level Parameters

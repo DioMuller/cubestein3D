@@ -102,3 +102,13 @@ Vector Vector::rotateY(float angle)
 
 	return *this;
 }
+
+float Vector::Distance(Vector other)
+{
+	return sqrtf(DistanceSquared(other));
+}
+
+float Vector::DistanceSquared(Vector other)
+{
+	return ((x - other.x) * (x - other.x)) + ((y - other.y) * (y - other.y)) + ((z - other.z) * (z - other.z));
+}

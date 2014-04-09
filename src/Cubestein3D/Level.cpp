@@ -154,6 +154,8 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 
 	this->scale = Vector(0.5f * SCALE, 1.5f, 0.5f * SCALE);
 
+	this->player = nullptr;
+
 	ProcessMap();
 
 	GameManager::GetAudioPlayer()->PlaySong(music);
@@ -184,6 +186,7 @@ void Level::ProcessMap()
 					player = new Player(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
 					AddEntity((Entity*)player);
 					camera->FollowEntity((Entity*)player);
+					this->player = player;
 					collision[i][j] = 0;
 					break;
 				case 'E': // Enemy
@@ -241,4 +244,9 @@ bool Level::CollidesWithLevel(Vector position, Vector size)
 	}
 
 	return false;
+}
+
+Player* Level::GetPlayer()
+{
+	return player;
 }

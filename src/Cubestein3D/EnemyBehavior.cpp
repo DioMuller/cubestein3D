@@ -12,6 +12,7 @@ EnemyBehavior::EnemyBehavior(Entity* parent) : Behavior(parent)
 	this->maxDistance = (float) 1.0f + (rand() % 5);
 
 	this->walked = 0.0f;
+	this->target = GameManager::GetCurrentLevel()->GetPlayer();
 }
 
 
@@ -24,23 +25,38 @@ EnemyBehavior::~EnemyBehavior()
 ////////////////////////////////////////
 void EnemyBehavior::Update(long delta)
 {
-	float speed = delta * ENEMY_SPEED;
-	Vector newPosition = parent->position + (parent->GetDirection() * speed);
-
-	walked += speed;
-
-	if (walked > maxDistance )
+	if (target == nullptr)
 	{
-		this->parent->rotation.y = (float) (((int) this->parent->rotation.y + 180) % 360);
-		walked = 0.0f;
+		this->target = GameManager::GetCurrentLevel()->GetPlayer();
 	}
-	else if (GameManager::GetCurrentLevel()->CollidesWithLevel(newPosition, parent->size))
+
+	float distance = parent->position.DistanceSquared(target->position);
+
+	if (distance > ATTACK_DISTANCE)
 	{
-		this->parent->rotation.y = (float)(((int) this->parent->rotation.y + 90) % 360);
-		walked = 0.0f;
+		float speed = delta * ENEMY_SPEED;
+		Vector newPosition = parent->position + (parent->GetDirection() * speed);
+
+		walked += speed;
+
+		if (walked > maxDistance)
+		{
+			this->parent->rotation.y = (float)(((int) this->parent->rotation.y + 180) % 360);
+			walked = 0.0f;
+		}
+		else if (GameManager::GetCurrentLevel()->CollidesWithLevel(newPosition, parent->size))
+		{
+			this->parent->rotation.y = (float)(((int) this->parent->rotation.y + 90) % 360);
+			walked = 0.0f;
+		}
+		else
+		{
+			parent->position = newPosition;
+		}
 	}
 	else
 	{
-		parent->position = newPosition;
+		// Test
+		parent->position.y += 0.01;
 	}
 }

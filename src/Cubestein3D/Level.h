@@ -1,6 +1,7 @@
 #pragma once
 #include "TextureInfo.h"
 #include "Entity.h"
+#include "Player.h"
 #include <vector>
 
 class Level
@@ -24,6 +25,8 @@ class Level
 		Vector ceilingStart, ceilingEnd;
 		// Object size scale.
 		Vector scale;
+		// The Player
+		Player* player;
 
 	////////////////////////////////////////
 	// Constructors/Destructors
@@ -44,6 +47,7 @@ class Level
 		void RemoveEntity(Entity* entity);
 		void ClearEntities();
 		bool CollidesWithLevel(Vector position, Vector size);
+		Player* GetPlayer();
 	private:
 		void LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, std::string music, char** map);
 		void ProcessMap();

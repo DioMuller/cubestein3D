@@ -41,6 +41,10 @@ public:
 	Vector operator -(const Vector& v) const;
 
 	Vector& operator -=(const Vector& v);
+
+	// Distance and DistanceSquared implemented by me.
+	float Distance(Vector other);
+	float DistanceSquared(Vector other);
 };
 
 #endif

@@ -1,6 +1,7 @@
 #pragma once
 #include "Behavior.h"
 #include "Vector.h"
+#include "Player.h"
 
 class EnemyBehavior : public Behavior
 {
@@ -10,6 +11,7 @@ class EnemyBehavior : public Behavior
 	private:
 		float maxDistance;
 		float walked;
+		Player* target;
 
 	////////////////////////////////////////
 	// Constructor / Destructor
