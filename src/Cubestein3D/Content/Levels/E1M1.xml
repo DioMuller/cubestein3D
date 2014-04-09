@@ -2,30 +2,33 @@
 <level>
   <name>The Prision</name>
   <size>
-    <width>20</width>
+    <width>21</width>
     <height>15</height>
   </size>
   <textures>
-    <ground>Textures/ground.png</ground>
-    <wall>Textures/wall.png</wall>
+    <ground>Content/Textures/ground.png</ground>
+    <wall>Content/Textures/wall.png</wall>
+	<ceiling>Content/Textures/ceiling.png</ceiling>
+	<decoration>Content/Textures/painting.png</decoration>
   </textures>
+  <bgm>Content/Music/level.ogg</bgm>
   <map>
     <![CDATA[
-      WWWWWWWWWWWWWWWWWWWWW
-      WWGGEGGWWWWGGGGGGGGWW
-      WWGGGGGWWWWGGGGGGGGWW
-      WWGGGGGWWWWGGGGGWGGWW
-      WWWWGWWWWWWWWWWWWGWWW
-      WWWWGWWWWWWWWWWWWGWWW
-      WWWWGWWGGGGGWWWWWGWWW
-      WWWWGWWGGGGGGGGGGGWWW
-      WWWWGWWGGGGGWWWWWGWWW
-      WWWWGWWGGGGGWWWWWGWWW
-      WWWWGGGGGGGGWWWWWGWWW
-      WWWWWWWWWWWWWWWWWGWWW
-      WWWWWWWWWWWWWWGGGGGSW
-      WWWWWWWWWWWWWWGWWGWWW
-      WWWWWWWWWWWWWWWWWWWWW
+		WWWWWWWWWWWWWWWWWWWWW
+		WWGGFGGWWWWGGGGGGGGWW
+		WWGGEGGWWWWGGGEGGGGPW
+		WWGGGGGWWWWGGGGGWGGWW
+		WWWWGWWWWWWWWWWWWGWWW
+		WWWWGWWWWWPWWWWWWGWWW
+		WWWPGWWGGGGGWWWWWGPWW
+		WWWWGWWGGEGGGGGGGGWWW
+		WWWWGWPGGGGGWPWWWGWWW
+		WWWWGWWGGEGGGGGGGGWWW
+		WWWPGGGGGGGGWWWWWGWWW
+		WWWWWWWGWPWWWWWWWGWWW
+		WWWPGGGGGGGWWTGGHGGSW
+		WWWWGGGGGGGWWMAWWGWWW
+		WWWWWWWPWWWWWWWWWWWWW
     ]]>
   </map>
 </level>

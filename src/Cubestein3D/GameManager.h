@@ -12,10 +12,16 @@ class GameManager
 	// Attributes
 	////////////////////////////////////////
 	protected:
+		// Media
 		Camera* camera;
 		Renderer* renderer;
-		Level* currentLevel;
 		AudioPlayer* audio;
+		// Level
+		Level* currentLevel;
+		std::vector<std::string> nextLevels;
+
+		bool endGame;
+
 
 	////////////////////////////////////////
 	// Attributes
@@ -34,7 +40,7 @@ class GameManager
 	// Methods
 	////////////////////////////////////////
 	public:
-		virtual void Update(long delta);
+		bool Update(long delta);
 		virtual void Render(long delta);
 
 		void AddEntity(Entity* entity);
@@ -42,7 +48,7 @@ class GameManager
 		void ClearEntities();
 
 		void LoadLevel(Level* level);
-		
+		bool NextLevel();
 
 		void InitializeCamera(float fov, int width, int height, float zNear, float zFar);
 		Camera* GetCamera();

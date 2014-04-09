@@ -1,0 +1,18 @@
+#pragma once
+#include "Entity.h"
+class EndLevel : public Entity
+{
+	////////////////////////////////////////
+	// Constructor / Destructor
+	////////////////////////////////////////
+	public:
+		EndLevel(Vector position);
+		~EndLevel();
+
+	////////////////////////////////////////
+	// Methods
+	////////////////////////////////////////
+	public:
+		void Render(long delta, Renderer* renderer);
+};
+

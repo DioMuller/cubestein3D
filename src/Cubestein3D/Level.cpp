@@ -1,3 +1,5 @@
+#include <sstream>
+#include <algorithm>
 #include "Level.h"
 #include "Player.h"
 #include "GameManager.h"
@@ -8,7 +10,9 @@
 #include "HealthPickup.h"
 #include "AmmoPickup.h"
 #include "ScorePickup.h"
-#include <sstream>
+#include "EndLevel.h"
+#include "tinyxml2.h"
+#include "StringHelper.h"
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -19,14 +23,13 @@ Level::Level()
 	toRemove = std::vector<Entity*>();
 }
 
-Level::Level(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, std::string music, char** map) : Level()
+Level::Level(std::string file) : Level()
 {
-	LoadLevel(name, width, height, groundTexture, wallTexture, ceilingTexture, decorationTexture, music, map);
+	LoadFromXML(file);
 }
 
 Level::~Level()
 {
-	//Mix_HaltMusic(); Mix_FreeMusic(music); Mix_CloseAudio();
 }
 
 ////////////////////////////////////////
@@ -154,20 +157,63 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 
 	this->scale = Vector(0.5f * SCALE, 1.5f, 0.5f * SCALE);
 
-	this->player = nullptr;
-
 	ProcessMap();
 
 	GameManager::GetAudioPlayer()->PlaySong(music);
+}
+
+void Level::LoadFromXML(std::string file)
+{
+	tinyxml2::XMLDocument doc;
+	doc.LoadFile(file.c_str());
+
+	tinyxml2::XMLElement* root = doc.FirstChildElement("level");
+
+	// Name
+	std::string name = std::string(root->FirstChildElement("name")->GetText());
+
+	// Map Size
+	tinyxml2::XMLElement* size = root->FirstChildElement("size");
+	int width = std::stoi(std::string(size->FirstChildElement("width")->GetText()));
+	int height = std::stoi(std::string(size->FirstChildElement("height")->GetText()));
+
+	// Textures
+	tinyxml2::XMLElement* textures = root->FirstChildElement("textures");
+	std::string ground = std::string(textures->FirstChildElement("ground")->GetText());
+	std::string wall = std::string(textures->FirstChildElement("wall")->GetText());
+	std::string ceiling = std::string(textures->FirstChildElement("ceiling")->GetText());
+	std::string decoration = std::string(textures->FirstChildElement("decoration")->GetText());
+
+	// BGM
+	std::string bgm = std::string(root->FirstChildElement("bgm")->GetText());
+
+	// Map
+	std::string map_string = std::string(root->FirstChildElement("map")->GetText());
+	map_string.erase(std::remove(map_string.begin(), map_string.end(), '\t'), map_string.end());
+
+	std::vector<std::string> map_split = split(map_string,'\n');
+
+	char** map = new char*[height];
+	int counter = 0;
+
+	for (std::string str : map_split)
+	{
+		if (str.size() == width)
+		{
+			map[counter] = new char[width + 1];
+			strcpy_s(map[counter], (width + 1) * sizeof(char), str.c_str());
+			counter++;
+		}
+	}
+
+	LoadLevel(name, width, height, ground, wall, ceiling, decoration, bgm, map);
 }
 
 void Level::ProcessMap()
 {
 	int i, j;
 	Camera* camera = GameManager::GetInstance()->GetCamera();
-	Player* player = nullptr;
-	EnemySoldier* enemy = nullptr;
-	Pickup* pickup = nullptr;
+	Entity* auxiliary = nullptr;
 
 	collision = new int*[height];
 	for (i = 0; i < height; i++) collision[i] = new int[width];
@@ -176,6 +222,19 @@ void Level::ProcessMap()
 	{
 		for (j = 0; j < width; j++)
 		{
+			/*****************************************
+			* Descriptions:							 *
+			* W = Wall								 *
+			* G = Ground							 *
+			* S = Player Start						 *
+			* F = Level Ending						 *
+			* E = Enemy								 *
+			* P = Decoration						 *
+			* H = Hidden Passage					 *
+			* M = Medkit							 *
+			* T = Treasure							 *
+			* A = Ammo								 *
+			******************************************/
 			switch (map[i][j])
 			{
 				case 'W': // Wall
@@ -183,30 +242,34 @@ void Level::ProcessMap()
 					collision[i][j] = 1;
 					break;
 				case 'S': // Player Start Point
-					player = new Player(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
-					AddEntity((Entity*)player);
-					camera->FollowEntity((Entity*)player);
-					this->player = player;
+					auxiliary = new Player(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)auxiliary);
+					camera->FollowEntity((Entity*)auxiliary);
 					collision[i][j] = 0;
 					break;
 				case 'E': // Enemy
-					enemy = new EnemySoldier(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
-					AddEntity((Entity*)enemy);
+					auxiliary = new EnemySoldier(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)auxiliary);
 					collision[i][j] = 0;
 					break;
 				case 'M': // Medikit
-					pickup = new HealthPickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
-					AddEntity((Entity*)pickup);
+					auxiliary = new HealthPickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)auxiliary);
 					collision[i][j] = 0;
 					break;
 				case 'A': // Medikit
-					pickup = new AmmoPickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
-					AddEntity((Entity*)pickup);
+					auxiliary = new AmmoPickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)auxiliary);
 					collision[i][j] = 0;
 					break;
 				case 'T': // Medikit
-					pickup = new ScorePickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
-					AddEntity((Entity*)pickup);
+					auxiliary = new ScorePickup(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)auxiliary);
+					collision[i][j] = 0;
+					break;
+				case 'F': // Level Ending
+					auxiliary = new EndLevel(Vector((start.x + j) * SCALE, PICKUP_Y, (start.z + i) * SCALE));
+					AddEntity((Entity*)auxiliary);
 					collision[i][j] = 0;
 					break;
 				case 'H': // Hidden Passage
@@ -244,9 +307,4 @@ bool Level::CollidesWithLevel(Vector position, Vector size)
 	}
 
 	return false;
-}
-
-Player* Level::GetPlayer()
-{
-	return player;
 }

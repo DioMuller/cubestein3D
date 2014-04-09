@@ -92,6 +92,10 @@ void Player::CollideWith(Entity* other)
 		points += 1000;
 		other->Destroy();
 	}
+	else if (other->tag == "EndLevel")
+	{
+		GameManager::GetInstance()->NextLevel();
+	}
 }
 
 void Player::AddKill()
