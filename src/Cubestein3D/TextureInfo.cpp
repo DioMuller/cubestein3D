@@ -1,5 +1,5 @@
 #include "TextureInfo.h"
-#include "texture.h"
+#include "GameManager.h"
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -43,12 +43,12 @@ TextureInfo::~TextureInfo()
 
 void TextureInfo::LoadTexture(std::string filename)
 {
-	setupTexture(filename.c_str(), &id, GL_CLAMP_TO_EDGE, true);
+	id = GameManager::GetTextureLoader()->LoadTexture(filename.c_str(), false);
 }
 
 void TextureInfo::LoadRepeatingTexture(std::string filename)
 {
-	setupTexture(filename.c_str(), &id, GL_REPEAT, true);
+	id = GameManager::GetTextureLoader()->LoadTexture(filename.c_str(), true);
 }
 
 void TextureInfo::LoadTexture(std::string filename, float* map, int mapSize, Vector offset)

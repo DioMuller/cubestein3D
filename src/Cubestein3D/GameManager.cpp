@@ -15,6 +15,8 @@ GameManager::GameManager()
 	renderer = new Renderer();
 	audio = new AudioPlayer();
 
+	textureLoader = new TextureLoader();
+
 	currentLevel = -1;
 	nextLevels = std::vector<std::string>();
 
@@ -22,6 +24,8 @@ GameManager::GameManager()
 
 	camera = new Camera();
 	GameManager::SetInstance(this);
+
+	loadingTexture = new TextureInfo("Content/Textures/loading.png");
 }
 
 
@@ -154,4 +158,9 @@ Level* GameManager::GetCurrentLevel()
 AudioPlayer* GameManager::GetAudioPlayer()
 {
 	return instance->audio;
+}
+
+TextureLoader* GameManager::GetTextureLoader()
+{
+	return instance->textureLoader;
 }

@@ -1,25 +1,22 @@
 #pragma once
-#include <string>
 #include <vector>
+#include "TextureInfo.h"
 
-#define SFXId int
-
-class AudioPlayer
+class TextureLoader
 {
 	////////////////////////////////////////
-	// Static Methods
+	// Attributes
 	////////////////////////////////////////
-	private:
-		void* currentSong;
-		std::vector<void*> soundBank;
-		std::vector<std::string> loadedSounds;
+	public: 
+		std::vector<unsigned int> textureBank;
+		std::vector<std::string> loadedTextures;
 
 	////////////////////////////////////////
 	// Constructor / Destructor
 	////////////////////////////////////////
 	public:
-		AudioPlayer();
-		~AudioPlayer();
+		TextureLoader();
+		~TextureLoader();
 
 	////////////////////////////////////////
 	// Methods
@@ -28,12 +25,6 @@ class AudioPlayer
 		// Initialization
 		void Initialize();
 
-		// Music methods
-		void PlaySong(std::string song);
-		void StopSong();
-
-		// SFX methods
-		SFXId LoadSFX(std::string file);
-		void PlaySFX(SFXId audio);
+		unsigned int LoadTexture(std::string texture, bool repeating);
 };
 

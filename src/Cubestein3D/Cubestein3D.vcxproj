@@ -116,6 +116,7 @@
     <ClCompile Include="StringHelper.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="TextureInfo.cpp" />
+    <ClCompile Include="TextureLoader.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="EnemyBehavior.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="StringHelper.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="TextureInfo.h" />
+    <ClInclude Include="TextureLoader.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="EnemyBehavior.h" />

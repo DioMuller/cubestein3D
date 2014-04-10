@@ -32,41 +32,42 @@ void EnemyBehavior::Update(long delta)
 	{
 		this->target = GameManager::GetCurrentLevel()->GetPlayer();
 	}
-
-	float distance = parent->position.DistanceSquared(target->position);
-	float speed = delta * ENEMY_SPEED;
-
-	Vector newPosition;
-	Vector direction;
-
-	if (distance > ATTACK_DISTANCE)
-	{
-		direction = parent->GetDirection();
-		if (nowAttacking) nowAttacking = false;
-	}
 	else
-	{
-		direction = target->position - parent->position;
-		direction.y = 0.0f;
-		direction.normalize();
-		parent->rotation.y = direction.Angle() * 180;
+	{	
+		float distance = parent->position.DistanceSquared(target->position);
+		float speed = delta * ENEMY_SPEED;
 
-		if (!nowAttacking)
+		Vector newPosition;
+		Vector direction;
+
+		if (distance > ATTACK_DISTANCE)
 		{
-			nowAttacking = true;
-			GameManager::GetAudioPlayer()->PlaySFX(attackSound);
+			direction = parent->GetDirection();
+			if (nowAttacking) nowAttacking = false;
+		}
+		else
+		{
+			direction = target->position - parent->position;
+			direction.y = 0.0f;
+			direction.normalize();
+			parent->rotation.y = direction.Angle() * 180;
+
+			if (!nowAttacking)
+			{
+				nowAttacking = true;
+				GameManager::GetAudioPlayer()->PlaySFX(attackSound);
+			}
+		}
+
+		newPosition = parent->position + (direction * speed);
+
+		if (GameManager::GetCurrentLevel()->CollidesWithLevel(newPosition, parent->size))
+		{
+			this->parent->rotation.y = (float)(((int) this->parent->rotation.y + 90) % 360);
+		}
+		else
+		{
+			parent->position = newPosition;
 		}
 	}
-
-	newPosition = parent->position + (direction * speed);
-
-	if (GameManager::GetCurrentLevel()->CollidesWithLevel(newPosition, parent->size))
-	{
-		this->parent->rotation.y = (float)(((int) this->parent->rotation.y + 90) % 360);
-	}
-	else
-	{
-		parent->position = newPosition;
-	}
-
 }

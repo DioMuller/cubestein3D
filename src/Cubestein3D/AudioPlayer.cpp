@@ -16,6 +16,7 @@ AudioPlayer::AudioPlayer()
 
 AudioPlayer::~AudioPlayer()
 {
+	// TODO: Delete/Close wavs?
 	StopSong();
 	Mix_CloseAudio();
 }

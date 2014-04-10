@@ -5,6 +5,8 @@
 #include "Level.h"
 #include "Camera.h"
 #include "AudioPlayer.h"
+#include "TextureInfo.h"
+#include "TextureLoader.h"
 
 class GameManager
 {
@@ -16,17 +18,21 @@ class GameManager
 		Camera* camera;
 		Renderer* renderer;
 		AudioPlayer* audio;
+		TextureLoader* textureLoader;
+
 		// Level
 		int currentLevel;
 		std::vector<std::string> nextLevels;
-
 		Level* loadedLevel;
+
+		// Loading
+		TextureInfo* loadingTexture;
 
 		bool endGame;
 
 
 	////////////////////////////////////////
-	// Attributes
+	// Static Attributes
 	////////////////////////////////////////
 	protected:
 		static GameManager* instance;
@@ -63,5 +69,6 @@ class GameManager
 		static GameManager* GetInstance();
 		static Level* GetCurrentLevel();
 		static AudioPlayer* GetAudioPlayer();
+		static TextureLoader* GetTextureLoader();
 };
 

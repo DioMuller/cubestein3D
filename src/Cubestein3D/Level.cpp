@@ -41,13 +41,13 @@ Level::~Level()
 void Level::Update(long delta)
 {
 	int i, j;
-	int count = entities.size();
+	//int count = entities.size();
 	
-	for (i = 0; i < count; i++)
+	for (i = 0; i < entities.size(); i++)
 	{
 		entities[i]->Update(delta);
 		
-		for (j = i + 1; j < count; j++)
+		for (j = i + 1; j < entities.size(); j++)
 		{
 			entities[i]->CheckCollision(entities[j]);
 		}
