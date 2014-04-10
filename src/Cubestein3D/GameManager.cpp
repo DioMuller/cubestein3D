@@ -57,7 +57,7 @@ bool GameManager::Update(long delta)
 
 void GameManager::Render(long delta)
 {
-	if (loadedLevel == nullptr) return;
+	if (loadedLevel == nullptr || endGame) return;
 	renderer->Begin();
 
 	camera->Render(delta, renderer);

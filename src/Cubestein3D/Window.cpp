@@ -37,15 +37,6 @@ Window::Window(std::string title, int width, int height, int bpp)
 	this->endingScreen = new ImageScreen("Content/Textures/gameover.png");
 
 	currentState = STATE_TITLE;
-
-	this->game = new GameManager(this);
-
-	game->AddLevel("Content/Levels/E1M1.xml");
-	game->AddLevel("Content/Levels/E1M2.xml");
-	game->AddLevel("Content/Levels/E1M3.xml");
-	game->AddLevel("Content/Levels/E1M4.xml");
-
-	game->NextLevel();
 }
 
 
@@ -81,6 +72,16 @@ int Window::Run()
 						if (!titleScreen->Update(delta))
 						{
 							currentState = STATE_PLAYING;
+
+							this->game = new GameManager(this);
+
+							game->AddLevel("Content/Levels/E1M1.xml");
+							game->AddLevel("Content/Levels/E1M2.xml");
+							game->AddLevel("Content/Levels/E1M3.xml");
+							game->AddLevel("Content/Levels/E1M4.xml");
+							game->InitializeCamera(60.0f, width, height, 1.0f, 800.0f);
+
+							game->NextLevel();
 						}
 						titleScreen->Render(delta, renderer);
 						break;
@@ -90,8 +91,7 @@ int Window::Run()
 							if (!game->Update(delta))
 							{
 								currentState = STATE_TITLE;
-
-								// TODO: Reset game.
+								delete game;
 							}
 							game->Render(delta);
 						}
@@ -125,12 +125,6 @@ void Window::SetFPS(int value)
 int Window::GetFPS()
 {
 	return fps;
-}
-
-void Window::SetGame(GameManager* game)
-{
-	this->game = game;
-	game->InitializeCamera(60.0f , width, height, 1.0f, 800.0f);
 }
 
 GameManager* Window::GetGame()

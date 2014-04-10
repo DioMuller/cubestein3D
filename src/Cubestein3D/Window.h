@@ -49,7 +49,6 @@ class Window
 		int Run();
 		void SetFPS(int value);
 		int GetFPS();
-		void SetGame(GameManager* game);
 		GameManager* GetGame();
 	private:
 		// OpenGL Configuration
