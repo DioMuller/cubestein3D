@@ -23,7 +23,7 @@ class TextureInfo
 	public:
 		TextureInfo();
 		TextureInfo(std::string filename);
-		TextureInfo(std::string filename, bool repeat);
+		TextureInfo(std::string filename, bool repeat, bool invert);
 		TextureInfo(std::string filename, float* map, int mapSize);
 		TextureInfo(std::string filename, float* map, int mapSize, Vector offset);
 		~TextureInfo();
@@ -32,7 +32,7 @@ class TextureInfo
 	// Methods
 	////////////////////////////////////////
 	public:
-		void LoadTexture(std::string filename);
-		void LoadRepeatingTexture(std::string filename);
-		void LoadTexture(std::string filename, float* map, int mapSize, Vector offset);
+		void LoadTexture(std::string filename, bool invert);
+		void LoadRepeatingTexture(std::string filename, bool invert);
+		void LoadTexture(std::string filename, float* map, int mapSize, Vector offset, bool invert);
 };

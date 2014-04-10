@@ -25,6 +25,6 @@ class TextureLoader
 		// Initialization
 		void Initialize();
 
-		unsigned int LoadTexture(std::string texture, bool repeating);
+		unsigned int LoadTexture(std::string texture, bool repeating, bool invert);
 };
 

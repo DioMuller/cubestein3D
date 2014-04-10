@@ -7,7 +7,7 @@
 ////////////////////////////////////////
 ImageScreen::ImageScreen(std::string texture)
 {
-	this->image = new TextureInfo(texture);
+	this->image = new TextureInfo(texture, false, true);
 	isButtonPressed = true;
 }
 
@@ -34,5 +34,7 @@ bool ImageScreen::Update(long delta)
 
 void ImageScreen::Render(long delta, Renderer* renderer)
 {
+	renderer->Begin();
 	renderer->DrawTexture(SCREEN_START, SCREEN_END, image);
+	renderer->End();
 }

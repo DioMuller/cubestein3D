@@ -12,13 +12,13 @@ TextureInfo::TextureInfo()
 	this->doubleOffset = 0;
 }
 
-TextureInfo::TextureInfo(std::string filename, bool repeat) : TextureInfo()
+TextureInfo::TextureInfo(std::string filename, bool repeat, bool invert) : TextureInfo()
 {
-	if (repeat) LoadRepeatingTexture(filename);
-	else  LoadTexture(filename);
+	if (repeat) LoadRepeatingTexture(filename, invert);
+	else  LoadTexture(filename, invert);
 }
 
-TextureInfo::TextureInfo(std::string filename) : TextureInfo(filename, false) { }
+TextureInfo::TextureInfo(std::string filename) : TextureInfo(filename, false, true) { }
 
 TextureInfo::TextureInfo(std::string filename, float* map, int mapSize) : TextureInfo(filename)
 {
@@ -41,23 +41,23 @@ TextureInfo::~TextureInfo()
 // Methods
 ////////////////////////////////////////
 
-void TextureInfo::LoadTexture(std::string filename)
+void TextureInfo::LoadTexture(std::string filename, bool invert)
 {
-	id = Window::GetTextureLoader()->LoadTexture(filename.c_str(), false);
+	id = Window::GetTextureLoader()->LoadTexture(filename.c_str(), false, invert);
 }
 
-void TextureInfo::LoadRepeatingTexture(std::string filename)
+void TextureInfo::LoadRepeatingTexture(std::string filename, bool invert)
 {
-	id = Window::GetTextureLoader()->LoadTexture(filename.c_str(), true);
+	id = Window::GetTextureLoader()->LoadTexture(filename.c_str(), true, invert);
 }
 
-void TextureInfo::LoadTexture(std::string filename, float* map, int mapSize, Vector offset)
+void TextureInfo::LoadTexture(std::string filename, float* map, int mapSize, Vector offset, bool invert)
 {
 	this->offset = offset;
 	this->map = new float[mapSize];
 	memcpy(this->map, map, sizeof(float)* mapSize);
 	this->mapSize = mapSize;
-	LoadTexture(filename);
+	LoadTexture(filename, invert);
 
 	this->doubleOffset = offset.x * 2;
 }
