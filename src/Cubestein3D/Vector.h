@@ -45,6 +45,9 @@ public:
 	// Distance and DistanceSquared implemented by me.
 	float Distance(Vector other);
 	float DistanceSquared(Vector other);
+
+	// Angle implemented by me
+	float Angle();
 };
 
 #endif

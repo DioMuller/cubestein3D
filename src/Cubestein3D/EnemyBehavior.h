@@ -2,6 +2,7 @@
 #include "Behavior.h"
 #include "Vector.h"
 #include "Player.h"
+#include "AudioPlayer.h"
 
 class EnemyBehavior : public Behavior
 {
@@ -9,9 +10,9 @@ class EnemyBehavior : public Behavior
 	// Attributes
 	////////////////////////////////////////
 	private:
-		float maxDistance;
-		float walked;
 		Player* target;
+		SFXId attackSound;
+		bool nowAttacking;
 
 	////////////////////////////////////////
 	// Constructor / Destructor

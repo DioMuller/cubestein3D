@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "GameManager.h"
 #include "Parameters.h"
+#include <math.h>
 
 ////////////////////////////////////////
 // Constructor / Destructor
@@ -9,10 +10,12 @@
 EnemyBehavior::EnemyBehavior(Entity* parent) : Behavior(parent)
 {
 	this->parent->rotation.y = (rand() % 4) * 90.0f;
-	this->maxDistance = (float) 1.0f + (rand() % 5);
 
-	this->walked = 0.0f;
 	this->target = GameManager::GetCurrentLevel()->GetPlayer();
+
+	this->attackSound = GameManager::GetAudioPlayer()->LoadSFX("Content/Sound/enemy.wav");
+
+	this->nowAttacking = false;
 }
 
 
@@ -31,32 +34,39 @@ void EnemyBehavior::Update(long delta)
 	}
 
 	float distance = parent->position.DistanceSquared(target->position);
+	float speed = delta * ENEMY_SPEED;
+
+	Vector newPosition;
+	Vector direction;
 
 	if (distance > ATTACK_DISTANCE)
 	{
-		float speed = delta * ENEMY_SPEED;
-		Vector newPosition = parent->position + (parent->GetDirection() * speed);
-
-		walked += speed;
-
-		if (walked > maxDistance)
-		{
-			this->parent->rotation.y = (float)(((int) this->parent->rotation.y + 180) % 360);
-			walked = 0.0f;
-		}
-		else if (GameManager::GetCurrentLevel()->CollidesWithLevel(newPosition, parent->size))
-		{
-			this->parent->rotation.y = (float)(((int) this->parent->rotation.y + 90) % 360);
-			walked = 0.0f;
-		}
-		else
-		{
-			parent->position = newPosition;
-		}
+		direction = parent->GetDirection();
+		if (nowAttacking) nowAttacking = false;
 	}
 	else
 	{
-		// Test
-		parent->position.y += 0.01;
+		direction = target->position - parent->position;
+		direction.y = 0.0f;
+		direction.normalize();
+		parent->rotation.y = direction.Angle() * 180;
+
+		if (!nowAttacking)
+		{
+			nowAttacking = true;
+			GameManager::GetAudioPlayer()->PlaySFX(attackSound);
+		}
 	}
+
+	newPosition = parent->position + (direction * speed);
+
+	if (GameManager::GetCurrentLevel()->CollidesWithLevel(newPosition, parent->size))
+	{
+		this->parent->rotation.y = (float)(((int) this->parent->rotation.y + 90) % 360);
+	}
+	else
+	{
+		parent->position = newPosition;
+	}
+
 }

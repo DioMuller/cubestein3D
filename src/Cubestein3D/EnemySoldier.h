@@ -8,7 +8,6 @@ class EnemySoldier : public Character
 	// Attributes
 	////////////////////////////////////////
 	private:
-		SFXId attackSound;
 		SFXId dieSound;
 		bool isDead;
 

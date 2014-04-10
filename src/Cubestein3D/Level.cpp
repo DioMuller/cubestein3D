@@ -21,6 +21,8 @@ Level::Level()
 {
 	entities = std::vector<Entity*>();
 	toRemove = std::vector<Entity*>();
+
+	player = nullptr;
 }
 
 Level::Level(std::string file) : Level()
@@ -246,6 +248,7 @@ void Level::ProcessMap()
 					AddEntity((Entity*)auxiliary);
 					camera->FollowEntity((Entity*)auxiliary);
 					collision[i][j] = 0;
+					this->player = (Player*) auxiliary;
 					break;
 				case 'E': // Enemy
 					auxiliary = new EnemySoldier(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
@@ -307,4 +310,12 @@ bool Level::CollidesWithLevel(Vector position, Vector size)
 	}
 
 	return false;
+}
+
+////////////////////////////////////////
+// Other Methods
+////////////////////////////////////////
+Player* Level::GetPlayer()
+{
+	return player;
 }

@@ -15,7 +15,6 @@ EnemySoldier::EnemySoldier(Vector position) : Character("Content/Textures/enemy.
 
 	isDead = false;
 
-	attackSound = GameManager::GetAudioPlayer()->LoadSFX("Content/Sound/enemy.wav");
 	dieSound = GameManager::GetAudioPlayer()->LoadSFX("Content/Sound/enemy_die.wav");
 }
 
@@ -57,4 +56,6 @@ void EnemySoldier::Die()
 	position.y = -1.25f;
 
 	isDead = true;
+	GameManager::GetCurrentLevel()->GetPlayer()->AddKill();
+	tag = "Dead"; // So the player won't lose health when touching him.
 }

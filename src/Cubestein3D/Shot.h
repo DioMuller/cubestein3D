@@ -5,17 +5,10 @@
 class Shot : Entity
 {
 	////////////////////////////////////////
-	// Attributes
-	////////////////////////////////////////
-	private:
-		Player* parentPlayer;
-
-	////////////////////////////////////////
 	// Constructor / Destructor
 	////////////////////////////////////////
 	public:
 		Shot(Vector position, Vector direction);
-		Shot(Player* parent, Vector position, Vector direction);
 		~Shot();
 
 	////////////////////////////////////////
@@ -23,6 +16,5 @@ class Shot : Entity
 	////////////////////////////////////////
 	public:
 		void Render(long delta, Renderer* renderer);
-		void CollideWith(Entity* other);
 };
 

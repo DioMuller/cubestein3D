@@ -44,7 +44,7 @@ void ControllableBehavior::Update(long delta)
 			// Has ammo. If it has, decreases and shoots.
 			if (player->Shoot())
 			{
-				Shot* shot = new Shot(player, parent->position + parent->GetDirection(), parent->GetDirection() );
+				Shot* shot = new Shot(parent->position + parent->GetDirection(), parent->GetDirection() );
 				GameManager::GetInstance()->AddEntity((Entity*)shot);
 			}
 
