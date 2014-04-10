@@ -1,4 +1,5 @@
 #include "GameManager.h"
+#include "Window.h"
 
 ////////////////////////////////////////
 // Static Attributes
@@ -8,14 +9,13 @@ GameManager* GameManager::instance = nullptr;
 ////////////////////////////////////////
 // Constructor / Destructor
 ////////////////////////////////////////
-GameManager::GameManager()
+GameManager::GameManager(Window* parent)
 {
 	loadedLevel = nullptr;
 
-	renderer = new Renderer();
-	audio = new AudioPlayer();
-
-	textureLoader = new TextureLoader();
+	renderer = parent->GetRenderer();
+	audio = parent->GetAudioPlayer();
+	textureLoader = parent->GetTextureLoader();
 
 	currentLevel = -1;
 	nextLevels = std::vector<std::string>();
@@ -24,8 +24,6 @@ GameManager::GameManager()
 
 	camera = new Camera();
 	GameManager::SetInstance(this);
-
-	loadingTexture = new TextureInfo("Content/Textures/loading.png");
 }
 
 

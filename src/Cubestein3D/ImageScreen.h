@@ -1,0 +1,28 @@
+#pragma once
+#include "Renderer.h"
+#include "TextureInfo.h"
+
+class ImageScreen
+{
+	////////////////////////////////////////
+	// Attributes
+	////////////////////////////////////////
+	private:
+		TextureInfo* image;
+		bool isButtonPressed;
+
+	////////////////////////////////////////
+	// Constructor / Destructor
+	////////////////////////////////////////
+	public:
+		ImageScreen(std::string texture);
+		~ImageScreen();
+
+	////////////////////////////////////////
+	// Methods
+	////////////////////////////////////////
+	public:
+		bool Update(long delta);
+		void Render(long delta, Renderer* renderer);
+};
+

@@ -167,7 +167,10 @@
     <ClCompile Include="StringHelper.cpp">
       <Filter>Helper Libs\Source</Filter>
     </ClCompile>
-    <ClCompile Include="TextureLoader.cpp" />
+    <ClCompile Include="TextureLoader.cpp">
+      <Filter>GameRendering\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h">
@@ -269,6 +272,9 @@
     <ClInclude Include="tinyxml2.h">
       <Filter>Helper Libs\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="TextureLoader.h" />
+    <ClInclude Include="TextureLoader.h">
+      <Filter>GameRendering\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageScreen.h" />
   </ItemGroup>
 </Project>

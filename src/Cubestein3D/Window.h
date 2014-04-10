@@ -1,6 +1,7 @@
 #pragma once
 #include "GameManager.h"
 #include "Parameters.h"
+#include "ImageScreen.h"
 
 class Window
 {
@@ -15,7 +16,24 @@ class Window
 		float waitingTime;
 		std::string title;
 		GameManager* game;
+
+		int currentState;
+		ImageScreen* titleScreen;
+		ImageScreen* howToPlayScreen;
+		ImageScreen* gameOverScreen;
+		ImageScreen* endingScreen;
+
+		Renderer* renderer;
+		AudioPlayer* audio;
+		TextureLoader* textureLoader;
+
 		bool limitFps;
+
+	////////////////////////////////////////
+	// Static Attributes
+	////////////////////////////////////////
+	protected:
+		static Window* instance;
 
 	////////////////////////////////////////
 	// Constructor / Destructor
@@ -38,5 +56,13 @@ class Window
 		int SetupOpenGL(void);
 		// SDL Initialization
 		void InitializeSDL();
+
+	////////////////////////////////////////
+	// Static Methods
+	////////////////////////////////////////
+	public:
+		static Renderer* GetRenderer();
+		static AudioPlayer* GetAudioPlayer();
+		static TextureLoader* GetTextureLoader();
 };
 

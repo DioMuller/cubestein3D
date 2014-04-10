@@ -95,6 +95,7 @@
     <ClCompile Include="glprint.cpp" />
     <ClCompile Include="HealthPickup.cpp" />
     <ClCompile Include="HelperOperations.cpp" />
+    <ClCompile Include="ImageScreen.cpp" />
     <ClCompile Include="Input.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -134,6 +135,7 @@
     <ClInclude Include="glprint.h" />
     <ClInclude Include="HealthPickup.h" />
     <ClInclude Include="HelperOperations.h" />
+    <ClInclude Include="ImageScreen.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameManager.h" />

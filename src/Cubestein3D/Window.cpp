@@ -6,21 +6,46 @@
 #include "AudioPlayer.h"
 
 ////////////////////////////////////////
+// Static Attributes
+////////////////////////////////////////
+Window* Window::instance = nullptr;
+
+////////////////////////////////////////
 // Constructor / Destructor
 ////////////////////////////////////////
 Window::Window(std::string title, int width, int height, int bpp)
 {
+	instance = this;
+
 	this->title = title;
 	this->width = width;
 	this->height = height;
 	this->bpp = bpp;
 	this->limitFps = true;
 
-	this->game = nullptr;
-
 	SetFPS(60);
 
 	InitializeSDL();
+
+	renderer = new Renderer();
+	audio = new AudioPlayer();
+	textureLoader = new TextureLoader();
+
+	this->titleScreen = new ImageScreen("Content/Textures/title.png");
+	this->howToPlayScreen = new ImageScreen("Content/Textures/loading.png");
+	this->gameOverScreen = new ImageScreen("Content/Textures/gameover.png");
+	this->endingScreen = new ImageScreen("Content/Textures/gameover.png");
+
+	currentState = STATE_TITLE;
+
+	this->game = new GameManager(this);
+
+	game->AddLevel("Content/Levels/E1M1.xml");
+	game->AddLevel("Content/Levels/E1M2.xml");
+	game->AddLevel("Content/Levels/E1M3.xml");
+	game->AddLevel("Content/Levels/E1M4.xml");
+
+	game->NextLevel();
 }
 
 
@@ -38,35 +63,55 @@ int Window::Run()
 
 	long delta = (long) waitingTime;
 
-	do
-	{
-		clock_t start = clock();
 
-		// SDL EVENTS
-		SDL_PollEvent(&event);
+			do
+			{
+				clock_t start = clock();
 
-		Input::Update(event);
+				// SDL EVENTS
+				SDL_PollEvent(&event);
 
-		if (Input::input[BUTTON_QUIT]) return 0;
+				Input::Update(event);
+
+				if (Input::input[BUTTON_QUIT]) return 0;
 		
-		// GAME UPDATE
-		if (game != nullptr)
-		{
-			if( !game->Update(delta) ) break;
-			game->Render(delta);
-		}
+				switch (currentState)
+				{
+					case STATE_TITLE:
+						if (!titleScreen->Update(delta))
+						{
+							currentState = STATE_PLAYING;
+						}
+						titleScreen->Render(delta, renderer);
+						break;
+					case STATE_PLAYING:
+						if (game != nullptr)
+						{
+							if (!game->Update(delta))
+							{
+								currentState = STATE_TITLE;
 
-		clock_t end = clock();
+								// TODO: Reset game.
+							}
+							game->Render(delta);
+						}
+						break;
+					default:
+						break;
+				}
 
-		delta = ((end - start) * 1000) / CLOCKS_PER_SEC ;
-		long sleeptime = (long) waitingTime - delta;
-		if (limitFps)
-		{
-			if (sleeptime > 0) Sleep(sleeptime);
-			delta = max(delta, (long) waitingTime);
-		}
+				clock_t end = clock();
+
+				delta = ((end - start) * 1000) / CLOCKS_PER_SEC ;
+				long sleeptime = (long) waitingTime - delta;
+				if (limitFps)
+				{
+					if (sleeptime > 0) Sleep(sleeptime);
+					delta = max(delta, (long) waitingTime);
+				}
 		
-	} while (1);
+			} while (1);
+
 
 	return 0;
 }
@@ -91,6 +136,21 @@ void Window::SetGame(GameManager* game)
 GameManager* Window::GetGame()
 {
 	return this->game;
+}
+
+Renderer* Window::GetRenderer()
+{
+	return instance->renderer;
+}
+
+AudioPlayer* Window::GetAudioPlayer()
+{
+	return instance->audio;
+}
+
+TextureLoader* Window::GetTextureLoader()
+{
+	return instance->textureLoader;
 }
 
 ////////////////////////////////////////

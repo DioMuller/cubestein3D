@@ -145,4 +145,8 @@
 #define CROSSHAIR_SIZE 5
 #define CROSSHAIR_SPACE 3
 
+// Screen Size
+#define SCREEN_START Vector(0,0,0)
+#define SCREEN_END Vector(SCREEN_WIDTH, SCREEN_HEIGHT, 0)
+
 #endif

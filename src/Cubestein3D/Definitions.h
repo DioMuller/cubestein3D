@@ -42,4 +42,12 @@
 #define SKY_TOP 4
 #define SKY_BOTTOM 5
 
+#define GameState int
+
+#define STATE_TITLE 0
+#define STATE_HOWTOPLAY 1
+#define STATE_PLAYING 2
+#define STATE_GAMEOVER 3
+#define STATE_FINISHED 4
+
 #endif

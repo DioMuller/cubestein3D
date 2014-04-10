@@ -5,8 +5,9 @@
 #include "Level.h"
 #include "Camera.h"
 #include "AudioPlayer.h"
-#include "TextureInfo.h"
 #include "TextureLoader.h"
+
+class Window;
 
 class GameManager
 {
@@ -25,8 +26,6 @@ class GameManager
 		std::vector<std::string> nextLevels;
 		Level* loadedLevel;
 
-		// Loading
-		TextureInfo* loadingTexture;
 
 		bool endGame;
 
@@ -41,7 +40,7 @@ class GameManager
 	// Constructor / Destructor
 	////////////////////////////////////////
 	public:
-		GameManager();
+		GameManager(Window* parent);
 		~GameManager();
 
 	////////////////////////////////////////
