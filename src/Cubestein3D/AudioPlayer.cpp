@@ -53,6 +53,8 @@ void AudioPlayer::PlaySong(std::string song)
 	{
 		Log::Error("Unable to play Ogg file.");
 		Log::Error(Mix_GetError());
+
+		currentSong = nullptr;
 	}
 }
 
@@ -62,6 +64,8 @@ void AudioPlayer::StopSong()
 
 	Mix_HaltMusic(); 
 	Mix_FreeMusic((Mix_Music*)currentSong);
+
+	currentSong = nullptr;
 }
 
 ////////////////////////////////////////

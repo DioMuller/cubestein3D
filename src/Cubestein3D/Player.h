@@ -45,5 +45,6 @@ class Player : public Character
 
 		void AddKill();
 		bool Shoot();
+		int GetHealth();
 };
 

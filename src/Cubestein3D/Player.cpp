@@ -113,3 +113,8 @@ bool Player::Shoot()
 
 	return true;
 }
+
+int Player::GetHealth()
+{
+	return health;
+}

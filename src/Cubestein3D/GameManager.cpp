@@ -30,8 +30,6 @@ GameManager::GameManager(Window* parent)
 GameManager::~GameManager()
 {
 	delete loadedLevel;
-	delete renderer;
-	delete audio;
 	delete camera;
 }
 
@@ -48,6 +46,8 @@ bool GameManager::Update(long delta)
 	}
 
 	if (loadedLevel == nullptr) return false;
+
+	if (loadedLevel->GetPlayer()->GetHealth() <= 0) return false;
 
 	loadedLevel->Update(delta);
 	camera->Update(delta);
@@ -67,6 +67,11 @@ void GameManager::Render(long delta)
 	renderer->DrawSkybox(0, 0, 0, 800, 400, 400);
 
 	renderer->End();
+}
+
+bool GameManager::FinishedGame()
+{
+	return endGame;
 }
 
 ////////////////////////////////////////

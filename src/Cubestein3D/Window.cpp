@@ -31,12 +31,13 @@ Window::Window(std::string title, int width, int height, int bpp)
 	audio = new AudioPlayer();
 	textureLoader = new TextureLoader();
 
-	this->titleScreen = new ImageScreen("Content/Textures/title.png");
-	this->howToPlayScreen = new ImageScreen("Content/Textures/loading.png");
-	this->gameOverScreen = new ImageScreen("Content/Textures/gameover.png");
-	this->endingScreen = new ImageScreen("Content/Textures/gameover.png");
+	this->titleScreen = new ImageScreen("Content/Textures/title.png", "Content/Music/opening.ogg");
+	this->howToPlayScreen = new ImageScreen("Content/Textures/loading.png", "Content/Music/opening.ogg");
+	this->gameOverScreen = new ImageScreen("Content/Textures/gameover.png", "Content/Music/opening.ogg");
+	this->endingScreen = new ImageScreen("Content/Textures/gameover.png", "Content/Music/opening.ogg");
 
 	currentState = STATE_TITLE;
+	titleScreen->Activate();
 }
 
 
@@ -71,6 +72,15 @@ int Window::Run()
 					case STATE_TITLE:
 						if (!titleScreen->Update(delta))
 						{
+							currentState = STATE_HOWTOPLAY;
+							howToPlayScreen->Activate();
+
+						}
+						titleScreen->Render(delta, renderer);
+						break;
+					case STATE_HOWTOPLAY:
+						if (!howToPlayScreen->Update(delta))
+						{
 							currentState = STATE_PLAYING;
 
 							this->game = new GameManager(this);
@@ -83,18 +93,45 @@ int Window::Run()
 
 							game->NextLevel();
 						}
-						titleScreen->Render(delta, renderer);
+						howToPlayScreen->Render(delta, renderer);
 						break;
 					case STATE_PLAYING:
 						if (game != nullptr)
 						{
 							if (!game->Update(delta))
 							{
-								currentState = STATE_TITLE;
+								if (game->FinishedGame())
+								{
+									currentState = STATE_FINISHED;
+									endingScreen->Activate();
+								}
+								else
+								{
+									currentState = STATE_GAMEOVER;
+									gameOverScreen->Activate();
+								}
+
 								delete game;
+								break;
 							}
 							game->Render(delta);
 						}
+						break;
+					case STATE_GAMEOVER:
+						if (!gameOverScreen->Update(delta))
+						{
+							currentState = STATE_TITLE;
+							titleScreen->Activate();
+						}
+						gameOverScreen->Render(delta, renderer);
+						break;
+					case STATE_FINISHED:
+						if (!endingScreen->Update(delta))
+						{
+							currentState = STATE_TITLE;
+							titleScreen->Activate();
+						}
+						endingScreen->Render(delta, renderer);
 						break;
 					default:
 						break;

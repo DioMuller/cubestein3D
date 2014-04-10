@@ -60,6 +60,8 @@ class GameManager
 		void InitializeCamera(float fov, int width, int height, float zNear, float zFar);
 		Camera* GetCamera();
 
+		bool FinishedGame();
+
 	////////////////////////////////////////
 	// Static Methods
 	////////////////////////////////////////

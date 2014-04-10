@@ -170,7 +170,9 @@
     <ClCompile Include="TextureLoader.cpp">
       <Filter>GameRendering\Source</Filter>
     </ClCompile>
-    <ClCompile Include="ImageScreen.cpp" />
+    <ClCompile Include="ImageScreen.cpp">
+      <Filter>GameBase\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behavior.h">
@@ -275,6 +277,8 @@
     <ClInclude Include="TextureLoader.h">
       <Filter>GameRendering\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="ImageScreen.h" />
+    <ClInclude Include="ImageScreen.h">
+      <Filter>GameBase\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
