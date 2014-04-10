@@ -10,10 +10,12 @@ GameManager* GameManager::instance = nullptr;
 ////////////////////////////////////////
 GameManager::GameManager()
 {
-	currentLevel = new Level();
+	loadedLevel = nullptr;
+
 	renderer = new Renderer();
 	audio = new AudioPlayer();
 
+	currentLevel = -1;
 	nextLevels = std::vector<std::string>();
 
 	endGame = false;
@@ -25,7 +27,7 @@ GameManager::GameManager()
 
 GameManager::~GameManager()
 {
-	delete currentLevel;
+	delete loadedLevel;
 	delete renderer;
 	delete audio;
 	delete camera;
@@ -39,14 +41,14 @@ bool GameManager::Update(long delta)
 {
 	if (endGame)
 	{
-		delete currentLevel;
-		currentLevel = nullptr;
+		delete loadedLevel;
+		loadedLevel = nullptr;
 		return false;
 	}
 
-	if (currentLevel == nullptr) return false;
+	if (loadedLevel == nullptr) return false;
 
-	currentLevel->Update(delta);
+	loadedLevel->Update(delta);
 	camera->Update(delta);
 
 	return true;
@@ -58,7 +60,7 @@ void GameManager::Render(long delta)
 
 	camera->Render(delta, renderer);
 
-	currentLevel->Render(delta, renderer);
+	loadedLevel->Render(delta, renderer);
 
 	renderer->DrawSkybox(0, 0, 0, 800, 400, 400);
 
@@ -70,17 +72,17 @@ void GameManager::Render(long delta)
 ////////////////////////////////////////
 void GameManager::AddEntity(Entity* entity)
 {
-	if (currentLevel != nullptr) currentLevel->AddEntity(entity);
+	if (loadedLevel != nullptr) loadedLevel->AddEntity(entity);
 }
 
 void GameManager::RemoveEntity(Entity* entity)
 {
-	if (currentLevel != nullptr) currentLevel->RemoveEntity(entity);
+	if (loadedLevel != nullptr) loadedLevel->RemoveEntity(entity);
 }
 
 void GameManager::ClearEntities()
 {
-	if (currentLevel != nullptr) currentLevel->ClearEntities();
+	if (loadedLevel != nullptr) loadedLevel->ClearEntities();
 }
 
 ////////////////////////////////////////
@@ -104,14 +106,24 @@ void GameManager::InitializeCamera(float fov, int width, int height, float zNear
 ////////////////////////////////////////
 // Level Methods
 ////////////////////////////////////////
-void GameManager::LoadLevel(Level* level)
+void GameManager::AddLevel(std::string level)
 {
-	currentLevel = level;
+	nextLevels.push_back(level);
 }
 
 bool GameManager::NextLevel()
 {
-	endGame = true;
+	currentLevel++;
+	delete loadedLevel;
+
+	if (currentLevel < nextLevels.size())
+	{
+		loadedLevel = new Level(nextLevels[currentLevel]);
+	}
+	else
+	{
+		endGame = true;
+	}
 
 	return !endGame;
 }
@@ -136,7 +148,7 @@ Camera* GameManager::GetCamera()
 
 Level* GameManager::GetCurrentLevel()
 {
-	return instance->currentLevel;
+	return instance->loadedLevel;
 }
 
 AudioPlayer* GameManager::GetAudioPlayer()

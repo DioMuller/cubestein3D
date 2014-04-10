@@ -17,8 +17,10 @@ class GameManager
 		Renderer* renderer;
 		AudioPlayer* audio;
 		// Level
-		Level* currentLevel;
+		int currentLevel;
 		std::vector<std::string> nextLevels;
+
+		Level* loadedLevel;
 
 		bool endGame;
 
@@ -47,7 +49,7 @@ class GameManager
 		void RemoveEntity(Entity* entity);
 		void ClearEntities();
 
-		void LoadLevel(Level* level);
+		void AddLevel(std::string level);
 		bool NextLevel();
 
 		void InitializeCamera(float fov, int width, int height, float zNear, float zFar);

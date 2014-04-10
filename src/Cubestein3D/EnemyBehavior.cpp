@@ -11,7 +11,7 @@ EnemyBehavior::EnemyBehavior(Entity* parent) : Behavior(parent)
 {
 	this->parent->rotation.y = (rand() % 4) * 90.0f;
 
-	this->target = GameManager::GetCurrentLevel()->GetPlayer();
+	this->target = nullptr;
 
 	this->attackSound = GameManager::GetAudioPlayer()->LoadSFX("Content/Sound/enemy.wav");
 
