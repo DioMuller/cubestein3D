@@ -11,7 +11,7 @@
 	<ceiling>Content/Textures/ceiling.png</ceiling>
 	<decoration>Content/Textures/painting.png</decoration>
   </textures>
-  <bgm>Content/Music/level.ogg</bgm>
+  <bgm>Content/Music/e1m1.ogg</bgm>
   <map>
     <![CDATA[
 		WWWWWWWWWWWWWWWWWWWWW

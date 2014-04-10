@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 	srand((unsigned int) time(0));
 
 	// Initializes level
-	Level* level = new Level("Content/Levels/E1M1.xml");
+	Level* level = new Level("Content/Levels/E1M2.xml");
 	game->LoadLevel(level);
 
 	// Links game with window and runs.

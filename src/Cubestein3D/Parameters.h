@@ -93,7 +93,7 @@
 //////////////////////////////////////////
 // Audio
 //////////////////////////////////////////
-#define AUDIO_RATE 22050
+#define AUDIO_RATE 44100
 #define AUDIO_CHANNELS 2
 #define AUDIO_BUFFERS 4096
 
