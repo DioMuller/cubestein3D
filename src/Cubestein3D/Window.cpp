@@ -85,10 +85,7 @@ int Window::Run()
 
 							this->game = new GameManager(this);
 
-							game->AddLevel("Content/Levels/E1M1.xml");
-							game->AddLevel("Content/Levels/E1M2.xml");
-							game->AddLevel("Content/Levels/E1M3.xml");
-							game->AddLevel("Content/Levels/E1M4.xml");
+							game->LoadLevels("Content/Levels/Levels.xml");
 							game->InitializeCamera(60.0f, width, height, 1.0f, 800.0f);
 
 							game->NextLevel();

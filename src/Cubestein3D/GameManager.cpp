@@ -1,5 +1,6 @@
 #include "GameManager.h"
 #include "Window.h"
+#include "tinyxml2.h"
 
 ////////////////////////////////////////
 // Static Attributes
@@ -113,6 +114,19 @@ void GameManager::InitializeCamera(float fov, int width, int height, float zNear
 ////////////////////////////////////////
 // Level Methods
 ////////////////////////////////////////
+void GameManager::LoadLevels(std::string levels)
+{
+	tinyxml2::XMLDocument doc;
+	doc.LoadFile(levels.c_str());
+
+	tinyxml2::XMLElement* root = doc.FirstChildElement("levels");
+
+	for (tinyxml2::XMLElement* child = root->FirstChildElement(); child != NULL; child = child->NextSiblingElement())
+	{
+		AddLevel(child->GetText());
+	}
+}
+
 void GameManager::AddLevel(std::string level)
 {
 	nextLevels.push_back(level);

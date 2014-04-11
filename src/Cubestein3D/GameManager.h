@@ -54,6 +54,7 @@ class GameManager
 		void RemoveEntity(Entity* entity);
 		void ClearEntities();
 
+		void LoadLevels(std::string levels);
 		void AddLevel(std::string level);
 		bool NextLevel();
 

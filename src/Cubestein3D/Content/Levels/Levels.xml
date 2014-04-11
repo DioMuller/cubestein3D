@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<levels>
+	<level>Content/Levels/E1M1.xml</level>
+	<level>Content/Levels/E1M2.xml</level>
+	<level>Content/Levels/E1M3.xml</level>
+	<level>Content/Levels/E1M4.xml</level>
+</levels>
