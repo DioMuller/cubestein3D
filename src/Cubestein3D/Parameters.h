@@ -117,29 +117,29 @@
 #define BORDER_HEIGHT 50
 
 // Icons default Y value.
-#define ICON_Y 8
+#define ICON_Y 10
 
 // Text default Y value.
-#define TEXT_Y 15
+#define TEXT_Y 17
 
 // Default Icon size
 #define ICON_SIZE 32
 
 //Health Icon Position
-#define ICON_HEALTH_START Vector(10, ICON_Y + ICON_SIZE, 1)
-#define ICON_HEALTH_END Vector(10 + ICON_SIZE, ICON_Y, 1)
+#define ICON_HEALTH_START Vector(15, ICON_Y + ICON_SIZE, 1)
+#define ICON_HEALTH_END Vector(15 + ICON_SIZE, ICON_Y, 1)
 
 // Ammo Icon Position
-#define ICON_AMMO_START Vector(100, ICON_Y + ICON_SIZE, 1)
-#define ICON_AMMO_END Vector(100 + ICON_SIZE, ICON_Y, 1)
+#define ICON_AMMO_START Vector(105, ICON_Y + ICON_SIZE, 1)
+#define ICON_AMMO_END Vector(105 + ICON_SIZE, ICON_Y, 1)
 
 // Kills Icon Position
-#define ICON_KILLS_START Vector(200, ICON_Y + ICON_SIZE, 1)
-#define ICON_KILLS_END Vector(200 + ICON_SIZE, ICON_Y, 1)
+#define ICON_KILLS_START Vector(205, ICON_Y + ICON_SIZE, 1)
+#define ICON_KILLS_END Vector(205 + ICON_SIZE, ICON_Y, 1)
 
 // Points Icon Position
-#define ICON_POINTS_START Vector(300, ICON_Y + ICON_SIZE, 1)
-#define ICON_POINTS_END Vector(300 + ICON_SIZE, ICON_Y, 1)
+#define ICON_POINTS_START Vector(305, ICON_Y + ICON_SIZE, 1)
+#define ICON_POINTS_END Vector(305 + ICON_SIZE, ICON_Y, 1)
 
 // Health Text Position
 #define HEALTH_OFFSET Vector(50, TEXT_Y, 1)
@@ -156,6 +156,10 @@
 // Weapon
 #define CROSSHAIR_SIZE 5
 #define CROSSHAIR_SPACE 3
+
+// Level Name
+#define FONT_SIZE 16
+#define LEVELNAME_OFFSET Vector(15.0f, TEXT_Y, 1.0f)
 
 // Screen Size
 #define SCREEN_START Vector(0,0,0)

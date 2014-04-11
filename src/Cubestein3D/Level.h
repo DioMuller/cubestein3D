@@ -28,6 +28,8 @@ class Level
 		// The Player
 		Player* player;
 
+		Vector namePosition;
+
 	////////////////////////////////////////
 	// Constructors/Destructors
 	////////////////////////////////////////

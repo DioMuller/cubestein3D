@@ -28,6 +28,8 @@ Level::Level()
 Level::Level(std::string file) : Level()
 {
 	LoadFromXML(file);
+
+	namePosition = Vector( SCREEN_WIDTH - (FONT_SIZE * name.size() ) + LEVELNAME_OFFSET.x, LEVELNAME_OFFSET.y, LEVELNAME_OFFSET.z);
 }
 
 Level::~Level()
@@ -47,6 +49,9 @@ void Level::Update(long delta)
 	{
 		entities[i]->Update(delta);
 		
+		// If the level changed.
+		if (GameManager::GetCurrentLevel() != this) return;
+
 		for (j = i + 1; j < entities.size(); j++)
 		{
 			entities[i]->CheckCollision(entities[j]);
@@ -114,6 +119,9 @@ void Level::Render(long delta, Renderer* renderer)
 		std::string entitiesText(str.str());
 		renderer->DrawDebug(Vector(DEBUGPOSITION_X, DEBUGPOSITION_Y, 1.0f), 1, 1, 0, entitiesText);
 	}
+
+	// Level Name
+	renderer->DrawString(namePosition, 0.3, 0.3, 0.3, name);
 }
 
 ////////////////////////////////////////

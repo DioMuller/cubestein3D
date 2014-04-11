@@ -21,11 +21,11 @@ Player::Player(Vector position) : Character("Content/Textures/hero.png", positio
 	points = 0;
 
 	// Initialize GUI
-	guiBorder = new TextureInfo("Content/Textures/border.png");
-	guiIconHealth = new TextureInfo("Content/Textures/icon_health.png");
-	guiIconAmmo = new TextureInfo("Content/Textures/icon_ammo.png");
-	guiIconKills = new TextureInfo("Content/Textures/icon_kills.png");
-	guiIconPoints = new TextureInfo("Content/Textures/icon_points.png");
+	guiBorder = new TextureInfo("Content/Textures/border.png", false, false);
+	guiIconHealth = new TextureInfo("Content/Textures/icon_health.png", false, false);
+	guiIconAmmo = new TextureInfo("Content/Textures/icon_ammo.png", false, false);
+	guiIconKills = new TextureInfo("Content/Textures/icon_kills.png", false, false);
+	guiIconPoints = new TextureInfo("Content/Textures/icon_points.png", false, false);
 
 	// Initialize sound
 	sfxShoot = GameManager::GetAudioPlayer()->LoadSFX("Content/Sound/shoot.wav");
@@ -48,7 +48,7 @@ void Player::Render(long delta, Renderer* renderer)
 	//////////////
 
 	// Border
-	renderer->DrawTexture(Vector(0, BORDER_HEIGHT, 0.9f), Vector(SCREEN_WIDTH, 0, 0.99f), guiBorder);
+	renderer->DrawTexture(Vector(0, BORDER_HEIGHT, 0.999f), Vector(SCREEN_WIDTH, 0, 0.999f), guiBorder);
 
 	// Health
 	renderer->DrawTexture(ICON_HEALTH_START, ICON_HEALTH_END, guiIconHealth);

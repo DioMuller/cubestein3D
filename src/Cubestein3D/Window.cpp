@@ -33,8 +33,8 @@ Window::Window(std::string title, int width, int height, int bpp)
 
 	this->titleScreen = new ImageScreen("Content/Textures/title.png", "Content/Music/opening.ogg");
 	this->howToPlayScreen = new ImageScreen("Content/Textures/loading.png", "Content/Music/opening.ogg");
-	this->gameOverScreen = new ImageScreen("Content/Textures/gameover.png", "Content/Music/opening.ogg");
-	this->endingScreen = new ImageScreen("Content/Textures/gameover.png", "Content/Music/opening.ogg");
+	this->gameOverScreen = new ImageScreen("Content/Textures/gameover.png", "Content/Music/gameover.ogg");
+	this->endingScreen = new ImageScreen("Content/Textures/ending.png", "Content/Music/ending.ogg");
 
 	currentState = STATE_TITLE;
 	titleScreen->Activate();
@@ -73,7 +73,7 @@ int Window::Run()
 						if (!titleScreen->Update(delta))
 						{
 							currentState = STATE_HOWTOPLAY;
-							howToPlayScreen->Activate();
+							//howToPlayScreen->Activate();
 
 						}
 						titleScreen->Render(delta, renderer);
