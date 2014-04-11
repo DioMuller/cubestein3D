@@ -50,7 +50,7 @@ void EnemyBehavior::Update(long delta)
 			direction = target->position - parent->position;
 			direction.y = 0.0f;
 			direction.normalize();
-			parent->rotation.y = direction.Angle() * 180;
+			parent->rotation.y = direction.Angle();
 
 			if (!nowAttacking)
 			{
@@ -61,7 +61,7 @@ void EnemyBehavior::Update(long delta)
 
 		newPosition = parent->position + (direction * speed);
 
-		if (GameManager::GetCurrentLevel()->CollidesWithLevel(newPosition, parent->size))
+		if ( GameManager::GetCurrentLevel()->CollidesWithLevel(newPosition, parent->size))
 		{
 			this->parent->rotation.y = (float)(((int) this->parent->rotation.y + 90) % 360);
 		}

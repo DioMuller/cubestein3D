@@ -115,5 +115,5 @@ float Vector::DistanceSquared(Vector other)
 
 float Vector::Angle()
 {
-	return atan2(-z, x);
+	return atan2(x, z) * (180.0 / 3.14159);
 }
