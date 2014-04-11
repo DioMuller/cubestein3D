@@ -26,6 +26,8 @@ EnemySoldier::~EnemySoldier()
 
 void EnemySoldier::CollideWith(Entity* other)
 {
+	if (isDead) return;
+
 	Character::CollideWith(other);
 
 	if (other->tag == "Shot")

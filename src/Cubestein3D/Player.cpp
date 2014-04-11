@@ -75,21 +75,21 @@ void Player::CollideWith(Entity* other)
 
 	if (other->tag == "Enemy")
 	{
-		health-= 10;
+		health-= ENEMY_DAMAGE;
 	}
 	else if (other->tag == "HealthPickup" && health < 100)
 	{
-		health = MIN(health + 30, 100);
+		health = MIN(health + MEDIKIT_RESTORE, 100);
 		other->Destroy();
 	}
 	else if (other->tag == "AmmoPickup")
 	{
-		ammo += 10;
+		ammo += AMMO_RESTORE;
 		other->Destroy();
 	}
 	else if (other->tag == "ScorePickup")
 	{
-		points += 1000;
+		points += TREASURE_VALUE;
 		other->Destroy();
 	}
 	else if (other->tag == "EndLevel")

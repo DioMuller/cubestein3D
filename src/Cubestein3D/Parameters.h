@@ -45,19 +45,31 @@
 #define ENEMY_SPEED 0.005f
 
 // Shot Speed
-#define SHOT_SPEED 0.1f
+#define SHOT_SPEED 0.03f
 
 // Shot Lifetime
-#define SHOT_LIFETIME 1000
+#define SHOT_LIFETIME 800
 
 // Shot Size
-#define SHOT_SIZE 0.5f
+#define SHOT_SIZE 0.9f
 
 // Shot is destroyed if it hits wall?
 #define SHOT_DESTROYONWALL false
 
 // Enemy attack distance
 #define ATTACK_DISTANCE 100.0f
+
+//Enemy damage when hiting the player
+#define ENEMY_DAMAGE 1
+
+// How much health a medikit restores.
+#define MEDIKIT_RESTORE 30
+
+// How much ammo the 
+#define AMMO_RESTORE 20
+
+// Treasure Value
+#define TREASURE_VALUE 1000
 
 //////////////////////////////////////////
 // Level Parameters
@@ -82,9 +94,9 @@
 #define CHARACTER_Y -0.4f
 
 // Pickup size
-#define PICKUP_SIZE Vector(0.5f, 0.5f, 0.5f)
+#define PICKUP_SIZE Vector(1.0f, 0.5f, 1.0f)
 
-// Pickup size
+// Pickup position
 #define PICKUP_Y -0.8f
 
 // Pickup rotation
