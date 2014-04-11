@@ -25,7 +25,7 @@ class GameManager
 		int currentLevel;
 		std::vector<std::string> nextLevels;
 		Level* loadedLevel;
-
+		Player* player;
 
 		bool endGame;
 
@@ -72,5 +72,6 @@ class GameManager
 		static Level* GetCurrentLevel();
 		static AudioPlayer* GetAudioPlayer();
 		static TextureLoader* GetTextureLoader();
+		static Player* GetPlayer();
 };
 

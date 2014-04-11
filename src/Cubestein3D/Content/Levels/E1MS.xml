@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level>
+  <name>At Doom's Gate</name>
+  <size>
+    <width>30</width>
+    <height>12</height>
+  </size>
+  <textures>
+    <ground>Content/Textures/ground_s.png</ground>
+    <wall>Content/Textures/wall_s.png</wall>
+	<ceiling>Content/Textures/ceiling_s.png</ceiling>
+	<decoration>Content/Textures/painting_s.png</decoration>
+  </textures>
+  <bgm>Content/Music/e1ms.ogg</bgm>
+  <map>
+    <![CDATA[
+		WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+		WWGEEEEEEEEEEEEEEEGEWWWWWWWWWW
+		WWEEEEEEEEEEEEEEEEEGGGGGGGGGWW
+		WWGEEEEEEEEEEEEEEEGEWWWWWWWGWW
+		WWGEEEEEEEEEEEEEEEGWWWWWWWWGWW
+		WWGEEEEEEEEEEEEEEEGWWWWWWWWGWW
+		WWGEEEEEEEEEEEEEEEGWWWWWWGGGGW
+		WWGEEEEEEEEEEEEEEEGWWWWWWGFGGW
+		WWWWWWGWWWWWWWWWWWWWWWWWWWWWWW
+		WWWWWWGWWWWWWWWWWWWWWWWWWWWWWW
+		WWWWWWGGGGGGGGGGGGGAGGGGGGSWWW
+		WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+    ]]>
+  </map>
+</level>

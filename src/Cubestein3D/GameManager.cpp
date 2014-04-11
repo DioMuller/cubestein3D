@@ -25,6 +25,8 @@ GameManager::GameManager(Window* parent)
 
 	camera = new Camera();
 	GameManager::SetInstance(this);
+
+	player = new Player(Vector(0, 0, 0));
 }
 
 
@@ -180,4 +182,9 @@ AudioPlayer* GameManager::GetAudioPlayer()
 TextureLoader* GameManager::GetTextureLoader()
 {
 	return instance->textureLoader;
+}
+
+Player* GameManager::GetPlayer()
+{
+	return instance->player;
 }

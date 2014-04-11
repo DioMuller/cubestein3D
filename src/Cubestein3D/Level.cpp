@@ -58,6 +58,9 @@ void Level::Update(long delta)
 		}
 	}
 
+	// If the level changed.
+	if (GameManager::GetCurrentLevel() != this) return;
+
 	// Remove the ones marked for removing after this update
 	while (toRemove.size() != 0)
 	{
@@ -252,7 +255,8 @@ void Level::ProcessMap()
 					collision[i][j] = 1;
 					break;
 				case 'S': // Player Start Point
-					auxiliary = new Player(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
+					auxiliary = GameManager::GetPlayer();//new Player();
+					auxiliary->position = Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE);
 					AddEntity((Entity*)auxiliary);
 					camera->FollowEntity((Entity*)auxiliary);
 					collision[i][j] = 0;
