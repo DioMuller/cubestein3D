@@ -6,10 +6,10 @@
     <height>9</height>
   </size>
   <textures>
-    <ground>Content/Textures/ground.png</ground>
-    <wall>Content/Textures/wall.png</wall>
-	<ceiling>Content/Textures/ceiling.png</ceiling>
-	<decoration>Content/Textures/painting.png</decoration>
+    <ground>Content/Textures/ground_4.png</ground>
+    <wall>Content/Textures/wall_4.png</wall>
+	<ceiling>Content/Textures/ceiling_4.png</ceiling>
+	<decoration>Content/Textures/painting_4.png</decoration>
   </textures>
   <bgm>Content/Music/e1m9.ogg</bgm>
   <map>
