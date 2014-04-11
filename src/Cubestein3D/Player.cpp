@@ -48,7 +48,7 @@ void Player::Render(long delta, Renderer* renderer)
 	//////////////
 
 	// Border
-	renderer->DrawTexture(Vector(0, BORDER_HEIGHT, 0.9f), Vector(SCREEN_WIDTH, 0, 0.9f), guiBorder);
+	renderer->DrawTexture(Vector(0, BORDER_HEIGHT, 0.9f), Vector(SCREEN_WIDTH, 0, 0.99f), guiBorder);
 
 	// Health
 	renderer->DrawTexture(ICON_HEALTH_START, ICON_HEALTH_END, guiIconHealth);

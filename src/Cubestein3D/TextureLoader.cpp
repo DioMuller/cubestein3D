@@ -27,7 +27,7 @@ unsigned int TextureLoader::LoadTexture(std::string texture, bool repeating, boo
 
 	unsigned int id = -1;
 
-	setupTexture(texture.c_str(), &id, repeating ? GL_REPEAT : GL_CLAMP_TO_EDGE, invert);
+	setupTexture(texture.c_str(), &id, repeating ? GL_REPEAT : GL_CLAMP_TO_EDGE, false, invert);
 	loadedTextures.push_back(texture);
 	textureBank.push_back(id);
 

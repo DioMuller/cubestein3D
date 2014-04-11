@@ -190,45 +190,45 @@ void Renderer::DrawWall(Vector position, Vector size, Vector repetitions, Textur
 	glBegin(GL_QUADS);
 	// Front Face
 	glNormal3d(0, 0, 1);
-	glTexCoord2f(0, 0); glVertex3f(-1.0f, -1.0f, 1.0f);
-	glTexCoord2f(0, repeatY); glVertex3f(1.0f, -1.0f, 1.0f);
-	glTexCoord2f(repeatX, repeatY); glVertex3f(1.0f, 1.0f, 1.0f);
-	glTexCoord2f(repeatX, 0); glVertex3f(-1.0f, 1.0f, 1.0f);
+	glTexCoord2f(repeatX, 0); glVertex3f(-1.0f, -1.0f, 1.0f);
+	glTexCoord2f(0, 0); glVertex3f(1.0f, -1.0f, 1.0f);
+	glTexCoord2f(0, repeatY); glVertex3f(1.0f, 1.0f, 1.0f);
+	glTexCoord2f(repeatX, repeatY); glVertex3f(-1.0f, 1.0f, 1.0f);
 
 	// Back Face
 	glNormal3d(0, 0, -1);
-	glTexCoord2f(0, 0); glVertex3f(1.0f, -1.0f, -1.0f);
-	glTexCoord2f(0, repeatY); glVertex3f(-1.0f, -1.0f, -1.0f);
-	glTexCoord2f(repeatX, repeatY); glVertex3f(-1.0f, 1.0f, -1.0f);
-	glTexCoord2f(repeatX, 0); glVertex3f(1.0f, 1.0f, -1.0f);
+	glTexCoord2f(repeatX, 0); glVertex3f(1.0f, -1.0f, -1.0f);
+	glTexCoord2f(0, 0); glVertex3f(-1.0f, -1.0f, -1.0f);
+	glTexCoord2f(0, repeatY); glVertex3f(-1.0f, 1.0f, -1.0f);
+	glTexCoord2f(repeatX, repeatY); glVertex3f(1.0f, 1.0f, -1.0f);
 
 	// Top Face
 	glNormal3d(0, 1, 0);
-	glTexCoord2f(0, 0); glVertex3f(-1.0f, 1.0f, 1.0f);
-	glTexCoord2f(0, repeatY); glVertex3f(1.0f, 1.0f, 1.0f);
-	glTexCoord2f(repeatX, repeatY); glVertex3f(1.0f, 1.0f, -1.0f);
-	glTexCoord2f(repeatX, 0); glVertex3f(-1.0f, 1.0f, -1.0f);
+	glTexCoord2f(repeatX, 0); glVertex3f(-1.0f, 1.0f, 1.0f);
+	glTexCoord2f(0, 0); glVertex3f(1.0f, 1.0f, 1.0f);
+	glTexCoord2f(0, repeatY); glVertex3f(1.0f, 1.0f, -1.0f);
+	glTexCoord2f(repeatX, repeatY); glVertex3f(-1.0f, 1.0f, -1.0f);
 
 	// Bottom Face
 	glNormal3d(0, -1, 0);
-	glTexCoord2f(0, 0); glVertex3f(-1.0f, -1.0f, -1.0f);
-	glTexCoord2f(0, repeatY); glVertex3f(1.0f, -1.0f, -1.0f);
-	glTexCoord2f(repeatX, repeatY); glVertex3f(1.0f, -1.0f, 1.0f);
-	glTexCoord2f(repeatX, 0); glVertex3f(-1.0f, -1.0f, 1.0f);
+	glTexCoord2f(repeatX, 0); glVertex3f(-1.0f, -1.0f, -1.0f);
+	glTexCoord2f(0, 0); glVertex3f(1.0f, -1.0f, -1.0f);
+	glTexCoord2f(0, repeatY); glVertex3f(1.0f, -1.0f, 1.0f);
+	glTexCoord2f(repeatX, repeatY); glVertex3f(-1.0f, -1.0f, 1.0f);
 
 	// Right face
 	glNormal3d(1, 0, 0);
-	glTexCoord2f(0, 0); glVertex3f(1.0f, -1.0f, 1.0f);
-	glTexCoord2f(0, repeatY); glVertex3f(1.0f, -1.0f, -1.0f);
-	glTexCoord2f(repeatX, repeatY); glVertex3f(1.0f, 1.0f, -1.0f);
-	glTexCoord2f(repeatX, 0); glVertex3f(1.0f, 1.0f, 1.0f);
+	glTexCoord2f(repeatX, 0); glVertex3f(1.0f, -1.0f, 1.0f);
+	glTexCoord2f(0, 0); glVertex3f(1.0f, -1.0f, -1.0f);
+	glTexCoord2f(0, repeatY); glVertex3f(1.0f, 1.0f, -1.0f);
+	glTexCoord2f(repeatX, repeatY); glVertex3f(1.0f, 1.0f, 1.0f);
 
 	// Left Face
 	glNormal3d(-1, 0, 0);
-	glTexCoord2f(0, 0); glVertex3f(-1.0f, -1.0f, -1.0f);
-	glTexCoord2f(0, repeatY); glVertex3f(-1.0f, -1.0f, 1.0f);
-	glTexCoord2f(repeatX, repeatY); glVertex3f(-1.0f, 1.0f, 1.0f);
-	glTexCoord2f(repeatX, 0); glVertex3f(-1.0f, 1.0f, -1.0f);
+	glTexCoord2f(repeatX, 0); glVertex3f(-1.0f, -1.0f, -1.0f);
+	glTexCoord2f(0, 0); glVertex3f(-1.0f, -1.0f, 1.0f);
+	glTexCoord2f(0, repeatY); glVertex3f(-1.0f, 1.0f, 1.0f);
+	glTexCoord2f(repeatX, repeatY); glVertex3f(-1.0f, 1.0f, -1.0f);
 	glEnd();
 
 	glBindTexture(GL_TEXTURE_2D, 0);
@@ -408,16 +408,18 @@ void Renderer::DrawTexture(Vector startPosition, Vector endPosition, TextureInfo
 	glPushMatrix();
 	ChangeToOrtho();
 
-	glColor3f(1.0f, 1.0f, 1.0f);
 	glBindTexture(GL_TEXTURE_2D, texture->id);
 
 	glColor3f(1.0, 1.0, 1.0);
 	glBegin(GL_QUADS);
+	
 	glNormal3d(0, 0, 1);
+
+	glTexCoord2f(1, 0); glVertex3f(endPosition.x, startPosition.y, startPosition.z);
+	glTexCoord2f(1, 1); glVertex3f(endPosition.x, endPosition.y, startPosition.z);
+	glTexCoord2f(0, 1); glVertex3f(startPosition.x, endPosition.y, startPosition.z);
 	glTexCoord2f(0, 0); glVertex3f(startPosition.x, startPosition.y, startPosition.z);
-	glTexCoord2f(0, 1); glVertex3f(endPosition.x, startPosition.y, startPosition.z);
-	glTexCoord2f(1, 1); glVertex3f(endPosition.x, endPosition.y, endPosition.z);
-	glTexCoord2f(1, 0); glVertex3f(startPosition.x, endPosition.y, endPosition.z);
+	
 	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
 
