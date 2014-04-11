@@ -28,13 +28,17 @@ class Level
 		// The Player
 		Player* player;
 
+		std::string enemyTexture;
+		std::string enemyAttackSound;
+		std::string enemyDeathSound;
+
 		Vector namePosition;
 
 	////////////////////////////////////////
 	// Constructors/Destructors
 	////////////////////////////////////////
 	public:
-		Level();
+		//Level();
 		Level(std::string path);
 		~Level();
 
@@ -50,9 +54,12 @@ class Level
 		void ClearEntities();
 		bool CollidesWithLevel(Vector position, Vector size);
 		Player* GetPlayer();
+		std::string GetEnemyTexture();
+		std::string GetEnemyAttackSound();
+		std::string GetEnemyDeathSound();
 	private:
 		void LoadFromXML(std::string path);
-		void LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, std::string music, char** map);
+		void LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, std::string music, std::string enemyTexture, std::string enemyAttackSound, std::string enemyDeathSound, char** map);
 		void ProcessMap();
 };
 

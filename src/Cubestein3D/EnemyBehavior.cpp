@@ -7,13 +7,13 @@
 ////////////////////////////////////////
 // Constructor / Destructor
 ////////////////////////////////////////
-EnemyBehavior::EnemyBehavior(Entity* parent) : Behavior(parent)
+EnemyBehavior::EnemyBehavior(Entity* parent, Level* level) : Behavior(parent)
 {
 	this->parent->rotation.y = (rand() % 4) * 90.0f;
 
 	this->target = nullptr;
 
-	this->attackSound = GameManager::GetAudioPlayer()->LoadSFX("Content/Sound/enemy.wav");
+	this->attackSound = GameManager::GetAudioPlayer()->LoadSFX(level->GetEnemyAttackSound());//"Content/Sound/enemy.wav");
 
 	this->nowAttacking = false;
 }

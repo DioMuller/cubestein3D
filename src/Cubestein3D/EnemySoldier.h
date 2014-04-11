@@ -1,5 +1,6 @@
 #pragma once
 #include "Character.h"
+#include "Level.h"
 #include "AudioPlayer.h"
 
 class EnemySoldier : public Character
@@ -15,7 +16,7 @@ class EnemySoldier : public Character
 	// Constructor / Destructor
 	////////////////////////////////////////
 	public:
-		EnemySoldier(Vector position);
+		EnemySoldier(Vector position, Level* level);
 		~EnemySoldier();
 
 	////////////////////////////////////////

@@ -3,6 +3,7 @@
 #include "Vector.h"
 #include "Player.h"
 #include "AudioPlayer.h"
+#include "Level.h"
 
 class EnemyBehavior : public Behavior
 {
@@ -18,7 +19,7 @@ class EnemyBehavior : public Behavior
 	// Constructor / Destructor
 	////////////////////////////////////////
 	public:
-		EnemyBehavior(Entity* parent);
+		EnemyBehavior(Entity* parent, Level* level);
 		~EnemyBehavior();
 
 	////////////////////////////////////////

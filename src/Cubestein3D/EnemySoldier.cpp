@@ -6,16 +6,16 @@
 ////////////////////////////////////////
 // Constructor / Destructor
 ////////////////////////////////////////
-EnemySoldier::EnemySoldier(Vector position) : Character("Content/Textures/enemy.png", position)
+EnemySoldier::EnemySoldier(Vector position, Level* level) : Character(level->GetEnemyTexture(), position) //"Content/Textures/enemy.png", position)
 {
-	EnemyBehavior* walking = new EnemyBehavior(this);
+	EnemyBehavior* walking = new EnemyBehavior(this, level);
 	AddBehavior((Behavior*)walking);
 
 	tag = "Enemy";
 
 	isDead = false;
 
-	dieSound = GameManager::GetAudioPlayer()->LoadSFX("Content/Sound/enemy_die.wav");
+	dieSound = GameManager::GetAudioPlayer()->LoadSFX(level->GetEnemyDeathSound());//"Content/Sound/enemy_die.wav");
 }
 
 

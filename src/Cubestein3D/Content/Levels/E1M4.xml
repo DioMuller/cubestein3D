@@ -11,7 +11,12 @@
 	<ceiling>Content/Textures/ceiling_4.png</ceiling>
 	<decoration>Content/Textures/painting_4.png</decoration>
   </textures>
-  <bgm>Content/Music/e1m4.ogg</bgm>
+  <bgm>Content/Music/e1m4.ogg</bgm>  
+  <enemy>
+	<texture>Content/Textures/enemy.png</texture>
+	<attack>Content/Sound/enemy.wav</attack>
+	<death>Content/Sound/enemy_die.wav</death>
+  </enemy>
   <map>
     <![CDATA[
 		WWWWWWWWWWWWWWWWWWWWWW

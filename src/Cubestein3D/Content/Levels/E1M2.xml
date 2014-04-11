@@ -12,6 +12,11 @@
 	<decoration>Content/Textures/painting_2.png</decoration>
   </textures>
   <bgm>Content/Music/e1m2.ogg</bgm>
+  <enemy>
+	<texture>Content/Textures/enemy.png</texture>
+	<attack>Content/Sound/enemy.wav</attack>
+	<death>Content/Sound/enemy_die.wav</death>
+  </enemy>
   <map>
     <![CDATA[
 		WWWWWWWWWPWWWWWWWWWWWWWPWWWWWW

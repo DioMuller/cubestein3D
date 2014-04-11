@@ -17,16 +17,20 @@
 ////////////////////////////////////////
 // Constructor / Destructor
 ////////////////////////////////////////
-Level::Level()
+/*Level::Level()
 {
 	entities = std::vector<Entity*>();
 	toRemove = std::vector<Entity*>();
 
 	player = nullptr;
-}
+}*/
 
-Level::Level(std::string file) : Level()
+Level::Level(std::string file)
 {
+	entities = std::vector<Entity*>();
+	toRemove = std::vector<Entity*>();
+	player = nullptr;
+
 	LoadFromXML(file);
 
 	namePosition = Vector( SCREEN_WIDTH - (FONT_SIZE * name.size() ) + LEVELNAME_OFFSET.x, LEVELNAME_OFFSET.y, LEVELNAME_OFFSET.z);
@@ -149,7 +153,7 @@ void Level::ClearEntities()
 ////////////////////////////////////////
 // Loading Methods
 ////////////////////////////////////////
-void Level::LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, std::string music, char** map)
+void Level::LoadLevel(std::string name, int width, int height, std::string groundTexture, std::string wallTexture, std::string ceilingTexture, std::string decorationTexture, std::string music, std::string enemyTexture, std::string enemyAttackSound, std::string enemyDeathSound, char** map)
 {
 	this->name = name;
 	this->width = width;
@@ -167,6 +171,10 @@ void Level::LoadLevel(std::string name, int width, int height, std::string groun
 
 	this->ceilingStart = Vector(scaledStart.x, scale.y + 1.5f, scaledStart.z);
 	this->ceilingEnd = Vector(scaledEnd.x, scale.y + 1.5f, scaledEnd.z);
+
+	this->enemyTexture = enemyTexture;
+	this->enemyAttackSound = enemyAttackSound;
+	this->enemyDeathSound = enemyDeathSound;
 
 	this->scale = Vector(0.5f * SCALE, 1.5f, 0.5f * SCALE);
 
@@ -200,7 +208,13 @@ void Level::LoadFromXML(std::string file)
 	// BGM
 	std::string bgm = std::string(root->FirstChildElement("bgm")->GetText());
 
-	// Map
+	// Enemy
+	tinyxml2::XMLElement* enemy = root->FirstChildElement("enemy");
+	std::string enemyTexture = std::string(enemy->FirstChildElement("texture")->GetText());
+	std::string enemyAttackSound = std::string(enemy->FirstChildElement("attack")->GetText());
+	std::string enemyDeathSound = std::string(enemy->FirstChildElement("death")->GetText());
+
+	// Mapd
 	std::string map_string = std::string(root->FirstChildElement("map")->GetText());
 	map_string.erase(std::remove(map_string.begin(), map_string.end(), '\t'), map_string.end());
 
@@ -219,7 +233,7 @@ void Level::LoadFromXML(std::string file)
 		}
 	}
 
-	LoadLevel(name, width, height, ground, wall, ceiling, decoration, bgm, map);
+	LoadLevel(name, width, height, ground, wall, ceiling, decoration, bgm, enemyTexture, enemyAttackSound, enemyDeathSound, map);
 }
 
 void Level::ProcessMap()
@@ -263,7 +277,7 @@ void Level::ProcessMap()
 					this->player = (Player*) auxiliary;
 					break;
 				case 'E': // Enemy
-					auxiliary = new EnemySoldier(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE));
+					auxiliary = new EnemySoldier(Vector((start.x + j) * SCALE, CHARACTER_Y, (start.z + i) * SCALE), this);
 					AddEntity((Entity*)auxiliary);
 					collision[i][j] = 0;
 					break;
@@ -330,4 +344,19 @@ bool Level::CollidesWithLevel(Vector position, Vector size)
 Player* Level::GetPlayer()
 {
 	return player;
+}
+
+std::string Level::GetEnemyTexture()
+{
+	return enemyTexture;
+}
+
+std::string Level::GetEnemyAttackSound()
+{
+	return enemyAttackSound;
+}
+
+std::string Level::GetEnemyDeathSound()
+{
+	return enemyDeathSound;
 }
