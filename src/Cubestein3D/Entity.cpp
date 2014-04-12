@@ -1,5 +1,6 @@
 #include "Entity.h"
 #include "GameManager.h"
+#include "Log.h"
 
 ////////////////////////////////////////
 // Constructor / Destructor

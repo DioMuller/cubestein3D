@@ -102,6 +102,12 @@
 // Pickup rotation
 #define PICKUP_ROTATION 0.05f
 
+// Player damage SFX Wait Time.
+#define DAMAGE_SFX_WAITTIME 1000
+
+// Level finish offset
+#define FINISH_OFFSET Vector( -0.5, 1, -0.5 );
+
 //////////////////////////////////////////
 // Audio
 //////////////////////////////////////////

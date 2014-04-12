@@ -28,7 +28,9 @@ Player::Player(Vector position) : Character("Content/Textures/hero.png", positio
 	guiIconPoints = new TextureInfo("Content/Textures/icon_points.png", false, false);
 
 	// Initialize sound
+	damageWaitTime = 0;
 	sfxShoot = GameManager::GetAudioPlayer()->LoadSFX("Content/Sound/shoot.wav");
+	sfxDamage = GameManager::GetAudioPlayer()->LoadSFX("Content/Sound/player_hurt.wav");
 }
 
 
@@ -66,6 +68,8 @@ void Player::Render(long delta, Renderer* renderer)
 	renderer->DrawTexture(ICON_POINTS_START, ICON_POINTS_END, guiIconPoints);
 	renderer->DrawString(POINTS_OFFSET, 1.0f, 1.0f, 1.0f, IntToString(points));
 
+	if (damageWaitTime > 0) damageWaitTime -= delta;
+
 	renderer->DrawCrosshair();
 }
 
@@ -75,7 +79,13 @@ void Player::CollideWith(Entity* other)
 
 	if (other->tag == "Enemy")
 	{
-		health-= ENEMY_DAMAGE;
+		health -= ENEMY_DAMAGE;
+
+		if (damageWaitTime <= 0)
+		{
+			damageWaitTime = DAMAGE_SFX_WAITTIME;
+			GameManager::GetAudioPlayer()->PlaySFX(sfxDamage);
+		}
 	}
 	else if (other->tag == "HealthPickup" && health < 100)
 	{

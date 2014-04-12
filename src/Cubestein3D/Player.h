@@ -28,6 +28,8 @@ class Player : public Character
 	////////////////////////////////////////
 	private:
 		SFXId sfxShoot;
+		SFXId sfxDamage;
+		long damageWaitTime;
 
 	////////////////////////////////////////
 	// Constructor / Destructor

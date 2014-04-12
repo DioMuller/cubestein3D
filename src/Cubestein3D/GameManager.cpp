@@ -137,7 +137,8 @@ void GameManager::AddLevel(std::string level)
 bool GameManager::NextLevel()
 {
 	currentLevel++;
-	delete loadedLevel;
+
+	if ( loadedLevel != nullptr ) loadedLevel->MarkForDeletion();
 
 	if (currentLevel < nextLevels.size())
 	{

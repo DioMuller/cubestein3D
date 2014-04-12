@@ -385,6 +385,17 @@ void Renderer::DrawString(Vector position, float r, float g, float b, std::strin
 	glPopMatrix();
 }
 
+void Renderer::DrawString3D(Vector position, float rotation, float r, float g, float b, std::string text)
+{
+	glPushMatrix();
+
+	glColor3f(r, g, b);
+	glRotatef(rotation, 0, 1, 0);
+	printw(position.x, position.y, position.z, GLUT_BITMAP_8_BY_13, text.c_str());
+
+	glPopMatrix();
+}
+
 void Renderer::DrawDebug(Vector position, float r, float g, float b, std::string text)
 {
 	if (SHOWDEBUG)

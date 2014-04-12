@@ -39,6 +39,7 @@ class Renderer
 		void DrawWall(Vector position, Vector size, Vector repetitions, TextureInfo* texture);
 
 		void DrawString(Vector position, float r, float g, float b, std::string text);
+		void DrawString3D(Vector position, float rotation, float r, float g, float b, std::string text);
 		void DrawDebug(Vector position, float r, float g, float b, std::string text);
 
 		void DrawTexture(Vector startPosition, Vector endPosition, TextureInfo* texture);

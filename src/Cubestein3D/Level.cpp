@@ -33,11 +33,22 @@ Level::Level(std::string file)
 
 	LoadFromXML(file);
 
+	markedForDeletion = false;
+
 	namePosition = Vector( SCREEN_WIDTH - (FONT_SIZE * name.size() ) + LEVELNAME_OFFSET.x, LEVELNAME_OFFSET.y, LEVELNAME_OFFSET.z);
 }
 
 Level::~Level()
 {
+	int pcount = 0;
+
+	while (entities.size() > 0)
+	{
+		Entity* ent = entities[entities.size() - 1];
+		entities.pop_back();
+
+		if (ent != player) delete ent;
+	}
 }
 
 ////////////////////////////////////////
@@ -53,12 +64,17 @@ void Level::Update(long delta)
 	{
 		entities[i]->Update(delta);
 		
-		// If the level changed.
-		if (GameManager::GetCurrentLevel() != this) return;
 
 		for (j = i + 1; j < entities.size(); j++)
 		{
 			entities[i]->CheckCollision(entities[j]);
+		}
+
+		// Has the level ended?
+		if (markedForDeletion)
+		{
+			delete this;
+			return;
 		}
 	}
 
@@ -129,6 +145,11 @@ void Level::Render(long delta, Renderer* renderer)
 
 	// Level Name
 	renderer->DrawString(namePosition, 0.3, 0.3, 0.3, name);
+}
+
+void Level::MarkForDeletion()
+{
+	this->markedForDeletion = true;
 }
 
 ////////////////////////////////////////
